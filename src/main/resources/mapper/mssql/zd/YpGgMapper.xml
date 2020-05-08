@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicloud.trans.mapper.mssql.zd.YpGgMapper">
+  <resultMap id="BaseResultMap" type="com.yicloud.trans.model.mssql.zd.YpGg">
+    <id column="yph" jdbcType="INTEGER" property="yph" />
+    <id column="ggxh" jdbcType="CHAR" property="ggxh" />
+    <result column="ypgg" jdbcType="VARCHAR" property="ypgg" />
+    <result column="dbdw" jdbcType="VARCHAR" property="dbdw" />
+    <result column="cfdw" jdbcType="VARCHAR" property="cfdw" />
+    <result column="fylb" jdbcType="CHAR" property="fylb" />
+    <result column="ypbm" jdbcType="VARCHAR" property="ypbm" />
+    <result column="txm" jdbcType="VARCHAR" property="txm" />
+    <result column="jldw" jdbcType="VARCHAR" property="jldw" />
+    <result column="jlxs" jdbcType="NUMERIC" property="jlxs" />
+    <result column="zl" jdbcType="INTEGER" property="zl" />
+    <result column="kcsx" jdbcType="NUMERIC" property="kcsx" />
+    <result column="kcxx" jdbcType="NUMERIC" property="kcxx" />
+    <result column="yyxl" jdbcType="NUMERIC" property="yyxl" />
+    <result column="yxqs" jdbcType="INTEGER" property="yxqs" />
+    <result column="psbz" jdbcType="INTEGER" property="psbz" />
+    <result column="otc" jdbcType="INTEGER" property="otc" />
+    <result column="kfxs" jdbcType="NUMERIC" property="kfxs" />
+    <result column="zsbz" jdbcType="INTEGER" property="zsbz" />
+    <result column="pzwh" jdbcType="VARCHAR" property="pzwh" />
+    <result column="sybz" jdbcType="CHAR" property="sybz" />
+    <result column="ybbz" jdbcType="CHAR" property="ybbz" />
+    <result column="ybzfbl" jdbcType="NUMERIC" property="ybzfbl" />
+    <result column="ypdm" jdbcType="CHAR" property="ypdm" />
+    <result column="ybypmc" jdbcType="VARCHAR" property="ybypmc" />
+    <result column="ybsflb" jdbcType="CHAR" property="ybsflb" />
+    <result column="ybsplx" jdbcType="CHAR" property="ybsplx" />
+    <result column="yp_lx" jdbcType="CHAR" property="ypLx" />
+    <result column="zyyfcfdw" jdbcType="CHAR" property="zyyfcfdw" />
+    <result column="ls_yph" jdbcType="CHAR" property="lsYph" />
+    <result column="ls_sh" jdbcType="CHAR" property="lsSh" />
+    <result column="cdmc" jdbcType="VARCHAR" property="cdmc" />
+    <result column="fylb_lx" jdbcType="CHAR" property="fylbLx" />
+    <result column="szyb_ybdm" jdbcType="VARCHAR" property="szybYbdm" />
+    <result column="szyb_zfbl" jdbcType="NUMERIC" property="szybZfbl" />
+    <result column="szyb_fylb" jdbcType="VARCHAR" property="szybFylb" />
+    <result column="szyb_ybmc" jdbcType="VARCHAR" property="szybYbmc" />
+    <result column="szyb_ybsplx" jdbcType="CHAR" property="szybYbsplx" />
+    <result column="szyb_ybxzbz" jdbcType="CHAR" property="szybYbxzbz" />
+    <result column="sgcfbz" jdbcType="CHAR" property="sgcfbz" />
+    <result column="tsbz" jdbcType="CHAR" property="tsbz" />
+    <result column="lxgbyyfw" jdbcType="CHAR" property="lxgbyyfw" />
+    <result column="czf" jdbcType="CHAR" property="czf" />
+    <result column="xsyb_code" jdbcType="NUMERIC" property="xsybCode" />
+    <result column="xsyb_zfbl" jdbcType="NUMERIC" property="xsybZfbl" />
+    <result column="xsyb_fylb" jdbcType="VARCHAR" property="xsybFylb" />
+    <result column="xsyb_ybsplx" jdbcType="CHAR" property="xsybYbsplx" />
+    <result column="xsyb_mc" jdbcType="VARCHAR" property="xsybMc" />
+    <result column="yhyb_code" jdbcType="VARCHAR" property="yhybCode" />
+    <result column="yhyb_name" jdbcType="VARCHAR" property="yhybName" />
+    <result column="yhyb_model" jdbcType="VARCHAR" property="yhybModel" />
+    <result column="yhyb_serial" jdbcType="VARCHAR" property="yhybSerial" />
+    <result column="yhyb_shbz" jdbcType="VARCHAR" property="yhybShbz" />
+    <result column="yhyb_zfbl" jdbcType="NUMERIC" property="yhybZfbl" />
+    <result column="yhyb_ybsplx" jdbcType="VARCHAR" property="yhybYbsplx" />
+    <result column="fyyb_ybdm" jdbcType="VARCHAR" property="fyybYbdm" />
+    <result column="fyyb_zxnm" jdbcType="NUMERIC" property="fyybZxnm" />
+    <result column="fyyb_zfbl" jdbcType="NUMERIC" property="fyybZfbl" />
+    <result column="fyyb_fylb" jdbcType="VARCHAR" property="fyybFylb" />
+    <result column="fyyb_ybmc" jdbcType="VARCHAR" property="fyybYbmc" />
+    <result column="fyyb_ybsplx" jdbcType="CHAR" property="fyybYbsplx" />
+    <result column="fyyb_zfbl_lx" jdbcType="NUMERIC" property="fyybZfblLx" />
+    <result column="fyyb_zfbl_ey" jdbcType="NUMERIC" property="fyybZfblEy" />
+    <result column="fyyb_ybdj" jdbcType="VARCHAR" property="fyybYbdj" />
+    <result column="xnyb_code" jdbcType="VARCHAR" property="xnybCode" />
+    <result column="xnyb_name" jdbcType="VARCHAR" property="xnybName" />
+    <result column="xnyb_serial" jdbcType="VARCHAR" property="xnybSerial" />
+    <result column="xnyb_shbz" jdbcType="CHAR" property="xnybShbz" />
+    <result column="xnyb_match_type" jdbcType="CHAR" property="xnybMatchType" />
+    <result column="xnyb_ybbz" jdbcType="VARCHAR" property="xnybYbbz" />
+    <result column="jgnb_code" jdbcType="VARCHAR" property="jgnbCode" />
+    <result column="jgnb_name" jdbcType="VARCHAR" property="jgnbName" />
+    <result column="bjgb_bz" jdbcType="CHAR" property="bjgbBz" />
+    <result column="xzfl" jdbcType="TINYINT" property="xzfl" />
+    <result column="xzsm" jdbcType="VARCHAR" property="xzsm" />
+    <result column="yyxl_2" jdbcType="NUMERIC" property="yyxl2" />
+    <result column="yyxl_gdbz" jdbcType="NUMERIC" property="yyxlGdbz" />
+    <result column="cfyyxl" jdbcType="NUMERIC" property="cfyyxl" />
+    <result column="cfyyxl_2" jdbcType="NUMERIC" property="cfyyxl2" />
+    <result column="cfyyxl_gdbz" jdbcType="NUMERIC" property="cfyyxlGdbz" />
+    <result column="ybdm_2010" jdbcType="VARCHAR" property="ybdm2010" />
+    <result column="yyxl_gdbz_2" jdbcType="NUMERIC" property="yyxlGdbz2" />
+    <result column="cfyyxl_gbbz_2" jdbcType="NUMERIC" property="cfyyxlGbbz2" />
+    <result column="cfyyxl_gdbz_2" jdbcType="NUMERIC" property="cfyyxlGdbz2" />
+    <result column="yyxl_yd" jdbcType="NUMERIC" property="yyxlYd" />
+    <result column="klj" jdbcType="CHAR" property="klj" />
+    <result column="ybtqpyts" jdbcType="TINYINT" property="ybtqpyts" />
+    <result column="zdts" jdbcType="INTEGER" property="zdts" />
+    <result column="ydyb_ybdm" jdbcType="VARCHAR" property="ydybYbdm" />
+    <result column="ydyb_zfbl" jdbcType="NUMERIC" property="ydybZfbl" />
+    <result column="ybyb_gylb" jdbcType="VARCHAR" property="ybybGylb" />
+    <result column="ybyb_ybmc" jdbcType="VARCHAR" property="ybybYbmc" />
+    <result column="ybyb_ybsplx" jdbcType="VARCHAR" property="ybybYbsplx" />
+    <result column="ybts" jdbcType="INTEGER" property="ybts" />
+    <result column="ybgdbzts" jdbcType="INTEGER" property="ybgdbzts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    yph, ggxh, ypgg, dbdw, cfdw, fylb, ypbm, txm, jldw, jlxs, zl, kcsx, kcxx, yyxl, yxqs, 
+    psbz, otc, kfxs, zsbz, pzwh, sybz, ybbz, ybzfbl, ypdm, ybypmc, ybsflb, ybsplx, yp_lx, 
+    zyyfcfdw, ls_yph, ls_sh, cdmc, fylb_lx, szyb_ybdm, szyb_zfbl, szyb_fylb, szyb_ybmc, 
+    szyb_ybsplx, szyb_ybxzbz, sgcfbz, tsbz, lxgbyyfw, czf, xsyb_code, xsyb_zfbl, xsyb_fylb, 
+    xsyb_ybsplx, xsyb_mc, yhyb_code, yhyb_name, yhyb_model, yhyb_serial, yhyb_shbz, yhyb_zfbl, 
+    yhyb_ybsplx, fyyb_ybdm, fyyb_zxnm, fyyb_zfbl, fyyb_fylb, fyyb_ybmc, fyyb_ybsplx, 
+    fyyb_zfbl_lx, fyyb_zfbl_ey, fyyb_ybdj, xnyb_code, xnyb_name, xnyb_serial, xnyb_shbz, 
+    xnyb_match_type, xnyb_ybbz, jgnb_code, jgnb_name, bjgb_bz, xzfl, xzsm, yyxl_2, yyxl_gdbz, 
+    cfyyxl, cfyyxl_2, cfyyxl_gdbz, ybdm_2010, yyxl_gdbz_2, cfyyxl_gbbz_2, cfyyxl_gdbz_2, 
+    yyxl_yd, klj, ybtqpyts, zdts, ydyb_ybdm, ydyb_zfbl, ybyb_gylb, ybyb_ybmc, ybyb_ybsplx, 
+    ybts, ybgdbzts
+  </sql>
+<!--  <select id="selectByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.zd.YpGgKey" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from yp_gg-->
+<!--    where yph = #{yph,jdbcType=INTEGER}-->
+<!--      and ggxh = #{ggxh,jdbcType=CHAR}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.zd.YpGgKey">-->
+<!--    delete from yp_gg-->
+<!--    where yph = #{yph,jdbcType=INTEGER}-->
+<!--      and ggxh = #{ggxh,jdbcType=CHAR}-->
+<!--  </delete>-->
+<!--  <insert id="insert" keyColumn="yph" keyProperty="yph" parameterType="com.yicloud.trans.model.mssql.zd.YpGg" useGeneratedKeys="true">-->
+<!--    insert into yp_gg (ggxh, ypgg, dbdw, -->
+<!--      cfdw, fylb, ypbm, txm, -->
+<!--      jldw, jlxs, zl, kcsx, -->
+<!--      kcxx, yyxl, yxqs, psbz, -->
+<!--      otc, kfxs, zsbz, pzwh, -->
+<!--      sybz, ybbz, ybzfbl, ypdm, -->
+<!--      ybypmc, ybsflb, ybsplx, yp_lx, -->
+<!--      zyyfcfdw, ls_yph, ls_sh, cdmc, -->
+<!--      fylb_lx, szyb_ybdm, szyb_zfbl, -->
+<!--      szyb_fylb, szyb_ybmc, szyb_ybsplx, -->
+<!--      szyb_ybxzbz, sgcfbz, tsbz, lxgbyyfw, -->
+<!--      czf, xsyb_code, xsyb_zfbl, -->
+<!--      xsyb_fylb, xsyb_ybsplx, xsyb_mc, -->
+<!--      yhyb_code, yhyb_name, yhyb_model, -->
+<!--      yhyb_serial, yhyb_shbz, yhyb_zfbl, -->
+<!--      yhyb_ybsplx, fyyb_ybdm, fyyb_zxnm, -->
+<!--      fyyb_zfbl, fyyb_fylb, fyyb_ybmc, -->
+<!--      fyyb_ybsplx, fyyb_zfbl_lx, fyyb_zfbl_ey, -->
+<!--      fyyb_ybdj, xnyb_code, xnyb_name, -->
+<!--      xnyb_serial, xnyb_shbz, xnyb_match_type, -->
+<!--      xnyb_ybbz, jgnb_code, jgnb_name, -->
+<!--      bjgb_bz, xzfl, xzsm, yyxl_2, -->
+<!--      yyxl_gdbz, cfyyxl, cfyyxl_2, -->
+<!--      cfyyxl_gdbz, ybdm_2010, yyxl_gdbz_2, -->
+<!--      cfyyxl_gbbz_2, cfyyxl_gdbz_2, yyxl_yd, -->
+<!--      klj, ybtqpyts, zdts, ydyb_ybdm, -->
+<!--      ydyb_zfbl, ybyb_gylb, ybyb_ybmc, -->
+<!--      ybyb_ybsplx, ybts, ybgdbzts-->
+<!--      )-->
+<!--    values (#{ggxh,jdbcType=CHAR}, #{ypgg,jdbcType=VARCHAR}, #{dbdw,jdbcType=VARCHAR}, -->
+<!--      #{cfdw,jdbcType=VARCHAR}, #{fylb,jdbcType=CHAR}, #{ypbm,jdbcType=VARCHAR}, #{txm,jdbcType=VARCHAR}, -->
+<!--      #{jldw,jdbcType=VARCHAR}, #{jlxs,jdbcType=NUMERIC}, #{zl,jdbcType=INTEGER}, #{kcsx,jdbcType=NUMERIC}, -->
+<!--      #{kcxx,jdbcType=NUMERIC}, #{yyxl,jdbcType=NUMERIC}, #{yxqs,jdbcType=INTEGER}, #{psbz,jdbcType=INTEGER}, -->
+<!--      #{otc,jdbcType=INTEGER}, #{kfxs,jdbcType=NUMERIC}, #{zsbz,jdbcType=INTEGER}, #{pzwh,jdbcType=VARCHAR}, -->
+<!--      #{sybz,jdbcType=CHAR}, #{ybbz,jdbcType=CHAR}, #{ybzfbl,jdbcType=NUMERIC}, #{ypdm,jdbcType=CHAR}, -->
+<!--      #{ybypmc,jdbcType=VARCHAR}, #{ybsflb,jdbcType=CHAR}, #{ybsplx,jdbcType=CHAR}, #{ypLx,jdbcType=CHAR}, -->
+<!--      #{zyyfcfdw,jdbcType=CHAR}, #{lsYph,jdbcType=CHAR}, #{lsSh,jdbcType=CHAR}, #{cdmc,jdbcType=VARCHAR}, -->
+<!--      #{fylbLx,jdbcType=CHAR}, #{szybYbdm,jdbcType=VARCHAR}, #{szybZfbl,jdbcType=NUMERIC}, -->
+<!--      #{szybFylb,jdbcType=VARCHAR}, #{szybYbmc,jdbcType=VARCHAR}, #{szybYbsplx,jdbcType=CHAR}, -->
+<!--      #{szybYbxzbz,jdbcType=CHAR}, #{sgcfbz,jdbcType=CHAR}, #{tsbz,jdbcType=CHAR}, #{lxgbyyfw,jdbcType=CHAR}, -->
+<!--      #{czf,jdbcType=CHAR}, #{xsybCode,jdbcType=NUMERIC}, #{xsybZfbl,jdbcType=NUMERIC}, -->
+<!--      #{xsybFylb,jdbcType=VARCHAR}, #{xsybYbsplx,jdbcType=CHAR}, #{xsybMc,jdbcType=VARCHAR}, -->
+<!--      #{yhybCode,jdbcType=VARCHAR}, #{yhybName,jdbcType=VARCHAR}, #{yhybModel,jdbcType=VARCHAR}, -->
+<!--      #{yhybSerial,jdbcType=VARCHAR}, #{yhybShbz,jdbcType=VARCHAR}, #{yhybZfbl,jdbcType=NUMERIC}, -->
+<!--      #{yhybYbsplx,jdbcType=VARCHAR}, #{fyybYbdm,jdbcType=VARCHAR}, #{fyybZxnm,jdbcType=NUMERIC}, -->
+<!--      #{fyybZfbl,jdbcType=NUMERIC}, #{fyybFylb,jdbcType=VARCHAR}, #{fyybYbmc,jdbcType=VARCHAR}, -->
+<!--      #{fyybYbsplx,jdbcType=CHAR}, #{fyybZfblLx,jdbcType=NUMERIC}, #{fyybZfblEy,jdbcType=NUMERIC}, -->
+<!--      #{fyybYbdj,jdbcType=VARCHAR}, #{xnybCode,jdbcType=VARCHAR}, #{xnybName,jdbcType=VARCHAR}, -->
+<!--      #{xnybSerial,jdbcType=VARCHAR}, #{xnybShbz,jdbcType=CHAR}, #{xnybMatchType,jdbcType=CHAR}, -->
+<!--      #{xnybYbbz,jdbcType=VARCHAR}, #{jgnbCode,jdbcType=VARCHAR}, #{jgnbName,jdbcType=VARCHAR}, -->
+<!--      #{bjgbBz,jdbcType=CHAR}, #{xzfl,jdbcType=TINYINT}, #{xzsm,jdbcType=VARCHAR}, #{yyxl2,jdbcType=NUMERIC}, -->
+<!--      #{yyxlGdbz,jdbcType=NUMERIC}, #{cfyyxl,jdbcType=NUMERIC}, #{cfyyxl2,jdbcType=NUMERIC}, -->
+<!--      #{cfyyxlGdbz,jdbcType=NUMERIC}, #{ybdm2010,jdbcType=VARCHAR}, #{yyxlGdbz2,jdbcType=NUMERIC}, -->
+<!--      #{cfyyxlGbbz2,jdbcType=NUMERIC}, #{cfyyxlGdbz2,jdbcType=NUMERIC}, #{yyxlYd,jdbcType=NUMERIC}, -->
+<!--      #{klj,jdbcType=CHAR}, #{ybtqpyts,jdbcType=TINYINT}, #{zdts,jdbcType=INTEGER}, #{ydybYbdm,jdbcType=VARCHAR}, -->
+<!--      #{ydybZfbl,jdbcType=NUMERIC}, #{ybybGylb,jdbcType=VARCHAR}, #{ybybYbmc,jdbcType=VARCHAR}, -->
+<!--      #{ybybYbsplx,jdbcType=VARCHAR}, #{ybts,jdbcType=INTEGER}, #{ybgdbzts,jdbcType=INTEGER}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" keyColumn="yph" keyProperty="yph" parameterType="com.yicloud.trans.model.mssql.zd.YpGg" useGeneratedKeys="true">-->
+<!--    insert into yp_gg-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="ggxh != null">-->
+<!--        ggxh,-->
+<!--      </if>-->
+<!--      <if test="ypgg != null">-->
+<!--        ypgg,-->
+<!--      </if>-->
+<!--      <if test="dbdw != null">-->
+<!--        dbdw,-->
+<!--      </if>-->
+<!--      <if test="cfdw != null">-->
+<!--        cfdw,-->
+<!--      </if>-->
+<!--      <if test="fylb != null">-->
+<!--        fylb,-->
+<!--      </if>-->
+<!--      <if test="ypbm != null">-->
+<!--        ypbm,-->
+<!--      </if>-->
+<!--      <if test="txm != null">-->
+<!--        txm,-->
+<!--      </if>-->
+<!--      <if test="jldw != null">-->
+<!--        jldw,-->
+<!--      </if>-->
+<!--      <if test="jlxs != null">-->
+<!--        jlxs,-->
+<!--      </if>-->
+<!--      <if test="zl != null">-->
+<!--        zl,-->
+<!--      </if>-->
+<!--      <if test="kcsx != null">-->
+<!--        kcsx,-->
+<!--      </if>-->
+<!--      <if test="kcxx != null">-->
+<!--        kcxx,-->
+<!--      </if>-->
+<!--      <if test="yyxl != null">-->
+<!--        yyxl,-->
+<!--      </if>-->
+<!--      <if test="yxqs != null">-->
+<!--        yxqs,-->
+<!--      </if>-->
+<!--      <if test="psbz != null">-->
+<!--        psbz,-->
+<!--      </if>-->
+<!--      <if test="otc != null">-->
+<!--        otc,-->
+<!--      </if>-->
+<!--      <if test="kfxs != null">-->
+<!--        kfxs,-->
+<!--      </if>-->
+<!--      <if test="zsbz != null">-->
+<!--        zsbz,-->
+<!--      </if>-->
+<!--      <if test="pzwh != null">-->
+<!--        pzwh,-->
+<!--      </if>-->
+<!--      <if test="sybz != null">-->
+<!--        sybz,-->
+<!--      </if>-->
+<!--      <if test="ybbz != null">-->
+<!--        ybbz,-->
+<!--      </if>-->
+<!--      <if test="ybzfbl != null">-->
+<!--        ybzfbl,-->
+<!--      </if>-->
+<!--      <if test="ypdm != null">-->
+<!--        ypdm,-->
+<!--      </if>-->
+<!--      <if test="ybypmc != null">-->
+<!--        ybypmc,-->
+<!--      </if>-->
+<!--      <if test="ybsflb != null">-->
+<!--        ybsflb,-->
+<!--      </if>-->
+<!--      <if test="ybsplx != null">-->
+<!--        ybsplx,-->
+<!--      </if>-->
+<!--      <if test="ypLx != null">-->
+<!--        yp_lx,-->
+<!--      </if>-->
+<!--      <if test="zyyfcfdw != null">-->
+<!--        zyyfcfdw,-->
+<!--      </if>-->
+<!--      <if test="lsYph != null">-->
+<!--        ls_yph,-->
+<!--      </if>-->
+<!--      <if test="lsSh != null">-->
+<!--        ls_sh,-->
+<!--      </if>-->
+<!--      <if test="cdmc != null">-->
+<!--        cdmc,-->
+<!--      </if>-->
+<!--      <if test="fylbLx != null">-->
+<!--        fylb_lx,-->
+<!--      </if>-->
+<!--      <if test="szybYbdm != null">-->
+<!--        szyb_ybdm,-->
+<!--      </if>-->
+<!--      <if test="szybZfbl != null">-->
+<!--        szyb_zfbl,-->
+<!--      </if>-->
+<!--      <if test="szybFylb != null">-->
+<!--        szyb_fylb,-->
+<!--      </if>-->
+<!--      <if test="szybYbmc != null">-->
+<!--        szyb_ybmc,-->
+<!--      </if>-->
+<!--      <if test="szybYbsplx != null">-->
+<!--        szyb_ybsplx,-->
+<!--      </if>-->
+<!--      <if test="szybYbxzbz != null">-->
+<!--        szyb_ybxzbz,-->
+<!--      </if>-->
+<!--      <if test="sgcfbz != null">-->
+<!--        sgcfbz,-->
+<!--      </if>-->
+<!--      <if test="tsbz != null">-->
+<!--        tsbz,-->
+<!--      </if>-->
+<!--      <if test="lxgbyyfw != null">-->
+<!--        lxgbyyfw,-->
+<!--      </if>-->
+<!--      <if test="czf != null">-->
+<!--        czf,-->
+<!--      </if>-->
+<!--      <if test="xsybCode != null">-->
+<!--        xsyb_code,-->
+<!--      </if>-->
+<!--      <if test="xsybZfbl != null">-->
+<!--        xsyb_zfbl,-->
+<!--      </if>-->
+<!--      <if test="xsybFylb != null">-->
+<!--        xsyb_fylb,-->
+<!--      </if>-->
+<!--      <if test="xsybYbsplx != null">-->
+<!--        xsyb_ybsplx,-->
+<!--      </if>-->
+<!--      <if test="xsybMc != null">-->
+<!--        xsyb_mc,-->
+<!--      </if>-->
+<!--      <if test="yhybCode != null">-->
+<!--        yhyb_code,-->
+<!--      </if>-->
+<!--      <if test="yhybName != null">-->
+<!--        yhyb_name,-->
+<!--      </if>-->
+<!--      <if test="yhybModel != null">-->
+<!--        yhyb_model,-->
+<!--      </if>-->
+<!--      <if test="yhybSerial != null">-->
+<!--        yhyb_serial,-->
+<!--      </if>-->
+<!--      <if test="yhybShbz != null">-->
+<!--        yhyb_shbz,-->
+<!--      </if>-->
+<!--      <if test="yhybZfbl != null">-->
+<!--        yhyb_zfbl,-->
+<!--      </if>-->
+<!--      <if test="yhybYbsplx != null">-->
+<!--        yhyb_ybsplx,-->
+<!--      </if>-->
+<!--      <if test="fyybYbdm != null">-->
+<!--        fyyb_ybdm,-->
+<!--      </if>-->
+<!--      <if test="fyybZxnm != null">-->
+<!--        fyyb_zxnm,-->
+<!--      </if>-->
+<!--      <if test="fyybZfbl != null">-->
+<!--        fyyb_zfbl,-->
+<!--      </if>-->
+<!--      <if test="fyybFylb != null">-->
+<!--        fyyb_fylb,-->
+<!--      </if>-->
+<!--      <if test="fyybYbmc != null">-->
+<!--        fyyb_ybmc,-->
+<!--      </if>-->
+<!--      <if test="fyybYbsplx != null">-->
+<!--        fyyb_ybsplx,-->
+<!--      </if>-->
+<!--      <if test="fyybZfblLx != null">-->
+<!--        fyyb_zfbl_lx,-->
+<!--      </if>-->
+<!--      <if test="fyybZfblEy != null">-->
+<!--        fyyb_zfbl_ey,-->
+<!--      </if>-->
+<!--      <if test="fyybYbdj != null">-->
+<!--        fyyb_ybdj,-->
+<!--      </if>-->
+<!--      <if test="xnybCode != null">-->
+<!--        xnyb_code,-->
+<!--      </if>-->
+<!--      <if test="xnybName != null">-->
+<!--        xnyb_name,-->
+<!--      </if>-->
+<!--      <if test="xnybSerial != null">-->
+<!--        xnyb_serial,-->
+<!--      </if>-->
+<!--      <if test="xnybShbz != null">-->
+<!--        xnyb_shbz,-->
+<!--      </if>-->
+<!--      <if test="xnybMatchType != null">-->
+<!--        xnyb_match_type,-->
+<!--      </if>-->
+<!--      <if test="xnybYbbz != null">-->
+<!--        xnyb_ybbz,-->
+<!--      </if>-->
+<!--      <if test="jgnbCode != null">-->
+<!--        jgnb_code,-->
+<!--      </if>-->
+<!--      <if test="jgnbName != null">-->
+<!--        jgnb_name,-->
+<!--      </if>-->
+<!--      <if test="bjgbBz != null">-->
+<!--        bjgb_bz,-->
+<!--      </if>-->
+<!--      <if test="xzfl != null">-->
+<!--        xzfl,-->
+<!--      </if>-->
+<!--      <if test="xzsm != null">-->
+<!--        xzsm,-->
+<!--      </if>-->
+<!--      <if test="yyxl2 != null">-->
+<!--        yyxl_2,-->
+<!--      </if>-->
+<!--      <if test="yyxlGdbz != null">-->
+<!--        yyxl_gdbz,-->
+<!--      </if>-->
+<!--      <if test="cfyyxl != null">-->
+<!--        cfyyxl,-->
+<!--      </if>-->
+<!--      <if test="cfyyxl2 != null">-->
+<!--        cfyyxl_2,-->
+<!--      </if>-->
+<!--      <if test="cfyyxlGdbz != null">-->
+<!--        cfyyxl_gdbz,-->
+<!--      </if>-->
+<!--      <if test="ybdm2010 != null">-->
+<!--        ybdm_2010,-->
+<!--      </if>-->
+<!--      <if test="yyxlGdbz2 != null">-->
+<!--        yyxl_gdbz_2,-->
+<!--      </if>-->
+<!--      <if test="cfyyxlGbbz2 != null">-->
+<!--        cfyyxl_gbbz_2,-->
+<!--      </if>-->
+<!--      <if test="cfyyxlGdbz2 != null">-->
+<!--        cfyyxl_gdbz_2,-->
+<!--      </if>-->
+<!--      <if test="yyxlYd != null">-->
+<!--        yyxl_yd,-->
+<!--      </if>-->
+<!--      <if test="klj != null">-->
+<!--        klj,-->
+<!--      </if>-->
+<!--      <if test="ybtqpyts != null">-->
+<!--        ybtqpyts,-->
+<!--      </if>-->
+<!--      <if test="zdts != null">-->
+<!--        zdts,-->
+<!--      </if>-->
+<!--      <if test="ydybYbdm != null">-->
+<!--        ydyb_ybdm,-->
+<!--      </if>-->
+<!--      <if test="ydybZfbl != null">-->
+<!--        ydyb_zfbl,-->
+<!--      </if>-->
+<!--      <if test="ybybGylb != null">-->
+<!--        ybyb_gylb,-->
+<!--      </if>-->
+<!--      <if test="ybybYbmc != null">-->
+<!--        ybyb_ybmc,-->
+<!--      </if>-->
+<!--      <if test="ybybYbsplx != null">-->
+<!--        ybyb_ybsplx,-->
+<!--      </if>-->
+<!--      <if test="ybts != null">-->
+<!--        ybts,-->
+<!--      </if>-->
+<!--      <if test="ybgdbzts != null">-->
+<!--        ybgdbzts,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="ggxh != null">-->
+<!--        #{ggxh,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ypgg != null">-->
+<!--        #{ypgg,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="dbdw != null">-->
+<!--        #{dbdw,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="cfdw != null">-->
+<!--        #{cfdw,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fylb != null">-->
+<!--        #{fylb,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ypbm != null">-->
+<!--        #{ypbm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="txm != null">-->
+<!--        #{txm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="jldw != null">-->
+<!--        #{jldw,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="jlxs != null">-->
+<!--        #{jlxs,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="zl != null">-->
+<!--        #{zl,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="kcsx != null">-->
+<!--        #{kcsx,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="kcxx != null">-->
+<!--        #{kcxx,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yyxl != null">-->
+<!--        #{yyxl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yxqs != null">-->
+<!--        #{yxqs,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="psbz != null">-->
+<!--        #{psbz,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="otc != null">-->
+<!--        #{otc,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="kfxs != null">-->
+<!--        #{kfxs,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="zsbz != null">-->
+<!--        #{zsbz,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="pzwh != null">-->
+<!--        #{pzwh,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="sybz != null">-->
+<!--        #{sybz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybbz != null">-->
+<!--        #{ybbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybzfbl != null">-->
+<!--        #{ybzfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="ypdm != null">-->
+<!--        #{ypdm,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybypmc != null">-->
+<!--        #{ybypmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ybsflb != null">-->
+<!--        #{ybsflb,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybsplx != null">-->
+<!--        #{ybsplx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ypLx != null">-->
+<!--        #{ypLx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="zyyfcfdw != null">-->
+<!--        #{zyyfcfdw,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="lsYph != null">-->
+<!--        #{lsYph,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="lsSh != null">-->
+<!--        #{lsSh,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="cdmc != null">-->
+<!--        #{cdmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fylbLx != null">-->
+<!--        #{fylbLx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="szybYbdm != null">-->
+<!--        #{szybYbdm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="szybZfbl != null">-->
+<!--        #{szybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="szybFylb != null">-->
+<!--        #{szybFylb,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="szybYbmc != null">-->
+<!--        #{szybYbmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="szybYbsplx != null">-->
+<!--        #{szybYbsplx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="szybYbxzbz != null">-->
+<!--        #{szybYbxzbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="sgcfbz != null">-->
+<!--        #{sgcfbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="tsbz != null">-->
+<!--        #{tsbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="lxgbyyfw != null">-->
+<!--        #{lxgbyyfw,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="czf != null">-->
+<!--        #{czf,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xsybCode != null">-->
+<!--        #{xsybCode,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="xsybZfbl != null">-->
+<!--        #{xsybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="xsybFylb != null">-->
+<!--        #{xsybFylb,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xsybYbsplx != null">-->
+<!--        #{xsybYbsplx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xsybMc != null">-->
+<!--        #{xsybMc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybCode != null">-->
+<!--        #{yhybCode,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybName != null">-->
+<!--        #{yhybName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybModel != null">-->
+<!--        #{yhybModel,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybSerial != null">-->
+<!--        #{yhybSerial,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybShbz != null">-->
+<!--        #{yhybShbz,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybZfbl != null">-->
+<!--        #{yhybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yhybYbsplx != null">-->
+<!--        #{yhybYbsplx,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybYbdm != null">-->
+<!--        #{fyybYbdm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybZxnm != null">-->
+<!--        #{fyybZxnm,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="fyybZfbl != null">-->
+<!--        #{fyybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="fyybFylb != null">-->
+<!--        #{fyybFylb,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybYbmc != null">-->
+<!--        #{fyybYbmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybYbsplx != null">-->
+<!--        #{fyybYbsplx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybZfblLx != null">-->
+<!--        #{fyybZfblLx,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="fyybZfblEy != null">-->
+<!--        #{fyybZfblEy,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="fyybYbdj != null">-->
+<!--        #{fyybYbdj,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybCode != null">-->
+<!--        #{xnybCode,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybName != null">-->
+<!--        #{xnybName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybSerial != null">-->
+<!--        #{xnybSerial,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybShbz != null">-->
+<!--        #{xnybShbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybMatchType != null">-->
+<!--        #{xnybMatchType,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybYbbz != null">-->
+<!--        #{xnybYbbz,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="jgnbCode != null">-->
+<!--        #{jgnbCode,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="jgnbName != null">-->
+<!--        #{jgnbName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="bjgbBz != null">-->
+<!--        #{bjgbBz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xzfl != null">-->
+<!--        #{xzfl,jdbcType=TINYINT},-->
+<!--      </if>-->
+<!--      <if test="xzsm != null">-->
+<!--        #{xzsm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yyxl2 != null">-->
+<!--        #{yyxl2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yyxlGdbz != null">-->
+<!--        #{yyxlGdbz,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxl != null">-->
+<!--        #{cfyyxl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxl2 != null">-->
+<!--        #{cfyyxl2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxlGdbz != null">-->
+<!--        #{cfyyxlGdbz,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="ybdm2010 != null">-->
+<!--        #{ybdm2010,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yyxlGdbz2 != null">-->
+<!--        #{yyxlGdbz2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxlGbbz2 != null">-->
+<!--        #{cfyyxlGbbz2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxlGdbz2 != null">-->
+<!--        #{cfyyxlGdbz2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yyxlYd != null">-->
+<!--        #{yyxlYd,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="klj != null">-->
+<!--        #{klj,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybtqpyts != null">-->
+<!--        #{ybtqpyts,jdbcType=TINYINT},-->
+<!--      </if>-->
+<!--      <if test="zdts != null">-->
+<!--        #{zdts,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="ydybYbdm != null">-->
+<!--        #{ydybYbdm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ydybZfbl != null">-->
+<!--        #{ydybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="ybybGylb != null">-->
+<!--        #{ybybGylb,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ybybYbmc != null">-->
+<!--        #{ybybYbmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ybybYbsplx != null">-->
+<!--        #{ybybYbsplx,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ybts != null">-->
+<!--        #{ybts,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="ybgdbzts != null">-->
+<!--        #{ybgdbzts,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.yicloud.trans.model.mssql.zd.YpGg">-->
+<!--    update yp_gg-->
+<!--    <set>-->
+<!--      <if test="ypgg != null">-->
+<!--        ypgg = #{ypgg,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="dbdw != null">-->
+<!--        dbdw = #{dbdw,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="cfdw != null">-->
+<!--        cfdw = #{cfdw,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fylb != null">-->
+<!--        fylb = #{fylb,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ypbm != null">-->
+<!--        ypbm = #{ypbm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="txm != null">-->
+<!--        txm = #{txm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="jldw != null">-->
+<!--        jldw = #{jldw,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="jlxs != null">-->
+<!--        jlxs = #{jlxs,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="zl != null">-->
+<!--        zl = #{zl,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="kcsx != null">-->
+<!--        kcsx = #{kcsx,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="kcxx != null">-->
+<!--        kcxx = #{kcxx,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yyxl != null">-->
+<!--        yyxl = #{yyxl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yxqs != null">-->
+<!--        yxqs = #{yxqs,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="psbz != null">-->
+<!--        psbz = #{psbz,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="otc != null">-->
+<!--        otc = #{otc,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="kfxs != null">-->
+<!--        kfxs = #{kfxs,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="zsbz != null">-->
+<!--        zsbz = #{zsbz,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="pzwh != null">-->
+<!--        pzwh = #{pzwh,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="sybz != null">-->
+<!--        sybz = #{sybz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybbz != null">-->
+<!--        ybbz = #{ybbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybzfbl != null">-->
+<!--        ybzfbl = #{ybzfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="ypdm != null">-->
+<!--        ypdm = #{ypdm,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybypmc != null">-->
+<!--        ybypmc = #{ybypmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ybsflb != null">-->
+<!--        ybsflb = #{ybsflb,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybsplx != null">-->
+<!--        ybsplx = #{ybsplx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ypLx != null">-->
+<!--        yp_lx = #{ypLx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="zyyfcfdw != null">-->
+<!--        zyyfcfdw = #{zyyfcfdw,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="lsYph != null">-->
+<!--        ls_yph = #{lsYph,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="lsSh != null">-->
+<!--        ls_sh = #{lsSh,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="cdmc != null">-->
+<!--        cdmc = #{cdmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fylbLx != null">-->
+<!--        fylb_lx = #{fylbLx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="szybYbdm != null">-->
+<!--        szyb_ybdm = #{szybYbdm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="szybZfbl != null">-->
+<!--        szyb_zfbl = #{szybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="szybFylb != null">-->
+<!--        szyb_fylb = #{szybFylb,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="szybYbmc != null">-->
+<!--        szyb_ybmc = #{szybYbmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="szybYbsplx != null">-->
+<!--        szyb_ybsplx = #{szybYbsplx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="szybYbxzbz != null">-->
+<!--        szyb_ybxzbz = #{szybYbxzbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="sgcfbz != null">-->
+<!--        sgcfbz = #{sgcfbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="tsbz != null">-->
+<!--        tsbz = #{tsbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="lxgbyyfw != null">-->
+<!--        lxgbyyfw = #{lxgbyyfw,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="czf != null">-->
+<!--        czf = #{czf,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xsybCode != null">-->
+<!--        xsyb_code = #{xsybCode,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="xsybZfbl != null">-->
+<!--        xsyb_zfbl = #{xsybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="xsybFylb != null">-->
+<!--        xsyb_fylb = #{xsybFylb,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xsybYbsplx != null">-->
+<!--        xsyb_ybsplx = #{xsybYbsplx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xsybMc != null">-->
+<!--        xsyb_mc = #{xsybMc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybCode != null">-->
+<!--        yhyb_code = #{yhybCode,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybName != null">-->
+<!--        yhyb_name = #{yhybName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybModel != null">-->
+<!--        yhyb_model = #{yhybModel,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybSerial != null">-->
+<!--        yhyb_serial = #{yhybSerial,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybShbz != null">-->
+<!--        yhyb_shbz = #{yhybShbz,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yhybZfbl != null">-->
+<!--        yhyb_zfbl = #{yhybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yhybYbsplx != null">-->
+<!--        yhyb_ybsplx = #{yhybYbsplx,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybYbdm != null">-->
+<!--        fyyb_ybdm = #{fyybYbdm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybZxnm != null">-->
+<!--        fyyb_zxnm = #{fyybZxnm,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="fyybZfbl != null">-->
+<!--        fyyb_zfbl = #{fyybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="fyybFylb != null">-->
+<!--        fyyb_fylb = #{fyybFylb,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybYbmc != null">-->
+<!--        fyyb_ybmc = #{fyybYbmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybYbsplx != null">-->
+<!--        fyyb_ybsplx = #{fyybYbsplx,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="fyybZfblLx != null">-->
+<!--        fyyb_zfbl_lx = #{fyybZfblLx,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="fyybZfblEy != null">-->
+<!--        fyyb_zfbl_ey = #{fyybZfblEy,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="fyybYbdj != null">-->
+<!--        fyyb_ybdj = #{fyybYbdj,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybCode != null">-->
+<!--        xnyb_code = #{xnybCode,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybName != null">-->
+<!--        xnyb_name = #{xnybName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybSerial != null">-->
+<!--        xnyb_serial = #{xnybSerial,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybShbz != null">-->
+<!--        xnyb_shbz = #{xnybShbz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybMatchType != null">-->
+<!--        xnyb_match_type = #{xnybMatchType,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xnybYbbz != null">-->
+<!--        xnyb_ybbz = #{xnybYbbz,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="jgnbCode != null">-->
+<!--        jgnb_code = #{jgnbCode,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="jgnbName != null">-->
+<!--        jgnb_name = #{jgnbName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="bjgbBz != null">-->
+<!--        bjgb_bz = #{bjgbBz,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="xzfl != null">-->
+<!--        xzfl = #{xzfl,jdbcType=TINYINT},-->
+<!--      </if>-->
+<!--      <if test="xzsm != null">-->
+<!--        xzsm = #{xzsm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yyxl2 != null">-->
+<!--        yyxl_2 = #{yyxl2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yyxlGdbz != null">-->
+<!--        yyxl_gdbz = #{yyxlGdbz,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxl != null">-->
+<!--        cfyyxl = #{cfyyxl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxl2 != null">-->
+<!--        cfyyxl_2 = #{cfyyxl2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxlGdbz != null">-->
+<!--        cfyyxl_gdbz = #{cfyyxlGdbz,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="ybdm2010 != null">-->
+<!--        ybdm_2010 = #{ybdm2010,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="yyxlGdbz2 != null">-->
+<!--        yyxl_gdbz_2 = #{yyxlGdbz2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxlGbbz2 != null">-->
+<!--        cfyyxl_gbbz_2 = #{cfyyxlGbbz2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="cfyyxlGdbz2 != null">-->
+<!--        cfyyxl_gdbz_2 = #{cfyyxlGdbz2,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="yyxlYd != null">-->
+<!--        yyxl_yd = #{yyxlYd,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="klj != null">-->
+<!--        klj = #{klj,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="ybtqpyts != null">-->
+<!--        ybtqpyts = #{ybtqpyts,jdbcType=TINYINT},-->
+<!--      </if>-->
+<!--      <if test="zdts != null">-->
+<!--        zdts = #{zdts,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="ydybYbdm != null">-->
+<!--        ydyb_ybdm = #{ydybYbdm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ydybZfbl != null">-->
+<!--        ydyb_zfbl = #{ydybZfbl,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="ybybGylb != null">-->
+<!--        ybyb_gylb = #{ybybGylb,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ybybYbmc != null">-->
+<!--        ybyb_ybmc = #{ybybYbmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ybybYbsplx != null">-->
+<!--        ybyb_ybsplx = #{ybybYbsplx,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="ybts != null">-->
+<!--        ybts = #{ybts,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="ybgdbzts != null">-->
+<!--        ybgdbzts = #{ybgdbzts,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where yph = #{yph,jdbcType=INTEGER}-->
+<!--      and ggxh = #{ggxh,jdbcType=CHAR}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.zd.YpGg">-->
+<!--    update yp_gg-->
+<!--    set ypgg = #{ypgg,jdbcType=VARCHAR},-->
+<!--      dbdw = #{dbdw,jdbcType=VARCHAR},-->
+<!--      cfdw = #{cfdw,jdbcType=VARCHAR},-->
+<!--      fylb = #{fylb,jdbcType=CHAR},-->
+<!--      ypbm = #{ypbm,jdbcType=VARCHAR},-->
+<!--      txm = #{txm,jdbcType=VARCHAR},-->
+<!--      jldw = #{jldw,jdbcType=VARCHAR},-->
+<!--      jlxs = #{jlxs,jdbcType=NUMERIC},-->
+<!--      zl = #{zl,jdbcType=INTEGER},-->
+<!--      kcsx = #{kcsx,jdbcType=NUMERIC},-->
+<!--      kcxx = #{kcxx,jdbcType=NUMERIC},-->
+<!--      yyxl = #{yyxl,jdbcType=NUMERIC},-->
+<!--      yxqs = #{yxqs,jdbcType=INTEGER},-->
+<!--      psbz = #{psbz,jdbcType=INTEGER},-->
+<!--      otc = #{otc,jdbcType=INTEGER},-->
+<!--      kfxs = #{kfxs,jdbcType=NUMERIC},-->
+<!--      zsbz = #{zsbz,jdbcType=INTEGER},-->
+<!--      pzwh = #{pzwh,jdbcType=VARCHAR},-->
+<!--      sybz = #{sybz,jdbcType=CHAR},-->
+<!--      ybbz = #{ybbz,jdbcType=CHAR},-->
+<!--      ybzfbl = #{ybzfbl,jdbcType=NUMERIC},-->
+<!--      ypdm = #{ypdm,jdbcType=CHAR},-->
+<!--      ybypmc = #{ybypmc,jdbcType=VARCHAR},-->
+<!--      ybsflb = #{ybsflb,jdbcType=CHAR},-->
+<!--      ybsplx = #{ybsplx,jdbcType=CHAR},-->
+<!--      yp_lx = #{ypLx,jdbcType=CHAR},-->
+<!--      zyyfcfdw = #{zyyfcfdw,jdbcType=CHAR},-->
+<!--      ls_yph = #{lsYph,jdbcType=CHAR},-->
+<!--      ls_sh = #{lsSh,jdbcType=CHAR},-->
+<!--      cdmc = #{cdmc,jdbcType=VARCHAR},-->
+<!--      fylb_lx = #{fylbLx,jdbcType=CHAR},-->
+<!--      szyb_ybdm = #{szybYbdm,jdbcType=VARCHAR},-->
+<!--      szyb_zfbl = #{szybZfbl,jdbcType=NUMERIC},-->
+<!--      szyb_fylb = #{szybFylb,jdbcType=VARCHAR},-->
+<!--      szyb_ybmc = #{szybYbmc,jdbcType=VARCHAR},-->
+<!--      szyb_ybsplx = #{szybYbsplx,jdbcType=CHAR},-->
+<!--      szyb_ybxzbz = #{szybYbxzbz,jdbcType=CHAR},-->
+<!--      sgcfbz = #{sgcfbz,jdbcType=CHAR},-->
+<!--      tsbz = #{tsbz,jdbcType=CHAR},-->
+<!--      lxgbyyfw = #{lxgbyyfw,jdbcType=CHAR},-->
+<!--      czf = #{czf,jdbcType=CHAR},-->
+<!--      xsyb_code = #{xsybCode,jdbcType=NUMERIC},-->
+<!--      xsyb_zfbl = #{xsybZfbl,jdbcType=NUMERIC},-->
+<!--      xsyb_fylb = #{xsybFylb,jdbcType=VARCHAR},-->
+<!--      xsyb_ybsplx = #{xsybYbsplx,jdbcType=CHAR},-->
+<!--      xsyb_mc = #{xsybMc,jdbcType=VARCHAR},-->
+<!--      yhyb_code = #{yhybCode,jdbcType=VARCHAR},-->
+<!--      yhyb_name = #{yhybName,jdbcType=VARCHAR},-->
+<!--      yhyb_model = #{yhybModel,jdbcType=VARCHAR},-->
+<!--      yhyb_serial = #{yhybSerial,jdbcType=VARCHAR},-->
+<!--      yhyb_shbz = #{yhybShbz,jdbcType=VARCHAR},-->
+<!--      yhyb_zfbl = #{yhybZfbl,jdbcType=NUMERIC},-->
+<!--      yhyb_ybsplx = #{yhybYbsplx,jdbcType=VARCHAR},-->
+<!--      fyyb_ybdm = #{fyybYbdm,jdbcType=VARCHAR},-->
+<!--      fyyb_zxnm = #{fyybZxnm,jdbcType=NUMERIC},-->
+<!--      fyyb_zfbl = #{fyybZfbl,jdbcType=NUMERIC},-->
+<!--      fyyb_fylb = #{fyybFylb,jdbcType=VARCHAR},-->
+<!--      fyyb_ybmc = #{fyybYbmc,jdbcType=VARCHAR},-->
+<!--      fyyb_ybsplx = #{fyybYbsplx,jdbcType=CHAR},-->
+<!--      fyyb_zfbl_lx = #{fyybZfblLx,jdbcType=NUMERIC},-->
+<!--      fyyb_zfbl_ey = #{fyybZfblEy,jdbcType=NUMERIC},-->
+<!--      fyyb_ybdj = #{fyybYbdj,jdbcType=VARCHAR},-->
+<!--      xnyb_code = #{xnybCode,jdbcType=VARCHAR},-->
+<!--      xnyb_name = #{xnybName,jdbcType=VARCHAR},-->
+<!--      xnyb_serial = #{xnybSerial,jdbcType=VARCHAR},-->
+<!--      xnyb_shbz = #{xnybShbz,jdbcType=CHAR},-->
+<!--      xnyb_match_type = #{xnybMatchType,jdbcType=CHAR},-->
+<!--      xnyb_ybbz = #{xnybYbbz,jdbcType=VARCHAR},-->
+<!--      jgnb_code = #{jgnbCode,jdbcType=VARCHAR},-->
+<!--      jgnb_name = #{jgnbName,jdbcType=VARCHAR},-->
+<!--      bjgb_bz = #{bjgbBz,jdbcType=CHAR},-->
+<!--      xzfl = #{xzfl,jdbcType=TINYINT},-->
+<!--      xzsm = #{xzsm,jdbcType=VARCHAR},-->
+<!--      yyxl_2 = #{yyxl2,jdbcType=NUMERIC},-->
+<!--      yyxl_gdbz = #{yyxlGdbz,jdbcType=NUMERIC},-->
+<!--      cfyyxl = #{cfyyxl,jdbcType=NUMERIC},-->
+<!--      cfyyxl_2 = #{cfyyxl2,jdbcType=NUMERIC},-->
+<!--      cfyyxl_gdbz = #{cfyyxlGdbz,jdbcType=NUMERIC},-->
+<!--      ybdm_2010 = #{ybdm2010,jdbcType=VARCHAR},-->
+<!--      yyxl_gdbz_2 = #{yyxlGdbz2,jdbcType=NUMERIC},-->
+<!--      cfyyxl_gbbz_2 = #{cfyyxlGbbz2,jdbcType=NUMERIC},-->
+<!--      cfyyxl_gdbz_2 = #{cfyyxlGdbz2,jdbcType=NUMERIC},-->
+<!--      yyxl_yd = #{yyxlYd,jdbcType=NUMERIC},-->
+<!--      klj = #{klj,jdbcType=CHAR},-->
+<!--      ybtqpyts = #{ybtqpyts,jdbcType=TINYINT},-->
+<!--      zdts = #{zdts,jdbcType=INTEGER},-->
+<!--      ydyb_ybdm = #{ydybYbdm,jdbcType=VARCHAR},-->
+<!--      ydyb_zfbl = #{ydybZfbl,jdbcType=NUMERIC},-->
+<!--      ybyb_gylb = #{ybybGylb,jdbcType=VARCHAR},-->
+<!--      ybyb_ybmc = #{ybybYbmc,jdbcType=VARCHAR},-->
+<!--      ybyb_ybsplx = #{ybybYbsplx,jdbcType=VARCHAR},-->
+<!--      ybts = #{ybts,jdbcType=INTEGER},-->
+<!--      ybgdbzts = #{ybgdbzts,jdbcType=INTEGER}-->
+<!--    where yph = #{yph,jdbcType=INTEGER}-->
+<!--      and ggxh = #{ggxh,jdbcType=CHAR}-->
+<!--  </update>-->
+</mapper>

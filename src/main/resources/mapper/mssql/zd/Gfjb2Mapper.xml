@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicloud.trans.mapper.mssql.zd.Gfjb2Mapper">
+  <resultMap id="BaseResultMap" type="com.yicloud.trans.model.mssql.zd.Gfjb2">
+    <id column="lbh" jdbcType="CHAR" property="lbh" />
+    <result column="lbm" jdbcType="VARCHAR" property="lbm" />
+    <result column="gfjb" jdbcType="CHAR" property="gfjb" />
+    <result column="cwf" jdbcType="NUMERIC" property="cwf" />
+    <result column="ypf" jdbcType="NUMERIC" property="ypf" />
+    <result column="dxf" jdbcType="NUMERIC" property="dxf" />
+    <result column="zcyf" jdbcType="NUMERIC" property="zcyf" />
+    <result column="cyf" jdbcType="NUMERIC" property="cyf" />
+    <result column="qtf" jdbcType="NUMERIC" property="qtf" />
+    <result column="jsms" jdbcType="CHAR" property="jsms" />
+    <result column="ypf_mz" jdbcType="NUMERIC" property="ypfMz" />
+    <result column="dxf_mz" jdbcType="NUMERIC" property="dxfMz" />
+    <result column="zcyf_mz" jdbcType="NUMERIC" property="zcyfMz" />
+    <result column="cyf_mz" jdbcType="NUMERIC" property="cyfMz" />
+    <result column="qtf_mz" jdbcType="NUMERIC" property="qtfMz" />
+    <result column="cwf_mz" jdbcType="NUMERIC" property="cwfMz" />
+    <result column="jsms_mz" jdbcType="CHAR" property="jsmsMz" />
+    <result column="lbbz" jdbcType="CHAR" property="lbbz" />
+    <result column="decwf" jdbcType="OTHER" property="decwf" />
+    <result column="pbbz" jdbcType="CHAR" property="pbbz" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lbh, lbm, gfjb, cwf, ypf, dxf, zcyf, cyf, qtf, jsms, ypf_mz, dxf_mz, zcyf_mz, cyf_mz, 
+    qtf_mz, cwf_mz, jsms_mz, lbbz, decwf, pbbz
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from zd_gfjb2
+    where lbh = #{lbh,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from zd_gfjb2
+    where lbh = #{lbh,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" keyColumn="lbh" keyProperty="lbh" parameterType="com.yicloud.trans.model.mssql.zd.Gfjb2" useGeneratedKeys="true">
+    insert into zd_gfjb2 (lbm, gfjb, cwf, 
+      ypf, dxf, zcyf, cyf, 
+      qtf, jsms, ypf_mz, dxf_mz, 
+      zcyf_mz, cyf_mz, qtf_mz, 
+      cwf_mz, jsms_mz, lbbz, decwf, 
+      pbbz)
+    values (#{lbm,jdbcType=VARCHAR}, #{gfjb,jdbcType=CHAR}, #{cwf,jdbcType=NUMERIC}, 
+      #{ypf,jdbcType=NUMERIC}, #{dxf,jdbcType=NUMERIC}, #{zcyf,jdbcType=NUMERIC}, #{cyf,jdbcType=NUMERIC}, 
+      #{qtf,jdbcType=NUMERIC}, #{jsms,jdbcType=CHAR}, #{ypfMz,jdbcType=NUMERIC}, #{dxfMz,jdbcType=NUMERIC}, 
+      #{zcyfMz,jdbcType=NUMERIC}, #{cyfMz,jdbcType=NUMERIC}, #{qtfMz,jdbcType=NUMERIC}, 
+      #{cwfMz,jdbcType=NUMERIC}, #{jsmsMz,jdbcType=CHAR}, #{lbbz,jdbcType=CHAR}, #{decwf,jdbcType=OTHER}, 
+      #{pbbz,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="lbh" keyProperty="lbh" parameterType="com.yicloud.trans.model.mssql.zd.Gfjb2" useGeneratedKeys="true">
+    insert into zd_gfjb2
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lbm != null">
+        lbm,
+      </if>
+      <if test="gfjb != null">
+        gfjb,
+      </if>
+      <if test="cwf != null">
+        cwf,
+      </if>
+      <if test="ypf != null">
+        ypf,
+      </if>
+      <if test="dxf != null">
+        dxf,
+      </if>
+      <if test="zcyf != null">
+        zcyf,
+      </if>
+      <if test="cyf != null">
+        cyf,
+      </if>
+      <if test="qtf != null">
+        qtf,
+      </if>
+      <if test="jsms != null">
+        jsms,
+      </if>
+      <if test="ypfMz != null">
+        ypf_mz,
+      </if>
+      <if test="dxfMz != null">
+        dxf_mz,
+      </if>
+      <if test="zcyfMz != null">
+        zcyf_mz,
+      </if>
+      <if test="cyfMz != null">
+        cyf_mz,
+      </if>
+      <if test="qtfMz != null">
+        qtf_mz,
+      </if>
+      <if test="cwfMz != null">
+        cwf_mz,
+      </if>
+      <if test="jsmsMz != null">
+        jsms_mz,
+      </if>
+      <if test="lbbz != null">
+        lbbz,
+      </if>
+      <if test="decwf != null">
+        decwf,
+      </if>
+      <if test="pbbz != null">
+        pbbz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lbm != null">
+        #{lbm,jdbcType=VARCHAR},
+      </if>
+      <if test="gfjb != null">
+        #{gfjb,jdbcType=CHAR},
+      </if>
+      <if test="cwf != null">
+        #{cwf,jdbcType=NUMERIC},
+      </if>
+      <if test="ypf != null">
+        #{ypf,jdbcType=NUMERIC},
+      </if>
+      <if test="dxf != null">
+        #{dxf,jdbcType=NUMERIC},
+      </if>
+      <if test="zcyf != null">
+        #{zcyf,jdbcType=NUMERIC},
+      </if>
+      <if test="cyf != null">
+        #{cyf,jdbcType=NUMERIC},
+      </if>
+      <if test="qtf != null">
+        #{qtf,jdbcType=NUMERIC},
+      </if>
+      <if test="jsms != null">
+        #{jsms,jdbcType=CHAR},
+      </if>
+      <if test="ypfMz != null">
+        #{ypfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="dxfMz != null">
+        #{dxfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="zcyfMz != null">
+        #{zcyfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="cyfMz != null">
+        #{cyfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="qtfMz != null">
+        #{qtfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="cwfMz != null">
+        #{cwfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="jsmsMz != null">
+        #{jsmsMz,jdbcType=CHAR},
+      </if>
+      <if test="lbbz != null">
+        #{lbbz,jdbcType=CHAR},
+      </if>
+      <if test="decwf != null">
+        #{decwf,jdbcType=OTHER},
+      </if>
+      <if test="pbbz != null">
+        #{pbbz,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yicloud.trans.model.mssql.zd.Gfjb2">
+    update zd_gfjb2
+    <set>
+      <if test="lbm != null">
+        lbm = #{lbm,jdbcType=VARCHAR},
+      </if>
+      <if test="gfjb != null">
+        gfjb = #{gfjb,jdbcType=CHAR},
+      </if>
+      <if test="cwf != null">
+        cwf = #{cwf,jdbcType=NUMERIC},
+      </if>
+      <if test="ypf != null">
+        ypf = #{ypf,jdbcType=NUMERIC},
+      </if>
+      <if test="dxf != null">
+        dxf = #{dxf,jdbcType=NUMERIC},
+      </if>
+      <if test="zcyf != null">
+        zcyf = #{zcyf,jdbcType=NUMERIC},
+      </if>
+      <if test="cyf != null">
+        cyf = #{cyf,jdbcType=NUMERIC},
+      </if>
+      <if test="qtf != null">
+        qtf = #{qtf,jdbcType=NUMERIC},
+      </if>
+      <if test="jsms != null">
+        jsms = #{jsms,jdbcType=CHAR},
+      </if>
+      <if test="ypfMz != null">
+        ypf_mz = #{ypfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="dxfMz != null">
+        dxf_mz = #{dxfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="zcyfMz != null">
+        zcyf_mz = #{zcyfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="cyfMz != null">
+        cyf_mz = #{cyfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="qtfMz != null">
+        qtf_mz = #{qtfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="cwfMz != null">
+        cwf_mz = #{cwfMz,jdbcType=NUMERIC},
+      </if>
+      <if test="jsmsMz != null">
+        jsms_mz = #{jsmsMz,jdbcType=CHAR},
+      </if>
+      <if test="lbbz != null">
+        lbbz = #{lbbz,jdbcType=CHAR},
+      </if>
+      <if test="decwf != null">
+        decwf = #{decwf,jdbcType=OTHER},
+      </if>
+      <if test="pbbz != null">
+        pbbz = #{pbbz,jdbcType=CHAR},
+      </if>
+    </set>
+    where lbh = #{lbh,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.zd.Gfjb2">
+    update zd_gfjb2
+    set lbm = #{lbm,jdbcType=VARCHAR},
+      gfjb = #{gfjb,jdbcType=CHAR},
+      cwf = #{cwf,jdbcType=NUMERIC},
+      ypf = #{ypf,jdbcType=NUMERIC},
+      dxf = #{dxf,jdbcType=NUMERIC},
+      zcyf = #{zcyf,jdbcType=NUMERIC},
+      cyf = #{cyf,jdbcType=NUMERIC},
+      qtf = #{qtf,jdbcType=NUMERIC},
+      jsms = #{jsms,jdbcType=CHAR},
+      ypf_mz = #{ypfMz,jdbcType=NUMERIC},
+      dxf_mz = #{dxfMz,jdbcType=NUMERIC},
+      zcyf_mz = #{zcyfMz,jdbcType=NUMERIC},
+      cyf_mz = #{cyfMz,jdbcType=NUMERIC},
+      qtf_mz = #{qtfMz,jdbcType=NUMERIC},
+      cwf_mz = #{cwfMz,jdbcType=NUMERIC},
+      jsms_mz = #{jsmsMz,jdbcType=CHAR},
+      lbbz = #{lbbz,jdbcType=CHAR},
+      decwf = #{decwf,jdbcType=OTHER},
+      pbbz = #{pbbz,jdbcType=CHAR}
+    where lbh = #{lbh,jdbcType=CHAR}
+  </update>
+</mapper>

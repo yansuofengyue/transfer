@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicloud.trans.mapper.mysql.DrugRegionAliasMapper">
+  <resultMap id="BaseResultMap" type="com.yicloud.trans.model.mysql.DrugRegionAlias">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="spe_id" jdbcType="BIGINT" property="speId" />
+    <result column="man_id" jdbcType="BIGINT" property="manId" />
+    <result column="cat_code" jdbcType="VARCHAR" property="catCode" />
+    <result column="drg_code" jdbcType="VARCHAR" property="drgCode" />
+    <result column="drg_name" jdbcType="VARCHAR" property="drgName" />
+    <result column="center_id" jdbcType="VARCHAR" property="centerId" />
+    <result column="drg_specification" jdbcType="VARCHAR" property="drgSpecification" />
+    <result column="drg_alias_num" jdbcType="VARCHAR" property="drgAliasNum" />
+    <result column="drg_region_name" jdbcType="VARCHAR" property="drgRegionName" />
+    <result column="drg_factory_owner" jdbcType="VARCHAR" property="drgFactoryOwner" />
+    <result column="drg_superclass_id" jdbcType="BIGINT" property="drgSuperclassId" />
+    <result column="drg_packing_num" jdbcType="INTEGER" property="drgPackingNum" />
+    <result column="drg_packing_unit" jdbcType="VARCHAR" property="drgPackingUnit" />
+    <result column="drg_min_unit" jdbcType="VARCHAR" property="drgMinUnit" />
+    <result column="drg_account_category" jdbcType="INTEGER" property="drgAccountCategory" />
+    <result column="drg_barcode" jdbcType="VARCHAR" property="drgBarcode" />
+    <result column="mod_id" jdbcType="INTEGER" property="modId" />
+    <result column="fre_id" jdbcType="VARCHAR" property="freId" />
+    <result column="drg_formulation" jdbcType="INTEGER" property="drgFormulation" />
+    <result column="china_spell" jdbcType="VARCHAR" property="chinaSpell" />
+    <result column="five_stroke" jdbcType="VARCHAR" property="fiveStroke" />
+    <result column="hospital_id" jdbcType="BIGINT" property="hospitalId" />
+    <result column="drg_speci_property" jdbcType="INTEGER" property="drgSpeciProperty" />
+    <result column="drg_sign" jdbcType="INTEGER" property="drgSign" />
+    <result column="drg_type" jdbcType="INTEGER" property="drgType" />
+    <result column="drg_upload_sign" jdbcType="INTEGER" property="drgUploadSign" />
+    <result column="drg_antibiosis_grade" jdbcType="VARCHAR" property="drgAntibiosisGrade" />
+    <result column="drg_state" jdbcType="CHAR" property="drgState" />
+    <result column="center_region_id" jdbcType="BIGINT" property="centerRegionId" />
+    <result column="drg_dose" jdbcType="DECIMAL" property="drgDose" />
+    <result column="drg_dose_unit" jdbcType="VARCHAR" property="drgDoseUnit" />
+    <result column="drg_volume" jdbcType="DECIMAL" property="drgVolume" />
+    <result column="drg_volume_unit" jdbcType="VARCHAR" property="drgVolumeUnit" />
+    <result column="drg_spirit_grade" jdbcType="CHAR" property="drgSpiritGrade" />
+    <result column="drg_narcotics" jdbcType="CHAR" property="drgNarcotics" />
+    <result column="drg_anesthetic" jdbcType="CHAR" property="drgAnesthetic" />
+    <result column="drg_antibiotic" jdbcType="CHAR" property="drgAntibiotic" />
+    <result column="drg_skin_test" jdbcType="CHAR" property="drgSkinTest" />
+    <result column="drg_transfusion" jdbcType="CHAR" property="drgTransfusion" />
+    <result column="drg_approval_code" jdbcType="VARCHAR" property="drgApprovalCode" />
+    <result column="drg_basic_type" jdbcType="INTEGER" property="drgBasicType" />
+    <result column="drg_create_date" jdbcType="TIMESTAMP" property="drgCreateDate" />
+    <result column="drg_concentrer" jdbcType="DECIMAL" property="drgConcentrer" />
+    <result column="drg_discount" jdbcType="DECIMAL" property="drgDiscount" />
+    <result column="drg_weight" jdbcType="INTEGER" property="drgWeight" />
+    <result column="time_stamp" jdbcType="TIMESTAMP" property="timeStamp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, spe_id, man_id, cat_code, drg_code, drg_name, center_id, drg_specification, drg_alias_num, 
+    drg_region_name, drg_factory_owner, drg_superclass_id, drg_packing_num, drg_packing_unit, 
+    drg_min_unit, drg_account_category, drg_barcode, mod_id, fre_id, drg_formulation, 
+    china_spell, five_stroke, hospital_id, drg_speci_property, drg_sign, drg_type, drg_upload_sign, 
+    drg_antibiosis_grade, drg_state, center_region_id, drg_dose, drg_dose_unit, drg_volume, 
+    drg_volume_unit, drg_spirit_grade, drg_narcotics, drg_anesthetic, drg_antibiotic, 
+    drg_skin_test, drg_transfusion, drg_approval_code, drg_basic_type, drg_create_date, 
+    drg_concentrer, drg_discount, drg_weight, time_stamp
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from drug_region_alias
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from drug_region_alias
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.yicloud.trans.model.mysql.DrugRegionAlias" useGeneratedKeys="true">
+    insert into drug_region_alias (spe_id, man_id, cat_code, 
+      drg_code, drg_name, center_id, 
+      drg_specification, drg_alias_num, drg_region_name, 
+      drg_factory_owner, drg_superclass_id, drg_packing_num, 
+      drg_packing_unit, drg_min_unit, drg_account_category, 
+      drg_barcode, mod_id, fre_id, 
+      drg_formulation, china_spell, five_stroke, 
+      hospital_id, drg_speci_property, drg_sign, 
+      drg_type, drg_upload_sign, drg_antibiosis_grade, 
+      drg_state, center_region_id, drg_dose, 
+      drg_dose_unit, drg_volume, drg_volume_unit, 
+      drg_spirit_grade, drg_narcotics, drg_anesthetic, 
+      drg_antibiotic, drg_skin_test, drg_transfusion, 
+      drg_approval_code, drg_basic_type, drg_create_date, 
+      drg_concentrer, drg_discount, drg_weight, 
+      time_stamp)
+    values (#{speId,jdbcType=BIGINT}, #{manId,jdbcType=BIGINT}, #{catCode,jdbcType=VARCHAR}, 
+      #{drgCode,jdbcType=VARCHAR}, #{drgName,jdbcType=VARCHAR}, #{centerId,jdbcType=VARCHAR}, 
+      #{drgSpecification,jdbcType=VARCHAR}, #{drgAliasNum,jdbcType=VARCHAR}, #{drgRegionName,jdbcType=VARCHAR}, 
+      #{drgFactoryOwner,jdbcType=VARCHAR}, #{drgSuperclassId,jdbcType=BIGINT}, #{drgPackingNum,jdbcType=INTEGER}, 
+      #{drgPackingUnit,jdbcType=VARCHAR}, #{drgMinUnit,jdbcType=VARCHAR}, #{drgAccountCategory,jdbcType=INTEGER}, 
+      #{drgBarcode,jdbcType=VARCHAR}, #{modId,jdbcType=INTEGER}, #{freId,jdbcType=VARCHAR}, 
+      #{drgFormulation,jdbcType=INTEGER}, #{chinaSpell,jdbcType=VARCHAR}, #{fiveStroke,jdbcType=VARCHAR}, 
+      #{hospitalId,jdbcType=BIGINT}, #{drgSpeciProperty,jdbcType=INTEGER}, #{drgSign,jdbcType=INTEGER}, 
+      #{drgType,jdbcType=INTEGER}, #{drgUploadSign,jdbcType=INTEGER}, #{drgAntibiosisGrade,jdbcType=VARCHAR}, 
+      #{drgState,jdbcType=CHAR}, #{centerRegionId,jdbcType=BIGINT}, #{drgDose,jdbcType=DECIMAL}, 
+      #{drgDoseUnit,jdbcType=VARCHAR}, #{drgVolume,jdbcType=DECIMAL}, #{drgVolumeUnit,jdbcType=VARCHAR}, 
+      #{drgSpiritGrade,jdbcType=CHAR}, #{drgNarcotics,jdbcType=CHAR}, #{drgAnesthetic,jdbcType=CHAR}, 
+      #{drgAntibiotic,jdbcType=CHAR}, #{drgSkinTest,jdbcType=CHAR}, #{drgTransfusion,jdbcType=CHAR}, 
+      #{drgApprovalCode,jdbcType=VARCHAR}, #{drgBasicType,jdbcType=INTEGER}, #{drgCreateDate,jdbcType=TIMESTAMP}, 
+      #{drgConcentrer,jdbcType=DECIMAL}, #{drgDiscount,jdbcType=DECIMAL}, #{drgWeight,jdbcType=INTEGER}, 
+      #{timeStamp,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.yicloud.trans.model.mysql.DrugRegionAlias" useGeneratedKeys="true">
+    insert into drug_region_alias
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="speId != null">
+        spe_id,
+      </if>
+      <if test="manId != null">
+        man_id,
+      </if>
+      <if test="catCode != null">
+        cat_code,
+      </if>
+      <if test="drgCode != null">
+        drg_code,
+      </if>
+      <if test="drgName != null">
+        drg_name,
+      </if>
+      <if test="centerId != null">
+        center_id,
+      </if>
+      <if test="drgSpecification != null">
+        drg_specification,
+      </if>
+      <if test="drgAliasNum != null">
+        drg_alias_num,
+      </if>
+      <if test="drgRegionName != null">
+        drg_region_name,
+      </if>
+      <if test="drgFactoryOwner != null">
+        drg_factory_owner,
+      </if>
+      <if test="drgSuperclassId != null">
+        drg_superclass_id,
+      </if>
+      <if test="drgPackingNum != null">
+        drg_packing_num,
+      </if>
+      <if test="drgPackingUnit != null">
+        drg_packing_unit,
+      </if>
+      <if test="drgMinUnit != null">
+        drg_min_unit,
+      </if>
+      <if test="drgAccountCategory != null">
+        drg_account_category,
+      </if>
+      <if test="drgBarcode != null">
+        drg_barcode,
+      </if>
+      <if test="modId != null">
+        mod_id,
+      </if>
+      <if test="freId != null">
+        fre_id,
+      </if>
+      <if test="drgFormulation != null">
+        drg_formulation,
+      </if>
+      <if test="chinaSpell != null">
+        china_spell,
+      </if>
+      <if test="fiveStroke != null">
+        five_stroke,
+      </if>
+      <if test="hospitalId != null">
+        hospital_id,
+      </if>
+      <if test="drgSpeciProperty != null">
+        drg_speci_property,
+      </if>
+      <if test="drgSign != null">
+        drg_sign,
+      </if>
+      <if test="drgType != null">
+        drg_type,
+      </if>
+      <if test="drgUploadSign != null">
+        drg_upload_sign,
+      </if>
+      <if test="drgAntibiosisGrade != null">
+        drg_antibiosis_grade,
+      </if>
+      <if test="drgState != null">
+        drg_state,
+      </if>
+      <if test="centerRegionId != null">
+        center_region_id,
+      </if>
+      <if test="drgDose != null">
+        drg_dose,
+      </if>
+      <if test="drgDoseUnit != null">
+        drg_dose_unit,
+      </if>
+      <if test="drgVolume != null">
+        drg_volume,
+      </if>
+      <if test="drgVolumeUnit != null">
+        drg_volume_unit,
+      </if>
+      <if test="drgSpiritGrade != null">
+        drg_spirit_grade,
+      </if>
+      <if test="drgNarcotics != null">
+        drg_narcotics,
+      </if>
+      <if test="drgAnesthetic != null">
+        drg_anesthetic,
+      </if>
+      <if test="drgAntibiotic != null">
+        drg_antibiotic,
+      </if>
+      <if test="drgSkinTest != null">
+        drg_skin_test,
+      </if>
+      <if test="drgTransfusion != null">
+        drg_transfusion,
+      </if>
+      <if test="drgApprovalCode != null">
+        drg_approval_code,
+      </if>
+      <if test="drgBasicType != null">
+        drg_basic_type,
+      </if>
+      <if test="drgCreateDate != null">
+        drg_create_date,
+      </if>
+      <if test="drgConcentrer != null">
+        drg_concentrer,
+      </if>
+      <if test="drgDiscount != null">
+        drg_discount,
+      </if>
+      <if test="drgWeight != null">
+        drg_weight,
+      </if>
+      <if test="timeStamp != null">
+        time_stamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="speId != null">
+        #{speId,jdbcType=BIGINT},
+      </if>
+      <if test="manId != null">
+        #{manId,jdbcType=BIGINT},
+      </if>
+      <if test="catCode != null">
+        #{catCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drgCode != null">
+        #{drgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drgName != null">
+        #{drgName,jdbcType=VARCHAR},
+      </if>
+      <if test="centerId != null">
+        #{centerId,jdbcType=VARCHAR},
+      </if>
+      <if test="drgSpecification != null">
+        #{drgSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="drgAliasNum != null">
+        #{drgAliasNum,jdbcType=VARCHAR},
+      </if>
+      <if test="drgRegionName != null">
+        #{drgRegionName,jdbcType=VARCHAR},
+      </if>
+      <if test="drgFactoryOwner != null">
+        #{drgFactoryOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="drgSuperclassId != null">
+        #{drgSuperclassId,jdbcType=BIGINT},
+      </if>
+      <if test="drgPackingNum != null">
+        #{drgPackingNum,jdbcType=INTEGER},
+      </if>
+      <if test="drgPackingUnit != null">
+        #{drgPackingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="drgMinUnit != null">
+        #{drgMinUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="drgAccountCategory != null">
+        #{drgAccountCategory,jdbcType=INTEGER},
+      </if>
+      <if test="drgBarcode != null">
+        #{drgBarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="modId != null">
+        #{modId,jdbcType=INTEGER},
+      </if>
+      <if test="freId != null">
+        #{freId,jdbcType=VARCHAR},
+      </if>
+      <if test="drgFormulation != null">
+        #{drgFormulation,jdbcType=INTEGER},
+      </if>
+      <if test="chinaSpell != null">
+        #{chinaSpell,jdbcType=VARCHAR},
+      </if>
+      <if test="fiveStroke != null">
+        #{fiveStroke,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalId != null">
+        #{hospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="drgSpeciProperty != null">
+        #{drgSpeciProperty,jdbcType=INTEGER},
+      </if>
+      <if test="drgSign != null">
+        #{drgSign,jdbcType=INTEGER},
+      </if>
+      <if test="drgType != null">
+        #{drgType,jdbcType=INTEGER},
+      </if>
+      <if test="drgUploadSign != null">
+        #{drgUploadSign,jdbcType=INTEGER},
+      </if>
+      <if test="drgAntibiosisGrade != null">
+        #{drgAntibiosisGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="drgState != null">
+        #{drgState,jdbcType=CHAR},
+      </if>
+      <if test="centerRegionId != null">
+        #{centerRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="drgDose != null">
+        #{drgDose,jdbcType=DECIMAL},
+      </if>
+      <if test="drgDoseUnit != null">
+        #{drgDoseUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="drgVolume != null">
+        #{drgVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="drgVolumeUnit != null">
+        #{drgVolumeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="drgSpiritGrade != null">
+        #{drgSpiritGrade,jdbcType=CHAR},
+      </if>
+      <if test="drgNarcotics != null">
+        #{drgNarcotics,jdbcType=CHAR},
+      </if>
+      <if test="drgAnesthetic != null">
+        #{drgAnesthetic,jdbcType=CHAR},
+      </if>
+      <if test="drgAntibiotic != null">
+        #{drgAntibiotic,jdbcType=CHAR},
+      </if>
+      <if test="drgSkinTest != null">
+        #{drgSkinTest,jdbcType=CHAR},
+      </if>
+      <if test="drgTransfusion != null">
+        #{drgTransfusion,jdbcType=CHAR},
+      </if>
+      <if test="drgApprovalCode != null">
+        #{drgApprovalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drgBasicType != null">
+        #{drgBasicType,jdbcType=INTEGER},
+      </if>
+      <if test="drgCreateDate != null">
+        #{drgCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="drgConcentrer != null">
+        #{drgConcentrer,jdbcType=DECIMAL},
+      </if>
+      <if test="drgDiscount != null">
+        #{drgDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="drgWeight != null">
+        #{drgWeight,jdbcType=INTEGER},
+      </if>
+      <if test="timeStamp != null">
+        #{timeStamp,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yicloud.trans.model.mysql.DrugRegionAlias">
+    update drug_region_alias
+    <set>
+      <if test="speId != null">
+        spe_id = #{speId,jdbcType=BIGINT},
+      </if>
+      <if test="manId != null">
+        man_id = #{manId,jdbcType=BIGINT},
+      </if>
+      <if test="catCode != null">
+        cat_code = #{catCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drgCode != null">
+        drg_code = #{drgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drgName != null">
+        drg_name = #{drgName,jdbcType=VARCHAR},
+      </if>
+      <if test="centerId != null">
+        center_id = #{centerId,jdbcType=VARCHAR},
+      </if>
+      <if test="drgSpecification != null">
+        drg_specification = #{drgSpecification,jdbcType=VARCHAR},
+      </if>
+      <if test="drgAliasNum != null">
+        drg_alias_num = #{drgAliasNum,jdbcType=VARCHAR},
+      </if>
+      <if test="drgRegionName != null">
+        drg_region_name = #{drgRegionName,jdbcType=VARCHAR},
+      </if>
+      <if test="drgFactoryOwner != null">
+        drg_factory_owner = #{drgFactoryOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="drgSuperclassId != null">
+        drg_superclass_id = #{drgSuperclassId,jdbcType=BIGINT},
+      </if>
+      <if test="drgPackingNum != null">
+        drg_packing_num = #{drgPackingNum,jdbcType=INTEGER},
+      </if>
+      <if test="drgPackingUnit != null">
+        drg_packing_unit = #{drgPackingUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="drgMinUnit != null">
+        drg_min_unit = #{drgMinUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="drgAccountCategory != null">
+        drg_account_category = #{drgAccountCategory,jdbcType=INTEGER},
+      </if>
+      <if test="drgBarcode != null">
+        drg_barcode = #{drgBarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="modId != null">
+        mod_id = #{modId,jdbcType=INTEGER},
+      </if>
+      <if test="freId != null">
+        fre_id = #{freId,jdbcType=VARCHAR},
+      </if>
+      <if test="drgFormulation != null">
+        drg_formulation = #{drgFormulation,jdbcType=INTEGER},
+      </if>
+      <if test="chinaSpell != null">
+        china_spell = #{chinaSpell,jdbcType=VARCHAR},
+      </if>
+      <if test="fiveStroke != null">
+        five_stroke = #{fiveStroke,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalId != null">
+        hospital_id = #{hospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="drgSpeciProperty != null">
+        drg_speci_property = #{drgSpeciProperty,jdbcType=INTEGER},
+      </if>
+      <if test="drgSign != null">
+        drg_sign = #{drgSign,jdbcType=INTEGER},
+      </if>
+      <if test="drgType != null">
+        drg_type = #{drgType,jdbcType=INTEGER},
+      </if>
+      <if test="drgUploadSign != null">
+        drg_upload_sign = #{drgUploadSign,jdbcType=INTEGER},
+      </if>
+      <if test="drgAntibiosisGrade != null">
+        drg_antibiosis_grade = #{drgAntibiosisGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="drgState != null">
+        drg_state = #{drgState,jdbcType=CHAR},
+      </if>
+      <if test="centerRegionId != null">
+        center_region_id = #{centerRegionId,jdbcType=BIGINT},
+      </if>
+      <if test="drgDose != null">
+        drg_dose = #{drgDose,jdbcType=DECIMAL},
+      </if>
+      <if test="drgDoseUnit != null">
+        drg_dose_unit = #{drgDoseUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="drgVolume != null">
+        drg_volume = #{drgVolume,jdbcType=DECIMAL},
+      </if>
+      <if test="drgVolumeUnit != null">
+        drg_volume_unit = #{drgVolumeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="drgSpiritGrade != null">
+        drg_spirit_grade = #{drgSpiritGrade,jdbcType=CHAR},
+      </if>
+      <if test="drgNarcotics != null">
+        drg_narcotics = #{drgNarcotics,jdbcType=CHAR},
+      </if>
+      <if test="drgAnesthetic != null">
+        drg_anesthetic = #{drgAnesthetic,jdbcType=CHAR},
+      </if>
+      <if test="drgAntibiotic != null">
+        drg_antibiotic = #{drgAntibiotic,jdbcType=CHAR},
+      </if>
+      <if test="drgSkinTest != null">
+        drg_skin_test = #{drgSkinTest,jdbcType=CHAR},
+      </if>
+      <if test="drgTransfusion != null">
+        drg_transfusion = #{drgTransfusion,jdbcType=CHAR},
+      </if>
+      <if test="drgApprovalCode != null">
+        drg_approval_code = #{drgApprovalCode,jdbcType=VARCHAR},
+      </if>
+      <if test="drgBasicType != null">
+        drg_basic_type = #{drgBasicType,jdbcType=INTEGER},
+      </if>
+      <if test="drgCreateDate != null">
+        drg_create_date = #{drgCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="drgConcentrer != null">
+        drg_concentrer = #{drgConcentrer,jdbcType=DECIMAL},
+      </if>
+      <if test="drgDiscount != null">
+        drg_discount = #{drgDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="drgWeight != null">
+        drg_weight = #{drgWeight,jdbcType=INTEGER},
+      </if>
+      <if test="timeStamp != null">
+        time_stamp = #{timeStamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yicloud.trans.model.mysql.DrugRegionAlias">
+    update drug_region_alias
+    set spe_id = #{speId,jdbcType=BIGINT},
+      man_id = #{manId,jdbcType=BIGINT},
+      cat_code = #{catCode,jdbcType=VARCHAR},
+      drg_code = #{drgCode,jdbcType=VARCHAR},
+      drg_name = #{drgName,jdbcType=VARCHAR},
+      center_id = #{centerId,jdbcType=VARCHAR},
+      drg_specification = #{drgSpecification,jdbcType=VARCHAR},
+      drg_alias_num = #{drgAliasNum,jdbcType=VARCHAR},
+      drg_region_name = #{drgRegionName,jdbcType=VARCHAR},
+      drg_factory_owner = #{drgFactoryOwner,jdbcType=VARCHAR},
+      drg_superclass_id = #{drgSuperclassId,jdbcType=BIGINT},
+      drg_packing_num = #{drgPackingNum,jdbcType=INTEGER},
+      drg_packing_unit = #{drgPackingUnit,jdbcType=VARCHAR},
+      drg_min_unit = #{drgMinUnit,jdbcType=VARCHAR},
+      drg_account_category = #{drgAccountCategory,jdbcType=INTEGER},
+      drg_barcode = #{drgBarcode,jdbcType=VARCHAR},
+      mod_id = #{modId,jdbcType=INTEGER},
+      fre_id = #{freId,jdbcType=VARCHAR},
+      drg_formulation = #{drgFormulation,jdbcType=INTEGER},
+      china_spell = #{chinaSpell,jdbcType=VARCHAR},
+      five_stroke = #{fiveStroke,jdbcType=VARCHAR},
+      hospital_id = #{hospitalId,jdbcType=BIGINT},
+      drg_speci_property = #{drgSpeciProperty,jdbcType=INTEGER},
+      drg_sign = #{drgSign,jdbcType=INTEGER},
+      drg_type = #{drgType,jdbcType=INTEGER},
+      drg_upload_sign = #{drgUploadSign,jdbcType=INTEGER},
+      drg_antibiosis_grade = #{drgAntibiosisGrade,jdbcType=VARCHAR},
+      drg_state = #{drgState,jdbcType=CHAR},
+      center_region_id = #{centerRegionId,jdbcType=BIGINT},
+      drg_dose = #{drgDose,jdbcType=DECIMAL},
+      drg_dose_unit = #{drgDoseUnit,jdbcType=VARCHAR},
+      drg_volume = #{drgVolume,jdbcType=DECIMAL},
+      drg_volume_unit = #{drgVolumeUnit,jdbcType=VARCHAR},
+      drg_spirit_grade = #{drgSpiritGrade,jdbcType=CHAR},
+      drg_narcotics = #{drgNarcotics,jdbcType=CHAR},
+      drg_anesthetic = #{drgAnesthetic,jdbcType=CHAR},
+      drg_antibiotic = #{drgAntibiotic,jdbcType=CHAR},
+      drg_skin_test = #{drgSkinTest,jdbcType=CHAR},
+      drg_transfusion = #{drgTransfusion,jdbcType=CHAR},
+      drg_approval_code = #{drgApprovalCode,jdbcType=VARCHAR},
+      drg_basic_type = #{drgBasicType,jdbcType=INTEGER},
+      drg_create_date = #{drgCreateDate,jdbcType=TIMESTAMP},
+      drg_concentrer = #{drgConcentrer,jdbcType=DECIMAL},
+      drg_discount = #{drgDiscount,jdbcType=DECIMAL},
+      drg_weight = #{drgWeight,jdbcType=INTEGER},
+      time_stamp = #{timeStamp,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

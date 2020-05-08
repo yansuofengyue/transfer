@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicloud.trans.mapper.mysql.NatureMapper">
+  <resultMap id="BaseResultMap" type="com.yicloud.trans.model.mysql.Nature">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="nat_name" jdbcType="VARCHAR" property="natName" />
+    <result column="nat_code" jdbcType="CHAR" property="natCode" />
+    <result column="nat_type" jdbcType="CHAR" property="natType" />
+    <result column="china_spell" jdbcType="VARCHAR" property="chinaSpell" />
+    <result column="five_stroke" jdbcType="VARCHAR" property="fiveStroke" />
+    <result column="fee_id" jdbcType="BIGINT" property="feeId" />
+    <result column="time_stamp" jdbcType="TIMESTAMP" property="timeStamp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, nat_name, nat_code, nat_type, china_spell, five_stroke, fee_id, time_stamp
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pub_nature
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pub_nature
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.yicloud.trans.model.mysql.Nature" useGeneratedKeys="true">
+    insert into pub_nature (nat_name, nat_code, nat_type, 
+      china_spell, five_stroke, fee_id, 
+      time_stamp)
+    values (#{natName,jdbcType=VARCHAR}, #{natCode,jdbcType=CHAR}, #{natType,jdbcType=CHAR}, 
+      #{chinaSpell,jdbcType=VARCHAR}, #{fiveStroke,jdbcType=VARCHAR}, #{feeId,jdbcType=BIGINT}, 
+      #{timeStamp,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.yicloud.trans.model.mysql.Nature" useGeneratedKeys="true">
+    insert into pub_nature
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="natName != null">
+        nat_name,
+      </if>
+      <if test="natCode != null">
+        nat_code,
+      </if>
+      <if test="natType != null">
+        nat_type,
+      </if>
+      <if test="chinaSpell != null">
+        china_spell,
+      </if>
+      <if test="fiveStroke != null">
+        five_stroke,
+      </if>
+      <if test="feeId != null">
+        fee_id,
+      </if>
+      <if test="timeStamp != null">
+        time_stamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="natName != null">
+        #{natName,jdbcType=VARCHAR},
+      </if>
+      <if test="natCode != null">
+        #{natCode,jdbcType=CHAR},
+      </if>
+      <if test="natType != null">
+        #{natType,jdbcType=CHAR},
+      </if>
+      <if test="chinaSpell != null">
+        #{chinaSpell,jdbcType=VARCHAR},
+      </if>
+      <if test="fiveStroke != null">
+        #{fiveStroke,jdbcType=VARCHAR},
+      </if>
+      <if test="feeId != null">
+        #{feeId,jdbcType=BIGINT},
+      </if>
+      <if test="timeStamp != null">
+        #{timeStamp,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yicloud.trans.model.mysql.Nature">
+    update pub_nature
+    <set>
+      <if test="natName != null">
+        nat_name = #{natName,jdbcType=VARCHAR},
+      </if>
+      <if test="natCode != null">
+        nat_code = #{natCode,jdbcType=CHAR},
+      </if>
+      <if test="natType != null">
+        nat_type = #{natType,jdbcType=CHAR},
+      </if>
+      <if test="chinaSpell != null">
+        china_spell = #{chinaSpell,jdbcType=VARCHAR},
+      </if>
+      <if test="fiveStroke != null">
+        five_stroke = #{fiveStroke,jdbcType=VARCHAR},
+      </if>
+      <if test="feeId != null">
+        fee_id = #{feeId,jdbcType=BIGINT},
+      </if>
+      <if test="timeStamp != null">
+        time_stamp = #{timeStamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yicloud.trans.model.mysql.Nature">
+    update pub_nature
+    set nat_name = #{natName,jdbcType=VARCHAR},
+      nat_code = #{natCode,jdbcType=CHAR},
+      nat_type = #{natType,jdbcType=CHAR},
+      china_spell = #{chinaSpell,jdbcType=VARCHAR},
+      five_stroke = #{fiveStroke,jdbcType=VARCHAR},
+      fee_id = #{feeId,jdbcType=BIGINT},
+      time_stamp = #{timeStamp,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicloud.trans.mapper.mssql.zd.Gfjb1Mapper">
+  <resultMap id="BaseResultMap" type="com.yicloud.trans.model.mssql.zd.Gfjb1">
+    <id column="gfjb" jdbcType="CHAR" property="gfjb" />
+    <result column="jbm" jdbcType="VARCHAR" property="jbm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    gfjb, jbm
+  </sql>
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from zd_gfjb1-->
+<!--    where gfjb = #{gfjb,jdbcType=CHAR}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">-->
+<!--    delete from zd_gfjb1-->
+<!--    where gfjb = #{gfjb,jdbcType=CHAR}-->
+<!--  </delete>-->
+<!--  <insert id="insert" keyColumn="gfjb" keyProperty="gfjb" parameterType="com.yicloud.trans.model.mssql.zd.Gfjb1" useGeneratedKeys="true">-->
+<!--    insert into zd_gfjb1 (jbm)-->
+<!--    values (#{jbm,jdbcType=VARCHAR})-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" keyColumn="gfjb" keyProperty="gfjb" parameterType="com.yicloud.trans.model.mssql.zd.Gfjb1" useGeneratedKeys="true">-->
+<!--    insert into zd_gfjb1-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="jbm != null">-->
+<!--        jbm,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="jbm != null">-->
+<!--        #{jbm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.yicloud.trans.model.mssql.zd.Gfjb1">-->
+<!--    update zd_gfjb1-->
+<!--    <set>-->
+<!--      <if test="jbm != null">-->
+<!--        jbm = #{jbm,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where gfjb = #{gfjb,jdbcType=CHAR}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.zd.Gfjb1">-->
+<!--    update zd_gfjb1-->
+<!--    set jbm = #{jbm,jdbcType=VARCHAR}-->
+<!--    where gfjb = #{gfjb,jdbcType=CHAR}-->
+<!--  </update>-->
+</mapper>

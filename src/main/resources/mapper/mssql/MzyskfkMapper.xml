@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicloud.trans.mapper.mssql.MzyskfkMapper">
+  <resultMap id="BaseResultMap" type="com.yicloud.trans.model.mssql.Mzyskfk">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="zyh" jdbcType="INTEGER" property="zyh" />
+    <result column="ysh" jdbcType="CHAR" property="ysh" />
+    <result column="mzkb" jdbcType="VARCHAR" property="mzkb" />
+    <result column="mzrq" jdbcType="TIMESTAMP" property="mzrq" />
+    <result column="je" jdbcType="NUMERIC" property="je" />
+    <result column="brzz" jdbcType="VARCHAR" property="brzz" />
+    <result column="xyzs" jdbcType="NUMERIC" property="xyzs" />
+    <result column="cyzs" jdbcType="NUMERIC" property="cyzs" />
+    <result column="zyzs" jdbcType="NUMERIC" property="zyzs" />
+    <result column="bz_zg" jdbcType="VARCHAR" property="bzZg" />
+    <result column="bz_kg" jdbcType="VARCHAR" property="bzKg" />
+    <result column="bazdh_1" jdbcType="VARCHAR" property="bazdh1" />
+    <result column="bazdh_2" jdbcType="VARCHAR" property="bazdh2" />
+    <result column="bazdh_3" jdbcType="VARCHAR" property="bazdh3" />
+    <result column="bazd_1" jdbcType="VARCHAR" property="bazd1" />
+    <result column="bazd_2" jdbcType="VARCHAR" property="bazd2" />
+    <result column="bzzd_3" jdbcType="VARCHAR" property="bzzd3" />
+    <result column="sfbz" jdbcType="CHAR" property="sfbz" />
+    <result column="bjgb_bz" jdbcType="CHAR" property="bjgbBz" />
+    <result column="bl_zs" jdbcType="VARCHAR" property="blZs" />
+    <result column="bl_xbs" jdbcType="VARCHAR" property="blXbs" />
+    <result column="bl_jws" jdbcType="VARCHAR" property="blJws" />
+    <result column="bl_grs" jdbcType="VARCHAR" property="blGrs" />
+    <result column="bl_jts" jdbcType="VARCHAR" property="blJts" />
+    <result column="bl_tj" jdbcType="VARCHAR" property="blTj" />
+    <result column="bkbz" jdbcType="TINYINT" property="bkbz" />
+    <result column="jbm" jdbcType="VARCHAR" property="jbm" />
+    <result column="bazdh_4" jdbcType="VARCHAR" property="bazdh4" />
+    <result column="bazd_4" jdbcType="VARCHAR" property="bazd4" />
+    <result column="bazdh_5" jdbcType="VARCHAR" property="bazdh5" />
+    <result column="bazd_5" jdbcType="VARCHAR" property="bazd5" />
+    <result column="zfysh" jdbcType="CHAR" property="zfysh" />
+    <result column="czfzqk" jdbcType="CHAR" property="czfzqk" />
+    <result column="zyzdh_1" jdbcType="VARCHAR" property="zyzdh1" />
+    <result column="zyzd_1" jdbcType="VARCHAR" property="zyzd1" />
+    <result column="zyzdh_2" jdbcType="VARCHAR" property="zyzdh2" />
+    <result column="zyzd_2" jdbcType="VARCHAR" property="zyzd2" />
+    <result column="zyzdh_3" jdbcType="VARCHAR" property="zyzdh3" />
+    <result column="zyzd_3" jdbcType="VARCHAR" property="zyzd3" />
+    <result column="zyzdh_4" jdbcType="VARCHAR" property="zyzdh4" />
+    <result column="zyzd_4" jdbcType="VARCHAR" property="zyzd4" />
+    <result column="zzdbz" jdbcType="CHAR" property="zzdbz" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, zyh, ysh, mzkb, mzrq, je, brzz, xyzs, cyzs, zyzs, bz_zg, bz_kg, bazdh_1, bazdh_2, 
+    bazdh_3, bazd_1, bazd_2, bzzd_3, sfbz, bjgb_bz, bl_zs, bl_xbs, bl_jws, bl_grs, bl_jts, 
+    bl_tj, bkbz, jbm, bazdh_4, bazd_4, bazdh_5, bazd_5, zfysh, czfzqk, zyzdh_1, zyzd_1, 
+    zyzdh_2, zyzd_2, zyzdh_3, zyzd_3, zyzdh_4, zyzd_4, zzdbz
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mzyskfk
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mzyskfk
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.yicloud.trans.model.mssql.Mzyskfk" useGeneratedKeys="true">
+    insert into mzyskfk (zyh, ysh, mzkb, 
+      mzrq, je, brzz, xyzs, 
+      cyzs, zyzs, bz_zg, bz_kg, 
+      bazdh_1, bazdh_2, bazdh_3, 
+      bazd_1, bazd_2, bzzd_3, 
+      sfbz, bjgb_bz, bl_zs, bl_xbs, 
+      bl_jws, bl_grs, bl_jts, 
+      bl_tj, bkbz, jbm, bazdh_4, 
+      bazd_4, bazdh_5, bazd_5, 
+      zfysh, czfzqk, zyzdh_1, zyzd_1, 
+      zyzdh_2, zyzd_2, zyzdh_3, 
+      zyzd_3, zyzdh_4, zyzd_4, 
+      zzdbz)
+    values (#{zyh,jdbcType=INTEGER}, #{ysh,jdbcType=CHAR}, #{mzkb,jdbcType=VARCHAR}, 
+      #{mzrq,jdbcType=TIMESTAMP}, #{je,jdbcType=NUMERIC}, #{brzz,jdbcType=VARCHAR}, #{xyzs,jdbcType=NUMERIC}, 
+      #{cyzs,jdbcType=NUMERIC}, #{zyzs,jdbcType=NUMERIC}, #{bzZg,jdbcType=VARCHAR}, #{bzKg,jdbcType=VARCHAR}, 
+      #{bazdh1,jdbcType=VARCHAR}, #{bazdh2,jdbcType=VARCHAR}, #{bazdh3,jdbcType=VARCHAR}, 
+      #{bazd1,jdbcType=VARCHAR}, #{bazd2,jdbcType=VARCHAR}, #{bzzd3,jdbcType=VARCHAR}, 
+      #{sfbz,jdbcType=CHAR}, #{bjgbBz,jdbcType=CHAR}, #{blZs,jdbcType=VARCHAR}, #{blXbs,jdbcType=VARCHAR}, 
+      #{blJws,jdbcType=VARCHAR}, #{blGrs,jdbcType=VARCHAR}, #{blJts,jdbcType=VARCHAR}, 
+      #{blTj,jdbcType=VARCHAR}, #{bkbz,jdbcType=TINYINT}, #{jbm,jdbcType=VARCHAR}, #{bazdh4,jdbcType=VARCHAR}, 
+      #{bazd4,jdbcType=VARCHAR}, #{bazdh5,jdbcType=VARCHAR}, #{bazd5,jdbcType=VARCHAR}, 
+      #{zfysh,jdbcType=CHAR}, #{czfzqk,jdbcType=CHAR}, #{zyzdh1,jdbcType=VARCHAR}, #{zyzd1,jdbcType=VARCHAR}, 
+      #{zyzdh2,jdbcType=VARCHAR}, #{zyzd2,jdbcType=VARCHAR}, #{zyzdh3,jdbcType=VARCHAR}, 
+      #{zyzd3,jdbcType=VARCHAR}, #{zyzdh4,jdbcType=VARCHAR}, #{zyzd4,jdbcType=VARCHAR}, 
+      #{zzdbz,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.yicloud.trans.model.mssql.Mzyskfk" useGeneratedKeys="true">
+    insert into mzyskfk
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zyh != null">
+        zyh,
+      </if>
+      <if test="ysh != null">
+        ysh,
+      </if>
+      <if test="mzkb != null">
+        mzkb,
+      </if>
+      <if test="mzrq != null">
+        mzrq,
+      </if>
+      <if test="je != null">
+        je,
+      </if>
+      <if test="brzz != null">
+        brzz,
+      </if>
+      <if test="xyzs != null">
+        xyzs,
+      </if>
+      <if test="cyzs != null">
+        cyzs,
+      </if>
+      <if test="zyzs != null">
+        zyzs,
+      </if>
+      <if test="bzZg != null">
+        bz_zg,
+      </if>
+      <if test="bzKg != null">
+        bz_kg,
+      </if>
+      <if test="bazdh1 != null">
+        bazdh_1,
+      </if>
+      <if test="bazdh2 != null">
+        bazdh_2,
+      </if>
+      <if test="bazdh3 != null">
+        bazdh_3,
+      </if>
+      <if test="bazd1 != null">
+        bazd_1,
+      </if>
+      <if test="bazd2 != null">
+        bazd_2,
+      </if>
+      <if test="bzzd3 != null">
+        bzzd_3,
+      </if>
+      <if test="sfbz != null">
+        sfbz,
+      </if>
+      <if test="bjgbBz != null">
+        bjgb_bz,
+      </if>
+      <if test="blZs != null">
+        bl_zs,
+      </if>
+      <if test="blXbs != null">
+        bl_xbs,
+      </if>
+      <if test="blJws != null">
+        bl_jws,
+      </if>
+      <if test="blGrs != null">
+        bl_grs,
+      </if>
+      <if test="blJts != null">
+        bl_jts,
+      </if>
+      <if test="blTj != null">
+        bl_tj,
+      </if>
+      <if test="bkbz != null">
+        bkbz,
+      </if>
+      <if test="jbm != null">
+        jbm,
+      </if>
+      <if test="bazdh4 != null">
+        bazdh_4,
+      </if>
+      <if test="bazd4 != null">
+        bazd_4,
+      </if>
+      <if test="bazdh5 != null">
+        bazdh_5,
+      </if>
+      <if test="bazd5 != null">
+        bazd_5,
+      </if>
+      <if test="zfysh != null">
+        zfysh,
+      </if>
+      <if test="czfzqk != null">
+        czfzqk,
+      </if>
+      <if test="zyzdh1 != null">
+        zyzdh_1,
+      </if>
+      <if test="zyzd1 != null">
+        zyzd_1,
+      </if>
+      <if test="zyzdh2 != null">
+        zyzdh_2,
+      </if>
+      <if test="zyzd2 != null">
+        zyzd_2,
+      </if>
+      <if test="zyzdh3 != null">
+        zyzdh_3,
+      </if>
+      <if test="zyzd3 != null">
+        zyzd_3,
+      </if>
+      <if test="zyzdh4 != null">
+        zyzdh_4,
+      </if>
+      <if test="zyzd4 != null">
+        zyzd_4,
+      </if>
+      <if test="zzdbz != null">
+        zzdbz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zyh != null">
+        #{zyh,jdbcType=INTEGER},
+      </if>
+      <if test="ysh != null">
+        #{ysh,jdbcType=CHAR},
+      </if>
+      <if test="mzkb != null">
+        #{mzkb,jdbcType=VARCHAR},
+      </if>
+      <if test="mzrq != null">
+        #{mzrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="je != null">
+        #{je,jdbcType=NUMERIC},
+      </if>
+      <if test="brzz != null">
+        #{brzz,jdbcType=VARCHAR},
+      </if>
+      <if test="xyzs != null">
+        #{xyzs,jdbcType=NUMERIC},
+      </if>
+      <if test="cyzs != null">
+        #{cyzs,jdbcType=NUMERIC},
+      </if>
+      <if test="zyzs != null">
+        #{zyzs,jdbcType=NUMERIC},
+      </if>
+      <if test="bzZg != null">
+        #{bzZg,jdbcType=VARCHAR},
+      </if>
+      <if test="bzKg != null">
+        #{bzKg,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh1 != null">
+        #{bazdh1,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh2 != null">
+        #{bazdh2,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh3 != null">
+        #{bazdh3,jdbcType=VARCHAR},
+      </if>
+      <if test="bazd1 != null">
+        #{bazd1,jdbcType=VARCHAR},
+      </if>
+      <if test="bazd2 != null">
+        #{bazd2,jdbcType=VARCHAR},
+      </if>
+      <if test="bzzd3 != null">
+        #{bzzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="sfbz != null">
+        #{sfbz,jdbcType=CHAR},
+      </if>
+      <if test="bjgbBz != null">
+        #{bjgbBz,jdbcType=CHAR},
+      </if>
+      <if test="blZs != null">
+        #{blZs,jdbcType=VARCHAR},
+      </if>
+      <if test="blXbs != null">
+        #{blXbs,jdbcType=VARCHAR},
+      </if>
+      <if test="blJws != null">
+        #{blJws,jdbcType=VARCHAR},
+      </if>
+      <if test="blGrs != null">
+        #{blGrs,jdbcType=VARCHAR},
+      </if>
+      <if test="blJts != null">
+        #{blJts,jdbcType=VARCHAR},
+      </if>
+      <if test="blTj != null">
+        #{blTj,jdbcType=VARCHAR},
+      </if>
+      <if test="bkbz != null">
+        #{bkbz,jdbcType=TINYINT},
+      </if>
+      <if test="jbm != null">
+        #{jbm,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh4 != null">
+        #{bazdh4,jdbcType=VARCHAR},
+      </if>
+      <if test="bazd4 != null">
+        #{bazd4,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh5 != null">
+        #{bazdh5,jdbcType=VARCHAR},
+      </if>
+      <if test="bazd5 != null">
+        #{bazd5,jdbcType=VARCHAR},
+      </if>
+      <if test="zfysh != null">
+        #{zfysh,jdbcType=CHAR},
+      </if>
+      <if test="czfzqk != null">
+        #{czfzqk,jdbcType=CHAR},
+      </if>
+      <if test="zyzdh1 != null">
+        #{zyzdh1,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzd1 != null">
+        #{zyzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzdh2 != null">
+        #{zyzdh2,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzd2 != null">
+        #{zyzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzdh3 != null">
+        #{zyzdh3,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzd3 != null">
+        #{zyzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzdh4 != null">
+        #{zyzdh4,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzd4 != null">
+        #{zyzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="zzdbz != null">
+        #{zzdbz,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yicloud.trans.model.mssql.Mzyskfk">
+    update mzyskfk
+    <set>
+      <if test="zyh != null">
+        zyh = #{zyh,jdbcType=INTEGER},
+      </if>
+      <if test="ysh != null">
+        ysh = #{ysh,jdbcType=CHAR},
+      </if>
+      <if test="mzkb != null">
+        mzkb = #{mzkb,jdbcType=VARCHAR},
+      </if>
+      <if test="mzrq != null">
+        mzrq = #{mzrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="je != null">
+        je = #{je,jdbcType=NUMERIC},
+      </if>
+      <if test="brzz != null">
+        brzz = #{brzz,jdbcType=VARCHAR},
+      </if>
+      <if test="xyzs != null">
+        xyzs = #{xyzs,jdbcType=NUMERIC},
+      </if>
+      <if test="cyzs != null">
+        cyzs = #{cyzs,jdbcType=NUMERIC},
+      </if>
+      <if test="zyzs != null">
+        zyzs = #{zyzs,jdbcType=NUMERIC},
+      </if>
+      <if test="bzZg != null">
+        bz_zg = #{bzZg,jdbcType=VARCHAR},
+      </if>
+      <if test="bzKg != null">
+        bz_kg = #{bzKg,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh1 != null">
+        bazdh_1 = #{bazdh1,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh2 != null">
+        bazdh_2 = #{bazdh2,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh3 != null">
+        bazdh_3 = #{bazdh3,jdbcType=VARCHAR},
+      </if>
+      <if test="bazd1 != null">
+        bazd_1 = #{bazd1,jdbcType=VARCHAR},
+      </if>
+      <if test="bazd2 != null">
+        bazd_2 = #{bazd2,jdbcType=VARCHAR},
+      </if>
+      <if test="bzzd3 != null">
+        bzzd_3 = #{bzzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="sfbz != null">
+        sfbz = #{sfbz,jdbcType=CHAR},
+      </if>
+      <if test="bjgbBz != null">
+        bjgb_bz = #{bjgbBz,jdbcType=CHAR},
+      </if>
+      <if test="blZs != null">
+        bl_zs = #{blZs,jdbcType=VARCHAR},
+      </if>
+      <if test="blXbs != null">
+        bl_xbs = #{blXbs,jdbcType=VARCHAR},
+      </if>
+      <if test="blJws != null">
+        bl_jws = #{blJws,jdbcType=VARCHAR},
+      </if>
+      <if test="blGrs != null">
+        bl_grs = #{blGrs,jdbcType=VARCHAR},
+      </if>
+      <if test="blJts != null">
+        bl_jts = #{blJts,jdbcType=VARCHAR},
+      </if>
+      <if test="blTj != null">
+        bl_tj = #{blTj,jdbcType=VARCHAR},
+      </if>
+      <if test="bkbz != null">
+        bkbz = #{bkbz,jdbcType=TINYINT},
+      </if>
+      <if test="jbm != null">
+        jbm = #{jbm,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh4 != null">
+        bazdh_4 = #{bazdh4,jdbcType=VARCHAR},
+      </if>
+      <if test="bazd4 != null">
+        bazd_4 = #{bazd4,jdbcType=VARCHAR},
+      </if>
+      <if test="bazdh5 != null">
+        bazdh_5 = #{bazdh5,jdbcType=VARCHAR},
+      </if>
+      <if test="bazd5 != null">
+        bazd_5 = #{bazd5,jdbcType=VARCHAR},
+      </if>
+      <if test="zfysh != null">
+        zfysh = #{zfysh,jdbcType=CHAR},
+      </if>
+      <if test="czfzqk != null">
+        czfzqk = #{czfzqk,jdbcType=CHAR},
+      </if>
+      <if test="zyzdh1 != null">
+        zyzdh_1 = #{zyzdh1,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzd1 != null">
+        zyzd_1 = #{zyzd1,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzdh2 != null">
+        zyzdh_2 = #{zyzdh2,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzd2 != null">
+        zyzd_2 = #{zyzd2,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzdh3 != null">
+        zyzdh_3 = #{zyzdh3,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzd3 != null">
+        zyzd_3 = #{zyzd3,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzdh4 != null">
+        zyzdh_4 = #{zyzdh4,jdbcType=VARCHAR},
+      </if>
+      <if test="zyzd4 != null">
+        zyzd_4 = #{zyzd4,jdbcType=VARCHAR},
+      </if>
+      <if test="zzdbz != null">
+        zzdbz = #{zzdbz,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.Mzyskfk">
+    update mzyskfk
+    set zyh = #{zyh,jdbcType=INTEGER},
+      ysh = #{ysh,jdbcType=CHAR},
+      mzkb = #{mzkb,jdbcType=VARCHAR},
+      mzrq = #{mzrq,jdbcType=TIMESTAMP},
+      je = #{je,jdbcType=NUMERIC},
+      brzz = #{brzz,jdbcType=VARCHAR},
+      xyzs = #{xyzs,jdbcType=NUMERIC},
+      cyzs = #{cyzs,jdbcType=NUMERIC},
+      zyzs = #{zyzs,jdbcType=NUMERIC},
+      bz_zg = #{bzZg,jdbcType=VARCHAR},
+      bz_kg = #{bzKg,jdbcType=VARCHAR},
+      bazdh_1 = #{bazdh1,jdbcType=VARCHAR},
+      bazdh_2 = #{bazdh2,jdbcType=VARCHAR},
+      bazdh_3 = #{bazdh3,jdbcType=VARCHAR},
+      bazd_1 = #{bazd1,jdbcType=VARCHAR},
+      bazd_2 = #{bazd2,jdbcType=VARCHAR},
+      bzzd_3 = #{bzzd3,jdbcType=VARCHAR},
+      sfbz = #{sfbz,jdbcType=CHAR},
+      bjgb_bz = #{bjgbBz,jdbcType=CHAR},
+      bl_zs = #{blZs,jdbcType=VARCHAR},
+      bl_xbs = #{blXbs,jdbcType=VARCHAR},
+      bl_jws = #{blJws,jdbcType=VARCHAR},
+      bl_grs = #{blGrs,jdbcType=VARCHAR},
+      bl_jts = #{blJts,jdbcType=VARCHAR},
+      bl_tj = #{blTj,jdbcType=VARCHAR},
+      bkbz = #{bkbz,jdbcType=TINYINT},
+      jbm = #{jbm,jdbcType=VARCHAR},
+      bazdh_4 = #{bazdh4,jdbcType=VARCHAR},
+      bazd_4 = #{bazd4,jdbcType=VARCHAR},
+      bazdh_5 = #{bazdh5,jdbcType=VARCHAR},
+      bazd_5 = #{bazd5,jdbcType=VARCHAR},
+      zfysh = #{zfysh,jdbcType=CHAR},
+      czfzqk = #{czfzqk,jdbcType=CHAR},
+      zyzdh_1 = #{zyzdh1,jdbcType=VARCHAR},
+      zyzd_1 = #{zyzd1,jdbcType=VARCHAR},
+      zyzdh_2 = #{zyzdh2,jdbcType=VARCHAR},
+      zyzd_2 = #{zyzd2,jdbcType=VARCHAR},
+      zyzdh_3 = #{zyzdh3,jdbcType=VARCHAR},
+      zyzd_3 = #{zyzd3,jdbcType=VARCHAR},
+      zyzdh_4 = #{zyzdh4,jdbcType=VARCHAR},
+      zyzd_4 = #{zyzd4,jdbcType=VARCHAR},
+      zzdbz = #{zzdbz,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

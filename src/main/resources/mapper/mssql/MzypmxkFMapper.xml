@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicloud.trans.mapper.mssql.MzypmxkFMapper">
+  <resultMap id="BaseResultMap" type="com.yicloud.trans.model.mssql.MzypmxkF">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="zyh" jdbcType="INTEGER" property="zyh" />
+    <result column="rq" jdbcType="TIMESTAMP" property="rq" />
+    <result column="sfrq" jdbcType="TIMESTAMP" property="sfrq" />
+    <result column="fyrq" jdbcType="TIMESTAMP" property="fyrq" />
+    <result column="gfbz" jdbcType="CHAR" property="gfbz" />
+    <result column="kdksh" jdbcType="VARCHAR" property="kdksh" />
+    <result column="ysh" jdbcType="CHAR" property="ysh" />
+    <result column="cflx" jdbcType="INTEGER" property="cflx" />
+    <result column="cfh" jdbcType="VARCHAR" property="cfh" />
+    <result column="ts" jdbcType="NUMERIC" property="ts" />
+    <result column="je" jdbcType="NUMERIC" property="je" />
+    <result column="lrgh" jdbcType="VARCHAR" property="lrgh" />
+    <result column="fygh" jdbcType="VARCHAR" property="fygh" />
+    <result column="tzgh" jdbcType="VARCHAR" property="tzgh" />
+    <result column="fjf" jdbcType="NUMERIC" property="fjf" />
+    <result column="xm" jdbcType="VARCHAR" property="xm" />
+    <result column="rbbz" jdbcType="CHAR" property="rbbz" />
+    <result column="mzyskdk_id" jdbcType="INTEGER" property="mzyskdkId" />
+    <result column="zfje" jdbcType="NUMERIC" property="zfje" />
+    <result column="sfbh_id" jdbcType="INTEGER" property="sfbhId" />
+    <result column="cfly" jdbcType="INTEGER" property="cfly" />
+    <result column="bz_ty" jdbcType="CHAR" property="bzTy" />
+    <result column="fyyf" jdbcType="INTEGER" property="fyyf" />
+    <result column="fpxh" jdbcType="INTEGER" property="fpxh" />
+    <result column="xyje" jdbcType="NUMERIC" property="xyje" />
+    <result column="zcyje" jdbcType="NUMERIC" property="zcyje" />
+    <result column="cyje" jdbcType="NUMERIC" property="cyje" />
+    <result column="zf_xyje" jdbcType="NUMERIC" property="zfXyje" />
+    <result column="zf_zcyje" jdbcType="NUMERIC" property="zfZcyje" />
+    <result column="zf_cyje" jdbcType="NUMERIC" property="zfCyje" />
+    <result column="sfxm_id" jdbcType="INTEGER" property="sfxmId" />
+    <result column="rb_bzxh" jdbcType="INTEGER" property="rbBzxh" />
+    <result column="tzgh_2" jdbcType="VARCHAR" property="tzgh2" />
+    <result column="bybz" jdbcType="INTEGER" property="bybz" />
+    <result column="window" jdbcType="INTEGER" property="window" />
+    <result column="psbz" jdbcType="INTEGER" property="psbz" />
+    <result column="psczgh" jdbcType="VARCHAR" property="psczgh" />
+    <result column="pstssj" jdbcType="TIMESTAMP" property="pstssj" />
+    <result column="pskssj" jdbcType="TIMESTAMP" property="pskssj" />
+    <result column="psjg" jdbcType="INTEGER" property="psjg" />
+    <result column="pssm" jdbcType="VARCHAR" property="pssm" />
+    <result column="print_bz" jdbcType="INTEGER" property="printBz" />
+    <result column="clje" jdbcType="NUMERIC" property="clje" />
+    <result column="zf_clje" jdbcType="NUMERIC" property="zfClje" />
+    <result column="print_lsh" jdbcType="CHAR" property="printLsh" />
+    <result column="print_rq" jdbcType="TIMESTAMP" property="printRq" />
+    <result column="xtid" jdbcType="INTEGER" property="xtid" />
+    <result column="bjgb_bz" jdbcType="CHAR" property="bjgbBz" />
+    <result column="lbh" jdbcType="CHAR" property="lbh" />
+    <result column="gfma" jdbcType="VARCHAR" property="gfma" />
+    <result column="gfsf" jdbcType="CHAR" property="gfsf" />
+    <result column="wy" jdbcType="CHAR" property="wy" />
+    <result column="cyfl" jdbcType="CHAR" property="cyfl" />
+    <result column="jybz" jdbcType="TINYINT" property="jybz" />
+    <result column="lyzh" jdbcType="VARCHAR" property="lyzh" />
+    <result column="bqdy_bz" jdbcType="CHAR" property="bqdyBz" />
+    <result column="bz" jdbcType="VARCHAR" property="bz" />
+    <result column="mtbs" jdbcType="TINYINT" property="mtbs" />
+    <result column="pfry" jdbcType="VARCHAR" property="pfry" />
+    <result column="cfdy_bz" jdbcType="CHAR" property="cfdyBz" />
+    <result column="ycfid" jdbcType="INTEGER" property="ycfid" />
+    <result column="sh_bz" jdbcType="CHAR" property="shBz" />
+    <result column="klj" jdbcType="CHAR" property="klj" />
+    <result column="dfdyrq" jdbcType="TIMESTAMP" property="dfdyrq" />
+    <result column="rq_old" jdbcType="TIMESTAMP" property="rqOld" />
+    <result column="jyh" jdbcType="VARCHAR" property="jyh" />
+    <result column="wpcfbz" jdbcType="CHAR" property="wpcfbz" />
+    <result column="wpcfbh" jdbcType="VARCHAR" property="wpcfbh" />
+    <result column="wj_scbz" jdbcType="CHAR" property="wjScbz" />
+    <result column="wj_scrq" jdbcType="TIMESTAMP" property="wjScrq" />
+    <result column="pslsh" jdbcType="VARCHAR" property="pslsh" />
+    <result column="gfxggh" jdbcType="VARCHAR" property="gfxggh" />
+    <result column="gfxgrq" jdbcType="TIMESTAMP" property="gfxgrq" />
+    <result column="gfxgsm" jdbcType="VARCHAR" property="gfxgsm" />
+    <result column="pfryxm" jdbcType="VARCHAR" property="pfryxm" />
+    <result column="fyxm" jdbcType="VARCHAR" property="fyxm" />
+    <result column="tzxm" jdbcType="VARCHAR" property="tzxm" />
+    <result column="tzxm2" jdbcType="VARCHAR" property="tzxm2" />
+    <result column="shrq" jdbcType="TIMESTAMP" property="shrq" />
+    <result column="chdybz" jdbcType="CHAR" property="chdybz" />
+    <result column="wybz" jdbcType="CHAR" property="wybz" />
+    <result column="ypns" jdbcType="VARCHAR" property="ypns" />
+    <result column="ys_bz" jdbcType="VARCHAR" property="ysBz" />
+    <result column="yhje" jdbcType="NUMERIC" property="yhje" />
+    <result column="zzdbz" jdbcType="CHAR" property="zzdbz" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, zyh, rq, sfrq, fyrq, gfbz, kdksh, ysh, cflx, cfh, ts, je, lrgh, fygh, tzgh, fjf, 
+    xm, rbbz, mzyskdk_id, zfje, sfbh_id, cfly, bz_ty, fyyf, fpxh, xyje, zcyje, cyje, 
+    zf_xyje, zf_zcyje, zf_cyje, sfxm_id, rb_bzxh, tzgh_2, bybz, "window", psbz, psczgh, 
+    pstssj, pskssj, psjg, pssm, print_bz, clje, zf_clje, print_lsh, print_rq, xtid, bjgb_bz, 
+    lbh, gfma, gfsf, wy, cyfl, jybz, lyzh, bqdy_bz, bz, mtbs, pfry, cfdy_bz, ycfid, sh_bz, 
+    klj, dfdyrq, rq_old, jyh, wpcfbz, wpcfbh, wj_scbz, wj_scrq, pslsh, gfxggh, gfxgrq, 
+    gfxgsm, pfryxm, fyxm, tzxm, tzxm2, shrq, chdybz, wybz, ypns, ys_bz, yhje, zzdbz
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mzypmxk_f
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mzypmxk_f
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.yicloud.trans.model.mssql.MzypmxkF" useGeneratedKeys="true">
+    insert into mzypmxk_f (zyh, rq, sfrq, 
+      fyrq, gfbz, kdksh, ysh, 
+      cflx, cfh, ts, je, 
+      lrgh, fygh, tzgh, fjf, 
+      xm, rbbz, mzyskdk_id, zfje, 
+      sfbh_id, cfly, bz_ty, fyyf, 
+      fpxh, xyje, zcyje, 
+      cyje, zf_xyje, zf_zcyje, 
+      zf_cyje, sfxm_id, rb_bzxh, 
+      tzgh_2, bybz, "window", 
+      psbz, psczgh, pstssj, 
+      pskssj, psjg, pssm, 
+      print_bz, clje, zf_clje, 
+      print_lsh, print_rq, xtid, 
+      bjgb_bz, lbh, gfma, gfsf, 
+      wy, cyfl, jybz, lyzh, 
+      bqdy_bz, bz, mtbs, pfry, 
+      cfdy_bz, ycfid, sh_bz, klj, 
+      dfdyrq, rq_old, jyh, 
+      wpcfbz, wpcfbh, wj_scbz, wj_scrq, 
+      pslsh, gfxggh, gfxgrq, 
+      gfxgsm, pfryxm, fyxm, 
+      tzxm, tzxm2, shrq, 
+      chdybz, wybz, ypns, ys_bz, 
+      yhje, zzdbz)
+    values (#{zyh,jdbcType=INTEGER}, #{rq,jdbcType=TIMESTAMP}, #{sfrq,jdbcType=TIMESTAMP}, 
+      #{fyrq,jdbcType=TIMESTAMP}, #{gfbz,jdbcType=CHAR}, #{kdksh,jdbcType=VARCHAR}, #{ysh,jdbcType=CHAR}, 
+      #{cflx,jdbcType=INTEGER}, #{cfh,jdbcType=VARCHAR}, #{ts,jdbcType=NUMERIC}, #{je,jdbcType=NUMERIC}, 
+      #{lrgh,jdbcType=VARCHAR}, #{fygh,jdbcType=VARCHAR}, #{tzgh,jdbcType=VARCHAR}, #{fjf,jdbcType=NUMERIC}, 
+      #{xm,jdbcType=VARCHAR}, #{rbbz,jdbcType=CHAR}, #{mzyskdkId,jdbcType=INTEGER}, #{zfje,jdbcType=NUMERIC}, 
+      #{sfbhId,jdbcType=INTEGER}, #{cfly,jdbcType=INTEGER}, #{bzTy,jdbcType=CHAR}, #{fyyf,jdbcType=INTEGER}, 
+      #{fpxh,jdbcType=INTEGER}, #{xyje,jdbcType=NUMERIC}, #{zcyje,jdbcType=NUMERIC}, 
+      #{cyje,jdbcType=NUMERIC}, #{zfXyje,jdbcType=NUMERIC}, #{zfZcyje,jdbcType=NUMERIC}, 
+      #{zfCyje,jdbcType=NUMERIC}, #{sfxmId,jdbcType=INTEGER}, #{rbBzxh,jdbcType=INTEGER}, 
+      #{tzgh2,jdbcType=VARCHAR}, #{bybz,jdbcType=INTEGER}, #{window,jdbcType=INTEGER}, 
+      #{psbz,jdbcType=INTEGER}, #{psczgh,jdbcType=VARCHAR}, #{pstssj,jdbcType=TIMESTAMP}, 
+      #{pskssj,jdbcType=TIMESTAMP}, #{psjg,jdbcType=INTEGER}, #{pssm,jdbcType=VARCHAR}, 
+      #{printBz,jdbcType=INTEGER}, #{clje,jdbcType=NUMERIC}, #{zfClje,jdbcType=NUMERIC}, 
+      #{printLsh,jdbcType=CHAR}, #{printRq,jdbcType=TIMESTAMP}, #{xtid,jdbcType=INTEGER}, 
+      #{bjgbBz,jdbcType=CHAR}, #{lbh,jdbcType=CHAR}, #{gfma,jdbcType=VARCHAR}, #{gfsf,jdbcType=CHAR}, 
+      #{wy,jdbcType=CHAR}, #{cyfl,jdbcType=CHAR}, #{jybz,jdbcType=TINYINT}, #{lyzh,jdbcType=VARCHAR}, 
+      #{bqdyBz,jdbcType=CHAR}, #{bz,jdbcType=VARCHAR}, #{mtbs,jdbcType=TINYINT}, #{pfry,jdbcType=VARCHAR}, 
+      #{cfdyBz,jdbcType=CHAR}, #{ycfid,jdbcType=INTEGER}, #{shBz,jdbcType=CHAR}, #{klj,jdbcType=CHAR}, 
+      #{dfdyrq,jdbcType=TIMESTAMP}, #{rqOld,jdbcType=TIMESTAMP}, #{jyh,jdbcType=VARCHAR}, 
+      #{wpcfbz,jdbcType=CHAR}, #{wpcfbh,jdbcType=VARCHAR}, #{wjScbz,jdbcType=CHAR}, #{wjScrq,jdbcType=TIMESTAMP}, 
+      #{pslsh,jdbcType=VARCHAR}, #{gfxggh,jdbcType=VARCHAR}, #{gfxgrq,jdbcType=TIMESTAMP}, 
+      #{gfxgsm,jdbcType=VARCHAR}, #{pfryxm,jdbcType=VARCHAR}, #{fyxm,jdbcType=VARCHAR}, 
+      #{tzxm,jdbcType=VARCHAR}, #{tzxm2,jdbcType=VARCHAR}, #{shrq,jdbcType=TIMESTAMP}, 
+      #{chdybz,jdbcType=CHAR}, #{wybz,jdbcType=CHAR}, #{ypns,jdbcType=VARCHAR}, #{ysBz,jdbcType=VARCHAR}, 
+      #{yhje,jdbcType=NUMERIC}, #{zzdbz,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.yicloud.trans.model.mssql.MzypmxkF" useGeneratedKeys="true">
+    insert into mzypmxk_f
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zyh != null">
+        zyh,
+      </if>
+      <if test="rq != null">
+        rq,
+      </if>
+      <if test="sfrq != null">
+        sfrq,
+      </if>
+      <if test="fyrq != null">
+        fyrq,
+      </if>
+      <if test="gfbz != null">
+        gfbz,
+      </if>
+      <if test="kdksh != null">
+        kdksh,
+      </if>
+      <if test="ysh != null">
+        ysh,
+      </if>
+      <if test="cflx != null">
+        cflx,
+      </if>
+      <if test="cfh != null">
+        cfh,
+      </if>
+      <if test="ts != null">
+        ts,
+      </if>
+      <if test="je != null">
+        je,
+      </if>
+      <if test="lrgh != null">
+        lrgh,
+      </if>
+      <if test="fygh != null">
+        fygh,
+      </if>
+      <if test="tzgh != null">
+        tzgh,
+      </if>
+      <if test="fjf != null">
+        fjf,
+      </if>
+      <if test="xm != null">
+        xm,
+      </if>
+      <if test="rbbz != null">
+        rbbz,
+      </if>
+      <if test="mzyskdkId != null">
+        mzyskdk_id,
+      </if>
+      <if test="zfje != null">
+        zfje,
+      </if>
+      <if test="sfbhId != null">
+        sfbh_id,
+      </if>
+      <if test="cfly != null">
+        cfly,
+      </if>
+      <if test="bzTy != null">
+        bz_ty,
+      </if>
+      <if test="fyyf != null">
+        fyyf,
+      </if>
+      <if test="fpxh != null">
+        fpxh,
+      </if>
+      <if test="xyje != null">
+        xyje,
+      </if>
+      <if test="zcyje != null">
+        zcyje,
+      </if>
+      <if test="cyje != null">
+        cyje,
+      </if>
+      <if test="zfXyje != null">
+        zf_xyje,
+      </if>
+      <if test="zfZcyje != null">
+        zf_zcyje,
+      </if>
+      <if test="zfCyje != null">
+        zf_cyje,
+      </if>
+      <if test="sfxmId != null">
+        sfxm_id,
+      </if>
+      <if test="rbBzxh != null">
+        rb_bzxh,
+      </if>
+      <if test="tzgh2 != null">
+        tzgh_2,
+      </if>
+      <if test="bybz != null">
+        bybz,
+      </if>
+      <if test="window != null">
+        "window",
+      </if>
+      <if test="psbz != null">
+        psbz,
+      </if>
+      <if test="psczgh != null">
+        psczgh,
+      </if>
+      <if test="pstssj != null">
+        pstssj,
+      </if>
+      <if test="pskssj != null">
+        pskssj,
+      </if>
+      <if test="psjg != null">
+        psjg,
+      </if>
+      <if test="pssm != null">
+        pssm,
+      </if>
+      <if test="printBz != null">
+        print_bz,
+      </if>
+      <if test="clje != null">
+        clje,
+      </if>
+      <if test="zfClje != null">
+        zf_clje,
+      </if>
+      <if test="printLsh != null">
+        print_lsh,
+      </if>
+      <if test="printRq != null">
+        print_rq,
+      </if>
+      <if test="xtid != null">
+        xtid,
+      </if>
+      <if test="bjgbBz != null">
+        bjgb_bz,
+      </if>
+      <if test="lbh != null">
+        lbh,
+      </if>
+      <if test="gfma != null">
+        gfma,
+      </if>
+      <if test="gfsf != null">
+        gfsf,
+      </if>
+      <if test="wy != null">
+        wy,
+      </if>
+      <if test="cyfl != null">
+        cyfl,
+      </if>
+      <if test="jybz != null">
+        jybz,
+      </if>
+      <if test="lyzh != null">
+        lyzh,
+      </if>
+      <if test="bqdyBz != null">
+        bqdy_bz,
+      </if>
+      <if test="bz != null">
+        bz,
+      </if>
+      <if test="mtbs != null">
+        mtbs,
+      </if>
+      <if test="pfry != null">
+        pfry,
+      </if>
+      <if test="cfdyBz != null">
+        cfdy_bz,
+      </if>
+      <if test="ycfid != null">
+        ycfid,
+      </if>
+      <if test="shBz != null">
+        sh_bz,
+      </if>
+      <if test="klj != null">
+        klj,
+      </if>
+      <if test="dfdyrq != null">
+        dfdyrq,
+      </if>
+      <if test="rqOld != null">
+        rq_old,
+      </if>
+      <if test="jyh != null">
+        jyh,
+      </if>
+      <if test="wpcfbz != null">
+        wpcfbz,
+      </if>
+      <if test="wpcfbh != null">
+        wpcfbh,
+      </if>
+      <if test="wjScbz != null">
+        wj_scbz,
+      </if>
+      <if test="wjScrq != null">
+        wj_scrq,
+      </if>
+      <if test="pslsh != null">
+        pslsh,
+      </if>
+      <if test="gfxggh != null">
+        gfxggh,
+      </if>
+      <if test="gfxgrq != null">
+        gfxgrq,
+      </if>
+      <if test="gfxgsm != null">
+        gfxgsm,
+      </if>
+      <if test="pfryxm != null">
+        pfryxm,
+      </if>
+      <if test="fyxm != null">
+        fyxm,
+      </if>
+      <if test="tzxm != null">
+        tzxm,
+      </if>
+      <if test="tzxm2 != null">
+        tzxm2,
+      </if>
+      <if test="shrq != null">
+        shrq,
+      </if>
+      <if test="chdybz != null">
+        chdybz,
+      </if>
+      <if test="wybz != null">
+        wybz,
+      </if>
+      <if test="ypns != null">
+        ypns,
+      </if>
+      <if test="ysBz != null">
+        ys_bz,
+      </if>
+      <if test="yhje != null">
+        yhje,
+      </if>
+      <if test="zzdbz != null">
+        zzdbz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zyh != null">
+        #{zyh,jdbcType=INTEGER},
+      </if>
+      <if test="rq != null">
+        #{rq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sfrq != null">
+        #{sfrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fyrq != null">
+        #{fyrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gfbz != null">
+        #{gfbz,jdbcType=CHAR},
+      </if>
+      <if test="kdksh != null">
+        #{kdksh,jdbcType=VARCHAR},
+      </if>
+      <if test="ysh != null">
+        #{ysh,jdbcType=CHAR},
+      </if>
+      <if test="cflx != null">
+        #{cflx,jdbcType=INTEGER},
+      </if>
+      <if test="cfh != null">
+        #{cfh,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null">
+        #{ts,jdbcType=NUMERIC},
+      </if>
+      <if test="je != null">
+        #{je,jdbcType=NUMERIC},
+      </if>
+      <if test="lrgh != null">
+        #{lrgh,jdbcType=VARCHAR},
+      </if>
+      <if test="fygh != null">
+        #{fygh,jdbcType=VARCHAR},
+      </if>
+      <if test="tzgh != null">
+        #{tzgh,jdbcType=VARCHAR},
+      </if>
+      <if test="fjf != null">
+        #{fjf,jdbcType=NUMERIC},
+      </if>
+      <if test="xm != null">
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="rbbz != null">
+        #{rbbz,jdbcType=CHAR},
+      </if>
+      <if test="mzyskdkId != null">
+        #{mzyskdkId,jdbcType=INTEGER},
+      </if>
+      <if test="zfje != null">
+        #{zfje,jdbcType=NUMERIC},
+      </if>
+      <if test="sfbhId != null">
+        #{sfbhId,jdbcType=INTEGER},
+      </if>
+      <if test="cfly != null">
+        #{cfly,jdbcType=INTEGER},
+      </if>
+      <if test="bzTy != null">
+        #{bzTy,jdbcType=CHAR},
+      </if>
+      <if test="fyyf != null">
+        #{fyyf,jdbcType=INTEGER},
+      </if>
+      <if test="fpxh != null">
+        #{fpxh,jdbcType=INTEGER},
+      </if>
+      <if test="xyje != null">
+        #{xyje,jdbcType=NUMERIC},
+      </if>
+      <if test="zcyje != null">
+        #{zcyje,jdbcType=NUMERIC},
+      </if>
+      <if test="cyje != null">
+        #{cyje,jdbcType=NUMERIC},
+      </if>
+      <if test="zfXyje != null">
+        #{zfXyje,jdbcType=NUMERIC},
+      </if>
+      <if test="zfZcyje != null">
+        #{zfZcyje,jdbcType=NUMERIC},
+      </if>
+      <if test="zfCyje != null">
+        #{zfCyje,jdbcType=NUMERIC},
+      </if>
+      <if test="sfxmId != null">
+        #{sfxmId,jdbcType=INTEGER},
+      </if>
+      <if test="rbBzxh != null">
+        #{rbBzxh,jdbcType=INTEGER},
+      </if>
+      <if test="tzgh2 != null">
+        #{tzgh2,jdbcType=VARCHAR},
+      </if>
+      <if test="bybz != null">
+        #{bybz,jdbcType=INTEGER},
+      </if>
+      <if test="window != null">
+        #{window,jdbcType=INTEGER},
+      </if>
+      <if test="psbz != null">
+        #{psbz,jdbcType=INTEGER},
+      </if>
+      <if test="psczgh != null">
+        #{psczgh,jdbcType=VARCHAR},
+      </if>
+      <if test="pstssj != null">
+        #{pstssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pskssj != null">
+        #{pskssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="psjg != null">
+        #{psjg,jdbcType=INTEGER},
+      </if>
+      <if test="pssm != null">
+        #{pssm,jdbcType=VARCHAR},
+      </if>
+      <if test="printBz != null">
+        #{printBz,jdbcType=INTEGER},
+      </if>
+      <if test="clje != null">
+        #{clje,jdbcType=NUMERIC},
+      </if>
+      <if test="zfClje != null">
+        #{zfClje,jdbcType=NUMERIC},
+      </if>
+      <if test="printLsh != null">
+        #{printLsh,jdbcType=CHAR},
+      </if>
+      <if test="printRq != null">
+        #{printRq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xtid != null">
+        #{xtid,jdbcType=INTEGER},
+      </if>
+      <if test="bjgbBz != null">
+        #{bjgbBz,jdbcType=CHAR},
+      </if>
+      <if test="lbh != null">
+        #{lbh,jdbcType=CHAR},
+      </if>
+      <if test="gfma != null">
+        #{gfma,jdbcType=VARCHAR},
+      </if>
+      <if test="gfsf != null">
+        #{gfsf,jdbcType=CHAR},
+      </if>
+      <if test="wy != null">
+        #{wy,jdbcType=CHAR},
+      </if>
+      <if test="cyfl != null">
+        #{cyfl,jdbcType=CHAR},
+      </if>
+      <if test="jybz != null">
+        #{jybz,jdbcType=TINYINT},
+      </if>
+      <if test="lyzh != null">
+        #{lyzh,jdbcType=VARCHAR},
+      </if>
+      <if test="bqdyBz != null">
+        #{bqdyBz,jdbcType=CHAR},
+      </if>
+      <if test="bz != null">
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="mtbs != null">
+        #{mtbs,jdbcType=TINYINT},
+      </if>
+      <if test="pfry != null">
+        #{pfry,jdbcType=VARCHAR},
+      </if>
+      <if test="cfdyBz != null">
+        #{cfdyBz,jdbcType=CHAR},
+      </if>
+      <if test="ycfid != null">
+        #{ycfid,jdbcType=INTEGER},
+      </if>
+      <if test="shBz != null">
+        #{shBz,jdbcType=CHAR},
+      </if>
+      <if test="klj != null">
+        #{klj,jdbcType=CHAR},
+      </if>
+      <if test="dfdyrq != null">
+        #{dfdyrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rqOld != null">
+        #{rqOld,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jyh != null">
+        #{jyh,jdbcType=VARCHAR},
+      </if>
+      <if test="wpcfbz != null">
+        #{wpcfbz,jdbcType=CHAR},
+      </if>
+      <if test="wpcfbh != null">
+        #{wpcfbh,jdbcType=VARCHAR},
+      </if>
+      <if test="wjScbz != null">
+        #{wjScbz,jdbcType=CHAR},
+      </if>
+      <if test="wjScrq != null">
+        #{wjScrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pslsh != null">
+        #{pslsh,jdbcType=VARCHAR},
+      </if>
+      <if test="gfxggh != null">
+        #{gfxggh,jdbcType=VARCHAR},
+      </if>
+      <if test="gfxgrq != null">
+        #{gfxgrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gfxgsm != null">
+        #{gfxgsm,jdbcType=VARCHAR},
+      </if>
+      <if test="pfryxm != null">
+        #{pfryxm,jdbcType=VARCHAR},
+      </if>
+      <if test="fyxm != null">
+        #{fyxm,jdbcType=VARCHAR},
+      </if>
+      <if test="tzxm != null">
+        #{tzxm,jdbcType=VARCHAR},
+      </if>
+      <if test="tzxm2 != null">
+        #{tzxm2,jdbcType=VARCHAR},
+      </if>
+      <if test="shrq != null">
+        #{shrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chdybz != null">
+        #{chdybz,jdbcType=CHAR},
+      </if>
+      <if test="wybz != null">
+        #{wybz,jdbcType=CHAR},
+      </if>
+      <if test="ypns != null">
+        #{ypns,jdbcType=VARCHAR},
+      </if>
+      <if test="ysBz != null">
+        #{ysBz,jdbcType=VARCHAR},
+      </if>
+      <if test="yhje != null">
+        #{yhje,jdbcType=NUMERIC},
+      </if>
+      <if test="zzdbz != null">
+        #{zzdbz,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yicloud.trans.model.mssql.MzypmxkF">
+    update mzypmxk_f
+    <set>
+      <if test="zyh != null">
+        zyh = #{zyh,jdbcType=INTEGER},
+      </if>
+      <if test="rq != null">
+        rq = #{rq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sfrq != null">
+        sfrq = #{sfrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fyrq != null">
+        fyrq = #{fyrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gfbz != null">
+        gfbz = #{gfbz,jdbcType=CHAR},
+      </if>
+      <if test="kdksh != null">
+        kdksh = #{kdksh,jdbcType=VARCHAR},
+      </if>
+      <if test="ysh != null">
+        ysh = #{ysh,jdbcType=CHAR},
+      </if>
+      <if test="cflx != null">
+        cflx = #{cflx,jdbcType=INTEGER},
+      </if>
+      <if test="cfh != null">
+        cfh = #{cfh,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null">
+        ts = #{ts,jdbcType=NUMERIC},
+      </if>
+      <if test="je != null">
+        je = #{je,jdbcType=NUMERIC},
+      </if>
+      <if test="lrgh != null">
+        lrgh = #{lrgh,jdbcType=VARCHAR},
+      </if>
+      <if test="fygh != null">
+        fygh = #{fygh,jdbcType=VARCHAR},
+      </if>
+      <if test="tzgh != null">
+        tzgh = #{tzgh,jdbcType=VARCHAR},
+      </if>
+      <if test="fjf != null">
+        fjf = #{fjf,jdbcType=NUMERIC},
+      </if>
+      <if test="xm != null">
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="rbbz != null">
+        rbbz = #{rbbz,jdbcType=CHAR},
+      </if>
+      <if test="mzyskdkId != null">
+        mzyskdk_id = #{mzyskdkId,jdbcType=INTEGER},
+      </if>
+      <if test="zfje != null">
+        zfje = #{zfje,jdbcType=NUMERIC},
+      </if>
+      <if test="sfbhId != null">
+        sfbh_id = #{sfbhId,jdbcType=INTEGER},
+      </if>
+      <if test="cfly != null">
+        cfly = #{cfly,jdbcType=INTEGER},
+      </if>
+      <if test="bzTy != null">
+        bz_ty = #{bzTy,jdbcType=CHAR},
+      </if>
+      <if test="fyyf != null">
+        fyyf = #{fyyf,jdbcType=INTEGER},
+      </if>
+      <if test="fpxh != null">
+        fpxh = #{fpxh,jdbcType=INTEGER},
+      </if>
+      <if test="xyje != null">
+        xyje = #{xyje,jdbcType=NUMERIC},
+      </if>
+      <if test="zcyje != null">
+        zcyje = #{zcyje,jdbcType=NUMERIC},
+      </if>
+      <if test="cyje != null">
+        cyje = #{cyje,jdbcType=NUMERIC},
+      </if>
+      <if test="zfXyje != null">
+        zf_xyje = #{zfXyje,jdbcType=NUMERIC},
+      </if>
+      <if test="zfZcyje != null">
+        zf_zcyje = #{zfZcyje,jdbcType=NUMERIC},
+      </if>
+      <if test="zfCyje != null">
+        zf_cyje = #{zfCyje,jdbcType=NUMERIC},
+      </if>
+      <if test="sfxmId != null">
+        sfxm_id = #{sfxmId,jdbcType=INTEGER},
+      </if>
+      <if test="rbBzxh != null">
+        rb_bzxh = #{rbBzxh,jdbcType=INTEGER},
+      </if>
+      <if test="tzgh2 != null">
+        tzgh_2 = #{tzgh2,jdbcType=VARCHAR},
+      </if>
+      <if test="bybz != null">
+        bybz = #{bybz,jdbcType=INTEGER},
+      </if>
+      <if test="window != null">
+        "window" = #{window,jdbcType=INTEGER},
+      </if>
+      <if test="psbz != null">
+        psbz = #{psbz,jdbcType=INTEGER},
+      </if>
+      <if test="psczgh != null">
+        psczgh = #{psczgh,jdbcType=VARCHAR},
+      </if>
+      <if test="pstssj != null">
+        pstssj = #{pstssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pskssj != null">
+        pskssj = #{pskssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="psjg != null">
+        psjg = #{psjg,jdbcType=INTEGER},
+      </if>
+      <if test="pssm != null">
+        pssm = #{pssm,jdbcType=VARCHAR},
+      </if>
+      <if test="printBz != null">
+        print_bz = #{printBz,jdbcType=INTEGER},
+      </if>
+      <if test="clje != null">
+        clje = #{clje,jdbcType=NUMERIC},
+      </if>
+      <if test="zfClje != null">
+        zf_clje = #{zfClje,jdbcType=NUMERIC},
+      </if>
+      <if test="printLsh != null">
+        print_lsh = #{printLsh,jdbcType=CHAR},
+      </if>
+      <if test="printRq != null">
+        print_rq = #{printRq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xtid != null">
+        xtid = #{xtid,jdbcType=INTEGER},
+      </if>
+      <if test="bjgbBz != null">
+        bjgb_bz = #{bjgbBz,jdbcType=CHAR},
+      </if>
+      <if test="lbh != null">
+        lbh = #{lbh,jdbcType=CHAR},
+      </if>
+      <if test="gfma != null">
+        gfma = #{gfma,jdbcType=VARCHAR},
+      </if>
+      <if test="gfsf != null">
+        gfsf = #{gfsf,jdbcType=CHAR},
+      </if>
+      <if test="wy != null">
+        wy = #{wy,jdbcType=CHAR},
+      </if>
+      <if test="cyfl != null">
+        cyfl = #{cyfl,jdbcType=CHAR},
+      </if>
+      <if test="jybz != null">
+        jybz = #{jybz,jdbcType=TINYINT},
+      </if>
+      <if test="lyzh != null">
+        lyzh = #{lyzh,jdbcType=VARCHAR},
+      </if>
+      <if test="bqdyBz != null">
+        bqdy_bz = #{bqdyBz,jdbcType=CHAR},
+      </if>
+      <if test="bz != null">
+        bz = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="mtbs != null">
+        mtbs = #{mtbs,jdbcType=TINYINT},
+      </if>
+      <if test="pfry != null">
+        pfry = #{pfry,jdbcType=VARCHAR},
+      </if>
+      <if test="cfdyBz != null">
+        cfdy_bz = #{cfdyBz,jdbcType=CHAR},
+      </if>
+      <if test="ycfid != null">
+        ycfid = #{ycfid,jdbcType=INTEGER},
+      </if>
+      <if test="shBz != null">
+        sh_bz = #{shBz,jdbcType=CHAR},
+      </if>
+      <if test="klj != null">
+        klj = #{klj,jdbcType=CHAR},
+      </if>
+      <if test="dfdyrq != null">
+        dfdyrq = #{dfdyrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rqOld != null">
+        rq_old = #{rqOld,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jyh != null">
+        jyh = #{jyh,jdbcType=VARCHAR},
+      </if>
+      <if test="wpcfbz != null">
+        wpcfbz = #{wpcfbz,jdbcType=CHAR},
+      </if>
+      <if test="wpcfbh != null">
+        wpcfbh = #{wpcfbh,jdbcType=VARCHAR},
+      </if>
+      <if test="wjScbz != null">
+        wj_scbz = #{wjScbz,jdbcType=CHAR},
+      </if>
+      <if test="wjScrq != null">
+        wj_scrq = #{wjScrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pslsh != null">
+        pslsh = #{pslsh,jdbcType=VARCHAR},
+      </if>
+      <if test="gfxggh != null">
+        gfxggh = #{gfxggh,jdbcType=VARCHAR},
+      </if>
+      <if test="gfxgrq != null">
+        gfxgrq = #{gfxgrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gfxgsm != null">
+        gfxgsm = #{gfxgsm,jdbcType=VARCHAR},
+      </if>
+      <if test="pfryxm != null">
+        pfryxm = #{pfryxm,jdbcType=VARCHAR},
+      </if>
+      <if test="fyxm != null">
+        fyxm = #{fyxm,jdbcType=VARCHAR},
+      </if>
+      <if test="tzxm != null">
+        tzxm = #{tzxm,jdbcType=VARCHAR},
+      </if>
+      <if test="tzxm2 != null">
+        tzxm2 = #{tzxm2,jdbcType=VARCHAR},
+      </if>
+      <if test="shrq != null">
+        shrq = #{shrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chdybz != null">
+        chdybz = #{chdybz,jdbcType=CHAR},
+      </if>
+      <if test="wybz != null">
+        wybz = #{wybz,jdbcType=CHAR},
+      </if>
+      <if test="ypns != null">
+        ypns = #{ypns,jdbcType=VARCHAR},
+      </if>
+      <if test="ysBz != null">
+        ys_bz = #{ysBz,jdbcType=VARCHAR},
+      </if>
+      <if test="yhje != null">
+        yhje = #{yhje,jdbcType=NUMERIC},
+      </if>
+      <if test="zzdbz != null">
+        zzdbz = #{zzdbz,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.MzypmxkF">
+    update mzypmxk_f
+    set zyh = #{zyh,jdbcType=INTEGER},
+      rq = #{rq,jdbcType=TIMESTAMP},
+      sfrq = #{sfrq,jdbcType=TIMESTAMP},
+      fyrq = #{fyrq,jdbcType=TIMESTAMP},
+      gfbz = #{gfbz,jdbcType=CHAR},
+      kdksh = #{kdksh,jdbcType=VARCHAR},
+      ysh = #{ysh,jdbcType=CHAR},
+      cflx = #{cflx,jdbcType=INTEGER},
+      cfh = #{cfh,jdbcType=VARCHAR},
+      ts = #{ts,jdbcType=NUMERIC},
+      je = #{je,jdbcType=NUMERIC},
+      lrgh = #{lrgh,jdbcType=VARCHAR},
+      fygh = #{fygh,jdbcType=VARCHAR},
+      tzgh = #{tzgh,jdbcType=VARCHAR},
+      fjf = #{fjf,jdbcType=NUMERIC},
+      xm = #{xm,jdbcType=VARCHAR},
+      rbbz = #{rbbz,jdbcType=CHAR},
+      mzyskdk_id = #{mzyskdkId,jdbcType=INTEGER},
+      zfje = #{zfje,jdbcType=NUMERIC},
+      sfbh_id = #{sfbhId,jdbcType=INTEGER},
+      cfly = #{cfly,jdbcType=INTEGER},
+      bz_ty = #{bzTy,jdbcType=CHAR},
+      fyyf = #{fyyf,jdbcType=INTEGER},
+      fpxh = #{fpxh,jdbcType=INTEGER},
+      xyje = #{xyje,jdbcType=NUMERIC},
+      zcyje = #{zcyje,jdbcType=NUMERIC},
+      cyje = #{cyje,jdbcType=NUMERIC},
+      zf_xyje = #{zfXyje,jdbcType=NUMERIC},
+      zf_zcyje = #{zfZcyje,jdbcType=NUMERIC},
+      zf_cyje = #{zfCyje,jdbcType=NUMERIC},
+      sfxm_id = #{sfxmId,jdbcType=INTEGER},
+      rb_bzxh = #{rbBzxh,jdbcType=INTEGER},
+      tzgh_2 = #{tzgh2,jdbcType=VARCHAR},
+      bybz = #{bybz,jdbcType=INTEGER},
+      "window" = #{window,jdbcType=INTEGER},
+      psbz = #{psbz,jdbcType=INTEGER},
+      psczgh = #{psczgh,jdbcType=VARCHAR},
+      pstssj = #{pstssj,jdbcType=TIMESTAMP},
+      pskssj = #{pskssj,jdbcType=TIMESTAMP},
+      psjg = #{psjg,jdbcType=INTEGER},
+      pssm = #{pssm,jdbcType=VARCHAR},
+      print_bz = #{printBz,jdbcType=INTEGER},
+      clje = #{clje,jdbcType=NUMERIC},
+      zf_clje = #{zfClje,jdbcType=NUMERIC},
+      print_lsh = #{printLsh,jdbcType=CHAR},
+      print_rq = #{printRq,jdbcType=TIMESTAMP},
+      xtid = #{xtid,jdbcType=INTEGER},
+      bjgb_bz = #{bjgbBz,jdbcType=CHAR},
+      lbh = #{lbh,jdbcType=CHAR},
+      gfma = #{gfma,jdbcType=VARCHAR},
+      gfsf = #{gfsf,jdbcType=CHAR},
+      wy = #{wy,jdbcType=CHAR},
+      cyfl = #{cyfl,jdbcType=CHAR},
+      jybz = #{jybz,jdbcType=TINYINT},
+      lyzh = #{lyzh,jdbcType=VARCHAR},
+      bqdy_bz = #{bqdyBz,jdbcType=CHAR},
+      bz = #{bz,jdbcType=VARCHAR},
+      mtbs = #{mtbs,jdbcType=TINYINT},
+      pfry = #{pfry,jdbcType=VARCHAR},
+      cfdy_bz = #{cfdyBz,jdbcType=CHAR},
+      ycfid = #{ycfid,jdbcType=INTEGER},
+      sh_bz = #{shBz,jdbcType=CHAR},
+      klj = #{klj,jdbcType=CHAR},
+      dfdyrq = #{dfdyrq,jdbcType=TIMESTAMP},
+      rq_old = #{rqOld,jdbcType=TIMESTAMP},
+      jyh = #{jyh,jdbcType=VARCHAR},
+      wpcfbz = #{wpcfbz,jdbcType=CHAR},
+      wpcfbh = #{wpcfbh,jdbcType=VARCHAR},
+      wj_scbz = #{wjScbz,jdbcType=CHAR},
+      wj_scrq = #{wjScrq,jdbcType=TIMESTAMP},
+      pslsh = #{pslsh,jdbcType=VARCHAR},
+      gfxggh = #{gfxggh,jdbcType=VARCHAR},
+      gfxgrq = #{gfxgrq,jdbcType=TIMESTAMP},
+      gfxgsm = #{gfxgsm,jdbcType=VARCHAR},
+      pfryxm = #{pfryxm,jdbcType=VARCHAR},
+      fyxm = #{fyxm,jdbcType=VARCHAR},
+      tzxm = #{tzxm,jdbcType=VARCHAR},
+      tzxm2 = #{tzxm2,jdbcType=VARCHAR},
+      shrq = #{shrq,jdbcType=TIMESTAMP},
+      chdybz = #{chdybz,jdbcType=CHAR},
+      wybz = #{wybz,jdbcType=CHAR},
+      ypns = #{ypns,jdbcType=VARCHAR},
+      ys_bz = #{ysBz,jdbcType=VARCHAR},
+      yhje = #{yhje,jdbcType=NUMERIC},
+      zzdbz = #{zzdbz,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

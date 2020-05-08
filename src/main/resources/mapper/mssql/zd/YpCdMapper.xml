@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicloud.trans.mapper.mssql.zd.YpCdMapper">
+  <resultMap id="BaseResultMap" type="com.yicloud.trans.model.mssql.zd.YpCd">
+    <id column="yph" jdbcType="INTEGER" property="yph" />
+    <id column="ggxh" jdbcType="CHAR" property="ggxh" />
+    <id column="cd_id" jdbcType="INTEGER" property="cdId" />
+    <result column="pfj" jdbcType="NUMERIC" property="pfj" />
+    <result column="lsj" jdbcType="NUMERIC" property="lsj" />
+    <result column="jhj" jdbcType="NUMERIC" property="jhj" />
+    <result column="pzwh" jdbcType="VARCHAR" property="pzwh" />
+    <result column="cdmc" jdbcType="VARCHAR" property="cdmc" />
+    <result column="dblsj" jdbcType="NUMERIC" property="dblsj" />
+    <result column="pbbz" jdbcType="VARCHAR" property="pbbz" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    yph, ggxh, cd_id, pfj, lsj, jhj, pzwh, cdmc, dblsj, pbbz
+  </sql>
+<!--  <select id="selectByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.zd.YpCdKey" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from yp_cd-->
+<!--    where yph = #{yph,jdbcType=INTEGER}-->
+<!--      and ggxh = #{ggxh,jdbcType=CHAR}-->
+<!--      and cd_id = #{cdId,jdbcType=INTEGER}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.zd.YpCdKey">-->
+<!--    delete from yp_cd-->
+<!--    where yph = #{yph,jdbcType=INTEGER}-->
+<!--      and ggxh = #{ggxh,jdbcType=CHAR}-->
+<!--      and cd_id = #{cdId,jdbcType=INTEGER}-->
+<!--  </delete>-->
+<!--  <insert id="insert" keyColumn="yph" keyProperty="yph" parameterType="com.yicloud.trans.model.mssql.zd.YpCd" useGeneratedKeys="true">-->
+<!--    insert into yp_cd (ggxh, cd_id, pfj, -->
+<!--      lsj, jhj, pzwh, cdmc, -->
+<!--      dblsj, pbbz)-->
+<!--    values (#{ggxh,jdbcType=CHAR}, #{cdId,jdbcType=INTEGER}, #{pfj,jdbcType=NUMERIC}, -->
+<!--      #{lsj,jdbcType=NUMERIC}, #{jhj,jdbcType=NUMERIC}, #{pzwh,jdbcType=VARCHAR}, #{cdmc,jdbcType=VARCHAR}, -->
+<!--      #{dblsj,jdbcType=NUMERIC}, #{pbbz,jdbcType=VARCHAR})-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" keyColumn="yph" keyProperty="yph" parameterType="com.yicloud.trans.model.mssql.zd.YpCd" useGeneratedKeys="true">-->
+<!--    insert into yp_cd-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="ggxh != null">-->
+<!--        ggxh,-->
+<!--      </if>-->
+<!--      <if test="cdId != null">-->
+<!--        cd_id,-->
+<!--      </if>-->
+<!--      <if test="pfj != null">-->
+<!--        pfj,-->
+<!--      </if>-->
+<!--      <if test="lsj != null">-->
+<!--        lsj,-->
+<!--      </if>-->
+<!--      <if test="jhj != null">-->
+<!--        jhj,-->
+<!--      </if>-->
+<!--      <if test="pzwh != null">-->
+<!--        pzwh,-->
+<!--      </if>-->
+<!--      <if test="cdmc != null">-->
+<!--        cdmc,-->
+<!--      </if>-->
+<!--      <if test="dblsj != null">-->
+<!--        dblsj,-->
+<!--      </if>-->
+<!--      <if test="pbbz != null">-->
+<!--        pbbz,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="ggxh != null">-->
+<!--        #{ggxh,jdbcType=CHAR},-->
+<!--      </if>-->
+<!--      <if test="cdId != null">-->
+<!--        #{cdId,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="pfj != null">-->
+<!--        #{pfj,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="lsj != null">-->
+<!--        #{lsj,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="jhj != null">-->
+<!--        #{jhj,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="pzwh != null">-->
+<!--        #{pzwh,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="cdmc != null">-->
+<!--        #{cdmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="dblsj != null">-->
+<!--        #{dblsj,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="pbbz != null">-->
+<!--        #{pbbz,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.yicloud.trans.model.mssql.zd.YpCd">-->
+<!--    update yp_cd-->
+<!--    <set>-->
+<!--      <if test="pfj != null">-->
+<!--        pfj = #{pfj,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="lsj != null">-->
+<!--        lsj = #{lsj,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="jhj != null">-->
+<!--        jhj = #{jhj,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="pzwh != null">-->
+<!--        pzwh = #{pzwh,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="cdmc != null">-->
+<!--        cdmc = #{cdmc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="dblsj != null">-->
+<!--        dblsj = #{dblsj,jdbcType=NUMERIC},-->
+<!--      </if>-->
+<!--      <if test="pbbz != null">-->
+<!--        pbbz = #{pbbz,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where yph = #{yph,jdbcType=INTEGER}-->
+<!--      and ggxh = #{ggxh,jdbcType=CHAR}-->
+<!--      and cd_id = #{cdId,jdbcType=INTEGER}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.yicloud.trans.model.mssql.zd.YpCd">-->
+<!--    update yp_cd-->
+<!--    set pfj = #{pfj,jdbcType=NUMERIC},-->
+<!--      lsj = #{lsj,jdbcType=NUMERIC},-->
+<!--      jhj = #{jhj,jdbcType=NUMERIC},-->
+<!--      pzwh = #{pzwh,jdbcType=VARCHAR},-->
+<!--      cdmc = #{cdmc,jdbcType=VARCHAR},-->
+<!--      dblsj = #{dblsj,jdbcType=NUMERIC},-->
+<!--      pbbz = #{pbbz,jdbcType=VARCHAR}-->
+<!--    where yph = #{yph,jdbcType=INTEGER}-->
+<!--      and ggxh = #{ggxh,jdbcType=CHAR}-->
+<!--      and cd_id = #{cdId,jdbcType=INTEGER}-->
+<!--  </update>-->
+</mapper>
