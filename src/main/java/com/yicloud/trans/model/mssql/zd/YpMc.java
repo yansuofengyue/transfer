@@ -25,7 +25,7 @@ public class YpMc implements Serializable {
 
     private String zfbz;
 
-    private Integer zblb1;
+//    private Integer zblb1;
 
     private String sm;
 

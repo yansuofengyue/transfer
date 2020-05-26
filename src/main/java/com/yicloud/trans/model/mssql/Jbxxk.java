@@ -2,7 +2,6 @@ package com.yicloud.trans.model.mssql;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -14,7 +13,6 @@ import lombok.Data;
  */
 @Data
 public class Jbxxk implements Serializable {
-    private static final long serialVersionUID = 6486007228981058640L;
     @TableId
     private Integer zyh;
 
@@ -56,7 +54,7 @@ public class Jbxxk implements Serializable {
 
     private String jg;
 
-    private LocalDate csny;
+    private Date csny;
 
     private Integer dwid;
 
@@ -116,4 +114,5 @@ public class Jbxxk implements Serializable {
 
     private Date scxzrq;
 
+    private static final long serialVersionUID = 1L;
 }

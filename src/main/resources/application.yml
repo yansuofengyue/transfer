@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: 8090
 spring:
   datasource:
     dynamic:
@@ -19,7 +19,7 @@ spring:
           password: yskj123456
           driver-class-name: com.mysql.cj.jdbc.Driver
         slave:
-          url: jdbc:sqlserver://192.168.1.1:1433;databasename=dxtjt
+          url: jdbc:sqlserver://192.168.1.45:1433;databasename=dxtjt
           username: sa
           password:
           driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver

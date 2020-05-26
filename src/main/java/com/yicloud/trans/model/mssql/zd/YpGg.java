@@ -160,25 +160,25 @@ public class YpGg  implements Serializable {
 
     private String xzsm;
 
-    private BigDecimal yyxl2;
+//    private BigDecimal yyxl2;
 
     private BigDecimal yyxlGdbz;
 
     private BigDecimal cfyyxl;
 
-    private BigDecimal cfyyxl2;
+//    private BigDecimal cfyyxl2;
 
     private BigDecimal cfyyxlGdbz;
 
-    private String ybdm2010;
+//    private String ybdm2010;
 
-    private BigDecimal yyxlGdbz2;
+//    private BigDecimal yyxlGdbz2;
 
-    private BigDecimal cfyyxlGbbz2;
-
-    private BigDecimal cfyyxlGdbz2;
-
-    private BigDecimal yyxlYd;
+//    private BigDecimal cfyyxlGbbz2;
+//
+//    private BigDecimal cfyyxlGdbz2;
+//
+//    private BigDecimal yyxlYd;
 
     private String klj;
 

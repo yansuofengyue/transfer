@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.Serializable;
 import java.text.ParseException;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -45,9 +45,17 @@ class OrdAppointmentServiceImplTest {
 
     @Test
     void transferOrdApp() throws ParseException {
-//        BazdkRegister bazdkRegister = bazdkRegisterService.getOne(new QueryWrapper<BazdkRegister>().lambda().eq(BazdkRegister::getEaId, 306103L));
-        List<BazdkRegister> bazdkRegisterList = bazdkRegisterService.list(new QueryWrapper<BazdkRegister>().lambda().eq(BazdkRegister::getEaYsh,"2141").ge(BazdkRegister::getEaJzrq,"2020-05-12"));
-        for (BazdkRegister bazdkRegister:bazdkRegisterList){
+        List<BazdkRegister> bazdkRegisterList = bazdkRegisterService.list(new QueryWrapper<BazdkRegister>().lambda().ge(BazdkRegister::getEaJzrq,"2020-05-10"));
+        HashMap<String,BazdkRegister> bazdkRegisterHashMap = new HashMap<>();
+        List<BazdkRegister> bazdkRegisters = new ArrayList<>();
+        bazdkRegisterList.forEach(obj->{
+            String sKey = obj.getEaYsh()+"_"+obj.getEaXwhbz()+"_"+obj.getEaMzlxId()+""+obj.getEaJzrq()+""+obj.getEaJzxh();
+            if (!bazdkRegisterHashMap.containsKey(sKey)){
+                bazdkRegisterHashMap.put(sKey,obj);
+                bazdkRegisters.add(obj);
+            }
+        });
+        for (BazdkRegister bazdkRegister:bazdkRegisters){
             Ysk ysk = yskService.getOne(new QueryWrapper<Ysk>().lambda().eq(Ysk::getYsh, bazdkRegister.getEaYsh()));
             ordAppointmentService.transferOrdApp(bazdkRegister,ysk);
         }

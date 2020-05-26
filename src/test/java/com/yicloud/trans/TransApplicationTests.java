@@ -3,6 +3,7 @@ package com.yicloud.trans;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yicloud.trans.controller.PatientsController;
+import com.yicloud.trans.core.YiUtil;
 import com.yicloud.trans.model.mssql.Jbxxk;
 import com.yicloud.trans.model.mssql.zd.Gfjb2Ybbr;
 import com.yicloud.trans.model.mysql.Nature;
@@ -60,7 +61,7 @@ class TransApplicationTests {
         }
 
         patients.setPatSex(iSex);
-        patients.setPatBirthday(jbxxk.getCsny());
+        patients.setPatBirthday(YiUtil.dateToLocalDate(jbxxk.getCsny()));
         Long feeId=1L;
         if (jbxxk.getFylb().startsWith("H")){
             feeId=2L;
@@ -114,7 +115,7 @@ class TransApplicationTests {
     @Test
     public void test(){
         //老系统自费病人和身份证号为空的病人 身份证号处理 并直接插入新系统
-        List<Jbxxk> list = jbxxkService.list(new QueryWrapper<Jbxxk>().lambda().eq(Jbxxk::getFylb, "00").or().eq(Jbxxk::getSfzh,""));
+        List<Jbxxk> list = jbxxkService.list(new QueryWrapper<Jbxxk>().lambda());
         for (Jbxxk jbxxk:list){
             jbxxk.setSfzh("3301042"+jbxxk.getZyh());
             jbxxkService.updateById(jbxxk);
