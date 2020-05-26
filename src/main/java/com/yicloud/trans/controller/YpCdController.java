@@ -12,9 +12,12 @@ import com.yicloud.trans.service.mssql.YpMcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +35,12 @@ public class YpCdController {
     private static final Logger LOGGER = LoggerFactory.getLogger(PatientsController.class);
 
     @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private RedisTemplate<String, Serializable> redisCacheTemplate;
+
+    @Autowired
     private YpGgService ypGgService;
     @Autowired
     private YpMcService ypMcService;
@@ -45,10 +54,21 @@ public class YpCdController {
         for (YpCd ypCd:ypCdList){
             YpCdWrapper ypCdWrapper = new YpCdWrapper();
             ypCdWrapper.setYpCd(ypCd);
-            YpGg ypGg = ypGgService.getOne(new QueryWrapper<YpGg>().lambda().eq(YpGg::getYph, ypCd.getYph()).eq(YpGg::getGgxh,ypCd.getGgxh()));
-            ypCdWrapper.setYpGg(ypGg);
-            YpMc ypMc = ypMcService.getOne(new QueryWrapper<YpMc>().lambda().eq(YpMc::getYph, ypCd.getYph()));
-            ypCdWrapper.setYpMc(ypMc);
+            if (redisCacheTemplate.opsForHash().hasKey("ypgg",ypCd.getYph()+ypCd.getGgxh())){
+                YpGg ypGg = (YpGg) redisCacheTemplate.opsForHash().get("ypgg",ypCd.getYph()+ypCd.getGgxh());
+                ypCdWrapper.setYpGg(ypGg);
+            }else {
+                YpGg ypGg = ypGgService.getOne(new QueryWrapper<YpGg>().lambda().eq(YpGg::getYph, ypCd.getYph()).eq(YpGg::getGgxh,ypCd.getGgxh()));
+                ypCdWrapper.setYpGg(ypGg);
+            }
+            if (redisCacheTemplate.opsForHash().hasKey("ypmc",ypCd.getYph())){
+                YpMc ypMc = (YpMc) redisCacheTemplate.opsForHash().get("ypmc",ypCd.getYph());
+                ypCdWrapper.setYpMc(ypMc);
+            }else {
+                YpMc ypMc = ypMcService.getOne(new QueryWrapper<YpMc>().lambda().eq(YpMc::getYph, ypCd.getYph()));
+                ypCdWrapper.setYpMc(ypMc);
+            }
+
             ypCdWrapperList.add(ypCdWrapper);
         }
         return ypCdWrapperList;
