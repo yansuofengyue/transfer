@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicloud.trans.mapper.mysql.PubStaffHosptalMapper">
+  <resultMap id="BaseResultMap" type="com.yicloud.trans.model.mysql.PubStaffHosptal">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sff_id" jdbcType="BIGINT" property="sffId" />
+    <result column="upload_sff_id" jdbcType="BIGINT" property="uploadSffId" />
+    <result column="dep_id" jdbcType="BIGINT" property="depId" />
+    <result column="sff_speciality" jdbcType="VARCHAR" property="sffSpeciality" />
+    <result column="sff_duty" jdbcType="VARCHAR" property="sffDuty" />
+    <result column="sff_professional" jdbcType="VARCHAR" property="sffProfessional" />
+    <result column="sff_working_times" jdbcType="TIMESTAMP" property="sffWorkingTimes" />
+    <result column="sff_state" jdbcType="CHAR" property="sffState" />
+    <result column="hospital_id" jdbcType="BIGINT" property="hospitalId" />
+    <result column="sff_administrative_rank" jdbcType="VARCHAR" property="sffAdministrativeRank" />
+    <result column="sff_practice_code" jdbcType="VARCHAR" property="sffPracticeCode" />
+    <result column="sff_doc_grade" jdbcType="VARCHAR" property="sffDocGrade" />
+    <result column="sff_practice_scope" jdbcType="VARCHAR" property="sffPracticeScope" />
+    <result column="sff_practice_Division" jdbcType="VARCHAR" property="sffPracticeDivision" />
+    <result column="sff_qualification_Code" jdbcType="VARCHAR" property="sffQualificationCode" />
+    <result column="sff_summary" jdbcType="VARCHAR" property="sffSummary" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="sff_type" jdbcType="VARCHAR" property="sffType" />
+    <result column="sff_account" jdbcType="VARCHAR" property="sffAccount" />
+    <result column="time_stamp" jdbcType="TIMESTAMP" property="timeStamp" />
+    <result column="sff_recipe_right" jdbcType="CHAR" property="sffRecipeRight" />
+    <result column="goodat" jdbcType="VARCHAR" property="goodat" />
+    <result column="upload_type" jdbcType="CHAR" property="uploadType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sff_id, upload_sff_id, dep_id, sff_speciality, sff_duty, sff_professional, sff_working_times, 
+    sff_state, hospital_id, sff_administrative_rank, sff_practice_code, sff_doc_grade, 
+    sff_practice_scope, sff_practice_Division, sff_qualification_Code, sff_summary, role_id, 
+    sff_type, sff_account, time_stamp, sff_recipe_right, goodat, upload_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pub_staff_hosptal
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pub_staff_hosptal
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.yicloud.trans.model.mysql.PubStaffHosptal" useGeneratedKeys="true">
+    insert into pub_staff_hosptal (sff_id, upload_sff_id, dep_id, 
+      sff_speciality, sff_duty, sff_professional, 
+      sff_working_times, sff_state, hospital_id, 
+      sff_administrative_rank, sff_practice_code, 
+      sff_doc_grade, sff_practice_scope, sff_practice_Division, 
+      sff_qualification_Code, sff_summary, role_id, 
+      sff_type, sff_account, time_stamp, 
+      sff_recipe_right, goodat, upload_type
+      )
+    values (#{sffId,jdbcType=BIGINT}, #{uploadSffId,jdbcType=BIGINT}, #{depId,jdbcType=BIGINT}, 
+      #{sffSpeciality,jdbcType=VARCHAR}, #{sffDuty,jdbcType=VARCHAR}, #{sffProfessional,jdbcType=VARCHAR}, 
+      #{sffWorkingTimes,jdbcType=TIMESTAMP}, #{sffState,jdbcType=CHAR}, #{hospitalId,jdbcType=BIGINT}, 
+      #{sffAdministrativeRank,jdbcType=VARCHAR}, #{sffPracticeCode,jdbcType=VARCHAR}, 
+      #{sffDocGrade,jdbcType=VARCHAR}, #{sffPracticeScope,jdbcType=VARCHAR}, #{sffPracticeDivision,jdbcType=VARCHAR}, 
+      #{sffQualificationCode,jdbcType=VARCHAR}, #{sffSummary,jdbcType=VARCHAR}, #{roleId,jdbcType=BIGINT}, 
+      #{sffType,jdbcType=VARCHAR}, #{sffAccount,jdbcType=VARCHAR}, #{timeStamp,jdbcType=TIMESTAMP}, 
+      #{sffRecipeRight,jdbcType=CHAR}, #{goodat,jdbcType=VARCHAR}, #{uploadType,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.yicloud.trans.model.mysql.PubStaffHosptal" useGeneratedKeys="true">
+    insert into pub_staff_hosptal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sffId != null">
+        sff_id,
+      </if>
+      <if test="uploadSffId != null">
+        upload_sff_id,
+      </if>
+      <if test="depId != null">
+        dep_id,
+      </if>
+      <if test="sffSpeciality != null">
+        sff_speciality,
+      </if>
+      <if test="sffDuty != null">
+        sff_duty,
+      </if>
+      <if test="sffProfessional != null">
+        sff_professional,
+      </if>
+      <if test="sffWorkingTimes != null">
+        sff_working_times,
+      </if>
+      <if test="sffState != null">
+        sff_state,
+      </if>
+      <if test="hospitalId != null">
+        hospital_id,
+      </if>
+      <if test="sffAdministrativeRank != null">
+        sff_administrative_rank,
+      </if>
+      <if test="sffPracticeCode != null">
+        sff_practice_code,
+      </if>
+      <if test="sffDocGrade != null">
+        sff_doc_grade,
+      </if>
+      <if test="sffPracticeScope != null">
+        sff_practice_scope,
+      </if>
+      <if test="sffPracticeDivision != null">
+        sff_practice_Division,
+      </if>
+      <if test="sffQualificationCode != null">
+        sff_qualification_Code,
+      </if>
+      <if test="sffSummary != null">
+        sff_summary,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="sffType != null">
+        sff_type,
+      </if>
+      <if test="sffAccount != null">
+        sff_account,
+      </if>
+      <if test="timeStamp != null">
+        time_stamp,
+      </if>
+      <if test="sffRecipeRight != null">
+        sff_recipe_right,
+      </if>
+      <if test="goodat != null">
+        goodat,
+      </if>
+      <if test="uploadType != null">
+        upload_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sffId != null">
+        #{sffId,jdbcType=BIGINT},
+      </if>
+      <if test="uploadSffId != null">
+        #{uploadSffId,jdbcType=BIGINT},
+      </if>
+      <if test="depId != null">
+        #{depId,jdbcType=BIGINT},
+      </if>
+      <if test="sffSpeciality != null">
+        #{sffSpeciality,jdbcType=VARCHAR},
+      </if>
+      <if test="sffDuty != null">
+        #{sffDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="sffProfessional != null">
+        #{sffProfessional,jdbcType=VARCHAR},
+      </if>
+      <if test="sffWorkingTimes != null">
+        #{sffWorkingTimes,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sffState != null">
+        #{sffState,jdbcType=CHAR},
+      </if>
+      <if test="hospitalId != null">
+        #{hospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="sffAdministrativeRank != null">
+        #{sffAdministrativeRank,jdbcType=VARCHAR},
+      </if>
+      <if test="sffPracticeCode != null">
+        #{sffPracticeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sffDocGrade != null">
+        #{sffDocGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="sffPracticeScope != null">
+        #{sffPracticeScope,jdbcType=VARCHAR},
+      </if>
+      <if test="sffPracticeDivision != null">
+        #{sffPracticeDivision,jdbcType=VARCHAR},
+      </if>
+      <if test="sffQualificationCode != null">
+        #{sffQualificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sffSummary != null">
+        #{sffSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="sffType != null">
+        #{sffType,jdbcType=VARCHAR},
+      </if>
+      <if test="sffAccount != null">
+        #{sffAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null">
+        #{timeStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sffRecipeRight != null">
+        #{sffRecipeRight,jdbcType=CHAR},
+      </if>
+      <if test="goodat != null">
+        #{goodat,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadType != null">
+        #{uploadType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yicloud.trans.model.mysql.PubStaffHosptal">
+    update pub_staff_hosptal
+    <set>
+      <if test="sffId != null">
+        sff_id = #{sffId,jdbcType=BIGINT},
+      </if>
+      <if test="uploadSffId != null">
+        upload_sff_id = #{uploadSffId,jdbcType=BIGINT},
+      </if>
+      <if test="depId != null">
+        dep_id = #{depId,jdbcType=BIGINT},
+      </if>
+      <if test="sffSpeciality != null">
+        sff_speciality = #{sffSpeciality,jdbcType=VARCHAR},
+      </if>
+      <if test="sffDuty != null">
+        sff_duty = #{sffDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="sffProfessional != null">
+        sff_professional = #{sffProfessional,jdbcType=VARCHAR},
+      </if>
+      <if test="sffWorkingTimes != null">
+        sff_working_times = #{sffWorkingTimes,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sffState != null">
+        sff_state = #{sffState,jdbcType=CHAR},
+      </if>
+      <if test="hospitalId != null">
+        hospital_id = #{hospitalId,jdbcType=BIGINT},
+      </if>
+      <if test="sffAdministrativeRank != null">
+        sff_administrative_rank = #{sffAdministrativeRank,jdbcType=VARCHAR},
+      </if>
+      <if test="sffPracticeCode != null">
+        sff_practice_code = #{sffPracticeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sffDocGrade != null">
+        sff_doc_grade = #{sffDocGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="sffPracticeScope != null">
+        sff_practice_scope = #{sffPracticeScope,jdbcType=VARCHAR},
+      </if>
+      <if test="sffPracticeDivision != null">
+        sff_practice_Division = #{sffPracticeDivision,jdbcType=VARCHAR},
+      </if>
+      <if test="sffQualificationCode != null">
+        sff_qualification_Code = #{sffQualificationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sffSummary != null">
+        sff_summary = #{sffSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="sffType != null">
+        sff_type = #{sffType,jdbcType=VARCHAR},
+      </if>
+      <if test="sffAccount != null">
+        sff_account = #{sffAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null">
+        time_stamp = #{timeStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sffRecipeRight != null">
+        sff_recipe_right = #{sffRecipeRight,jdbcType=CHAR},
+      </if>
+      <if test="goodat != null">
+        goodat = #{goodat,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadType != null">
+        upload_type = #{uploadType,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yicloud.trans.model.mysql.PubStaffHosptal">
+    update pub_staff_hosptal
+    set sff_id = #{sffId,jdbcType=BIGINT},
+      upload_sff_id = #{uploadSffId,jdbcType=BIGINT},
+      dep_id = #{depId,jdbcType=BIGINT},
+      sff_speciality = #{sffSpeciality,jdbcType=VARCHAR},
+      sff_duty = #{sffDuty,jdbcType=VARCHAR},
+      sff_professional = #{sffProfessional,jdbcType=VARCHAR},
+      sff_working_times = #{sffWorkingTimes,jdbcType=TIMESTAMP},
+      sff_state = #{sffState,jdbcType=CHAR},
+      hospital_id = #{hospitalId,jdbcType=BIGINT},
+      sff_administrative_rank = #{sffAdministrativeRank,jdbcType=VARCHAR},
+      sff_practice_code = #{sffPracticeCode,jdbcType=VARCHAR},
+      sff_doc_grade = #{sffDocGrade,jdbcType=VARCHAR},
+      sff_practice_scope = #{sffPracticeScope,jdbcType=VARCHAR},
+      sff_practice_Division = #{sffPracticeDivision,jdbcType=VARCHAR},
+      sff_qualification_Code = #{sffQualificationCode,jdbcType=VARCHAR},
+      sff_summary = #{sffSummary,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT},
+      sff_type = #{sffType,jdbcType=VARCHAR},
+      sff_account = #{sffAccount,jdbcType=VARCHAR},
+      time_stamp = #{timeStamp,jdbcType=TIMESTAMP},
+      sff_recipe_right = #{sffRecipeRight,jdbcType=CHAR},
+      goodat = #{goodat,jdbcType=VARCHAR},
+      upload_type = #{uploadType,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

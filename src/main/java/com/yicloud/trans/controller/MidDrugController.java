@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,8 +51,7 @@ public class MidDrugController {
     private MidDrugService midDrugService;
 
     @RequestMapping("/match")
-    @ResponseBody
-    public String match(DrugRegionAlias drugRegionAlias, YpCdWrapper ypCdWrapper) throws Exception {
+    public String match(DrugRegionAlias drugRegionAlias,YpCdWrapper ypCdWrapper) throws Exception {
         MidDrug midDrug = new MidDrug();
         midDrug.setDrugRegionId(drugRegionAlias.getId());
         midDrug.setDrugRegionName(drugRegionAlias.getDrgName());

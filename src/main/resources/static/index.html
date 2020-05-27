@@ -195,7 +195,7 @@
                 console.log(this.currentUpRow, this.currentDownRow)
                 axios.post('http://127.0.0.1:8090/midDrug/match',
                     {
-                        drugRegionAlias: this.currentUpRow,
+                        drugRegionAlias:this.currentUpRow,
                         ypCdWrapper: this.currentDownRow
                     }).then(function (res) {
                     console.log(res);
