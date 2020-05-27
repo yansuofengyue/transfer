@@ -9,6 +9,7 @@ import lombok.Data;
  */
 @Data
 public class YpMc implements Serializable {
+    private static final long serialVersionUID = -846478625193233730L;
     private Integer yph;
 
     private String ypmc;
@@ -57,5 +58,5 @@ public class YpMc implements Serializable {
 
     private Integer gypl;
 
-    private static final long serialVersionUID = 1L;
+
 }

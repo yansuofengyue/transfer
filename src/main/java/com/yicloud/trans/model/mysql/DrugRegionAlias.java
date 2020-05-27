@@ -2,7 +2,10 @@ package com.yicloud.trans.model.mysql;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import lombok.Data;
 
 /**
@@ -222,7 +225,7 @@ public class DrugRegionAlias implements Serializable {
     /**
      * 录入时间
      */
-    private LocalDateTime drgCreateDate;
+//    private LocalDateTime drgCreateDate;
 
     private BigDecimal drgConcentrer;
 
@@ -235,7 +238,7 @@ public class DrugRegionAlias implements Serializable {
      * 权重
      */
     private Integer drgWeight;
-
-    private LocalDateTime timeStamp;
+//
+//    private LocalDateTime timeStamp;
 
 }

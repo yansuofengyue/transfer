@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Copyright (C).2020-2020.伊森科技
@@ -32,21 +33,25 @@ public class DrugRegionAliasController {
     private RedisTemplate<String, Serializable> redisCacheTemplate;
 
     @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Autowired
     private DrugRegionAliasService drugRegionAliasService;
 
     @RequestMapping("/list")
-    public List<DrugRegionAlias> drugRegionAliasList(String drgState){
-        List<DrugRegionAlias> list=new ArrayList<>(2048);
-        if (redisCacheTemplate.opsForSet().size("drugRegionAlias")>0){
-            list = (List<DrugRegionAlias>) redisCacheTemplate.opsForSet().pop("drugRegionAlias",redisCacheTemplate.opsForSet().size("drugRegionAlias"));
-             list = drugRegionAliasService.list(new QueryWrapper<DrugRegionAlias>().lambda().eq(DrugRegionAlias::getDrgType, "1").eq(DrugRegionAlias::getDrgState,drgState));
+    public List<? extends Serializable> drugRegionAliasList(String drgState){
+        List<DrugRegionAlias> list = new ArrayList<>(2048);
+        if ( redisCacheTemplate.hasKey("drugRegionAlias")){
+            Set<Serializable> drugRegionAliasList = redisCacheTemplate.opsForSet().members("drugRegionAlias");
+            for (Serializable d :drugRegionAliasList){
+                list.add((DrugRegionAlias) d);
+            }
         }else {
             list = drugRegionAliasService.list(new QueryWrapper<DrugRegionAlias>().lambda().eq(DrugRegionAlias::getDrgType, "1").eq(DrugRegionAlias::getDrgState,drgState));
             for (DrugRegionAlias drugRegionAlias:list){
                 redisCacheTemplate.opsForSet().add("drugRegionAlias",drugRegionAlias);
             }
         }
-
         return list;
     }
 }

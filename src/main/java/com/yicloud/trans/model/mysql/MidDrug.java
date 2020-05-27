@@ -52,4 +52,5 @@ public class MidDrug implements Serializable {
      */
     private String ypgg;
 
+
 }

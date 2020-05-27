@@ -2,6 +2,8 @@ package com.yicloud.trans.model.mssql.zd;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Copyright (C).2020-2020.伊森科技
  *
@@ -11,8 +13,13 @@ import lombok.Data;
  * @Description: 扩展
  */
 @Data
-public class YpCdWrapper {
-    private YpMc ypMc;
-    private YpGg ypGg;
-    private YpCd ypCd;
+public class YpCdWrapper implements Serializable {
+    private static final long serialVersionUID = -5790580072300057621L;
+    private String centerId;
+    private String yph;
+    private String ggxh;
+    private Integer cdid;
+    private String ypMc;
+    private String ypGg;
+    private String ypCd;
 }

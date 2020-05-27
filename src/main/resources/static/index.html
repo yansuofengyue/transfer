@@ -28,13 +28,20 @@
         </el-date-picker>
 
         <el-button size="small" type="success" @click="accountDownload">刷新</el-button>
-        <el-button size="small" type="success" plain>明细对账</el-button>
+        <el-button size="small" type="success" @click="match">匹配</el-button>
     </el-row>
     <template>
         <el-table
                 :data="tableData"
                 style="width: 100%"
+                highlight-current-row
+                @current-change="handleCurrentChange"
                 max-height="400">
+            <el-table-column
+                    fixed
+                    type="index"
+                    width="50">
+            </el-table-column>
             <el-table-column
                     fixed
                     prop="drgName"
@@ -42,7 +49,6 @@
                     width="150">
             </el-table-column>
             <el-table-column
-                    fixed
                     prop="drgName"
                     label="别名"
                     width="150">
@@ -104,36 +110,28 @@
         <el-table
                 :data="tableDataDetail"
                 style="width: 100%"
-                max-height="100">
+                highlight-current-row
+                @current-change="handleCurrentDownChange"
+                max-height="300">
             <el-table-column
                     fixed
-                    prop="date"
-                    label="日期"
+                    prop="centerId"
+                    label="迁移码"
                     width="150">
             </el-table-column>
             <el-table-column
-                    prop="name"
-                    label="姓名"
+                    prop="ypMc"
+                    label="药品名称"
                     width="120">
             </el-table-column>
             <el-table-column
-                    prop="province"
-                    label="省份"
+                    prop="ypGg"
+                    label="规格"
                     width="120">
             </el-table-column>
             <el-table-column
-                    prop="city"
-                    label="市区"
-                    width="120">
-            </el-table-column>
-            <el-table-column
-                    prop="address"
-                    label="地址"
-                    width="300">
-            </el-table-column>
-            <el-table-column
-                    prop="zip"
-                    label="邮编"
+                    prop="ypCd"
+                    label="产地"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -166,40 +164,67 @@
             return {
                 tableData: [],
                 tableDataDetail: [],
-                radio: '0'
+                radio: '0',
+                pickerOptions: '',
+                datePickerArray: [],
+                currentUpRow: null,
+                currentDownRow: null
             }
         },
         methods: {
             init: function () {
                 let that = this
                 axios.get('http://127.0.0.1:8090/drugRegionAlias/list', {
-                    params: {drgState:that.radio,drgType:that.drgTypeList}
+                    params: {drgState: that.radio, drgType: that.drgTypeList}
                 }).then(res => {
-                    that.tableData=res.data;
-                    })
+                    that.tableData = res.data;
+                })
                     .catch((e) => {
                         alert('获取数据失败');
                     });
                 axios.get('http://127.0.0.1:8090/ypCd/list', {
                     params: {}
                 }).then(res => {
-                    that.tableDataDetail=res.data;
+                    that.tableDataDetail = res.data;
                 })
                     .catch((e) => {
                         alert('获取数据失败');
                     });
             },
+            match: function () {
+                console.log(this.currentUpRow, this.currentDownRow)
+                axios.post('http://127.0.0.1:8090/midDrug/match',
+                    {
+                        drugRegionAlias: this.currentUpRow,
+                        ypCdWrapper: this.currentDownRow
+                    }).then(function (res) {
+                    console.log(res);
+                    this.currentUpRow = null;
+                    this.currentDownRow = null;
+                })
+                    .catch(function (err) {
+                        console.log(err);
+                    });
+            },
             accountDownload: async function () {
                 this.init()
             },
-            patientInformationCleaning: async function(){
+            handleCurrentChange(val) {
+                this.currentUpRow = val;
+                console.log(this.currentUpRow)
+            },
+            handleCurrentDownChange(val) {
+                this.currentDownRow = val;
+                console.log(this.currentDownRow)
+            },
+            patientInformationCleaning: async function () {
                 axios.post('http://127.0.0.1:8090/patients/cleaning', {
                     params: {}
                 }).then(res => {
                     alert(res.data);
                 }).catch((e) => {
-                        alert('获取数据失败');
-                    });
+                    alert('获取数据失败');
+                });
             },
             deleteRow(index, rows) {
                 rows.splice(index, 1);
