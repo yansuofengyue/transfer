@@ -6,12 +6,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yicloud.trans.model.mssql.Jbxxk;
 import com.yicloud.trans.model.mssql.MzypmxkF;
 import com.yicloud.trans.model.mssql.Mzyskfk;
-import com.yicloud.trans.model.mysql.Patients;
-import com.yicloud.trans.model.mysql.PubStaffInfo;
-import com.yicloud.trans.model.mysql.RecipeInfo;
-import com.yicloud.trans.model.mysql.VisitedInfo;
+import com.yicloud.trans.model.mssql.XymxkF;
+import com.yicloud.trans.model.mysql.*;
 import com.yicloud.trans.service.mssql.MzypmxkFService;
 import com.yicloud.trans.service.mssql.MzyskfkService;
+import com.yicloud.trans.service.mssql.XymxkFService;
+import com.yicloud.trans.service.mysql.MidDrugService;
 import com.yicloud.trans.service.mysql.PubStaffInfoService;
 import com.yicloud.trans.service.mysql.RecipeInfoService;
 import com.yicloud.trans.service.mysql.VisitedInfoService;
@@ -43,13 +43,17 @@ public class RecipeInfoController {
     private PubStaffInfoService pubStaffInfoService;
     @Autowired
     private MzypmxkFService mzypmxkFService;
+    @Autowired
+    private XymxkFService xymxkFService;
+    @Autowired
+    private MidDrugService midDrugService;
 
     @PostMapping("/cleaning")
     @ResponseBody
     public String cleaning(@RequestParam Date startDate, @RequestParam Date endDate) throws Exception {
         RecipeInfo recipeInfo = new RecipeInfo();
-        String strStartDate = DateUtil.format(startDate,"yyyy-MM-dd HH:mm:ss");
-        String strEndDate = DateUtil.format(endDate,"yyyy-MM-dd HH:mm:ss");
+        String strStartDate = DateUtil.format(startDate,"yyyy-MM-dd");
+        String strEndDate = DateUtil.format(endDate,"yyyy-MM-dd");
         List<MzypmxkF> mzypmxkFList = new ArrayList<>(2048);
         System.out.println(StringUtils.hasLength("MzypmxkF_" + strStartDate + strEndDate));
         if (redisCacheTemplate.hasKey("MzypmxkF_" + strStartDate + strEndDate)) {
@@ -117,6 +121,24 @@ public class RecipeInfoController {
                 recipeInfo.setHospitalId(330000L);
                 recipeInfo.setDepId(5L);
                 recipeInfoService.saveOrUpdate(recipeInfo);
+                // 处方明细
+                List<RecipeDetail> recipeDetailList = new ArrayList<>(64);
+                 List<XymxkF> xymxkFList = xymxkFService.list(new QueryWrapper<XymxkF>().lambda().eq(XymxkF::getLsId,mzypmxkF.getId()));
+                 for (XymxkF xymxkF:xymxkFList){
+                     RecipeDetail recipeDetail=new RecipeDetail();
+                     if (mzypmxkF.getCflx().equals("3")){
+                         xymxkF.setFsts(mzypmxkF.getTs());
+                     }
+                     MidDrug midDrug = midDrugService.getOne(new QueryWrapper<MidDrug>().lambda().eq(MidDrug::getYph,xymxkF.getYph()).eq(MidDrug::getGgxh,xymxkF.getGgxh()).eq(MidDrug::getCdId,xymxkF.getCdId()));
+                     recipeDetail.setId(xymxkF.getId());
+                     recipeDetail.setRecipeId(xymxkF.getLsId());
+                     recipeDetail.setSpeId(midDrug.getSpeId());
+                     recipeDetail.setManId(midDrug.getManId());
+                     recipeDetail.setRedNum(xymxkF.getSh());
+                     recipeDetail.setDrgName(midDrug.getDrugRegionName());
+                     recipeDetail.setDrgPackingUnit();
+                 }
+
             }catch (Exception exception){
                 throw new Exception(msg+mzypmxkF.toString());
             }

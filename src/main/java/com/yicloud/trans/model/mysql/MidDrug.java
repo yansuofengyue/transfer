@@ -9,7 +9,6 @@ import lombok.Data;
  */
 @Data
 public class MidDrug implements Serializable {
-    private static final long serialVersionUID = -6315324963899505504L;
     private Long id;
 
     /**
@@ -26,6 +25,10 @@ public class MidDrug implements Serializable {
      * 新系统药规格信息
      */
     private String drugRegionSpecification;
+
+    private Long speId;
+
+    private Long manId;
 
     /**
      * 老系统药品号
@@ -52,5 +55,5 @@ public class MidDrug implements Serializable {
      */
     private String ypgg;
 
-
+    private static final long serialVersionUID = 1L;
 }

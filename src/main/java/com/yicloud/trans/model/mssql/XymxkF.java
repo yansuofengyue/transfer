@@ -10,7 +10,7 @@ import lombok.Data;
  */
 @Data
 public class XymxkF implements Serializable {
-    private Integer id;
+    private Long id;
 
     private Integer yph;
 
@@ -32,7 +32,7 @@ public class XymxkF implements Serializable {
 
     private String jldw;
 
-    private Integer lsId;
+    private Long lsId;
 
     private String bzTy;
 
@@ -90,7 +90,7 @@ public class XymxkF implements Serializable {
 
     private Long ybspbh;
 
-    private Byte fsts;
+    private Integer fsts;
 
     private String ybdm;
 
