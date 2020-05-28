@@ -6,6 +6,7 @@ import com.yicloud.trans.model.mssql.Jbxxk;
 import com.yicloud.trans.model.mssql.zd.Gfjb2Ybbr;
 import com.yicloud.trans.model.mssql.zd.YpCdWrapper;
 import com.yicloud.trans.model.mysql.DrugRegionAlias;
+import com.yicloud.trans.model.mysql.DrugRegionAliasAndYpCdWrapper;
 import com.yicloud.trans.model.mysql.MidDrug;
 import com.yicloud.trans.model.mysql.Patients;
 import com.yicloud.trans.service.mysql.DrugRegionAliasService;
@@ -15,10 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -50,18 +48,19 @@ public class MidDrugController {
     @Autowired
     private MidDrugService midDrugService;
 
-    @RequestMapping("/match")
-    public String match(DrugRegionAlias drugRegionAlias,YpCdWrapper ypCdWrapper) throws Exception {
+    @PostMapping("/match")
+    @ResponseBody
+    public String match(@RequestBody DrugRegionAliasAndYpCdWrapper drugRegionAliasAndYpCdWrapper) throws Exception {
         MidDrug midDrug = new MidDrug();
-        midDrug.setDrugRegionId(drugRegionAlias.getId());
-        midDrug.setDrugRegionName(drugRegionAlias.getDrgName());
-        midDrug.setDrugRegionSpecification(drugRegionAlias.getDrgSpecification());
+        midDrug.setDrugRegionId(drugRegionAliasAndYpCdWrapper.getDrugRegionAlias().getId());
+        midDrug.setDrugRegionName(drugRegionAliasAndYpCdWrapper.getDrugRegionAlias().getDrgName());
+        midDrug.setDrugRegionSpecification(drugRegionAliasAndYpCdWrapper.getDrugRegionAlias().getDrgSpecification());
 
-        midDrug.setYph(ypCdWrapper.getYph());
-        midDrug.setGgxh(ypCdWrapper.getGgxh());
-        midDrug.setCdId(ypCdWrapper.getCdid());
-        midDrug.setYpmc(ypCdWrapper.getYpMc());
-        midDrug.setYpgg(ypCdWrapper.getYpGg());
+        midDrug.setYph(drugRegionAliasAndYpCdWrapper.getYpCdWrapper().getYph());
+        midDrug.setGgxh(drugRegionAliasAndYpCdWrapper.getYpCdWrapper().getGgxh());
+        midDrug.setCdId(drugRegionAliasAndYpCdWrapper.getYpCdWrapper().getCdid());
+        midDrug.setYpmc(drugRegionAliasAndYpCdWrapper.getYpCdWrapper().getYpMc());
+        midDrug.setYpgg(drugRegionAliasAndYpCdWrapper.getYpCdWrapper().getYpGg());
         midDrugService.saveOrUpdate(midDrug);
         return "papapapap@qq.com";
     }

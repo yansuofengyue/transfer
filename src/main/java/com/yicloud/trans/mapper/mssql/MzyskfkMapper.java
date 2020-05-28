@@ -5,6 +5,9 @@ import com.yicloud.trans.model.mssql.Mzyskfk;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author chen
+ */
 @Component
 @Mapper
 public interface MzyskfkMapper extends BaseMapper<Mzyskfk> {

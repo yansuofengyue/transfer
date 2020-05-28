@@ -3,6 +3,8 @@ package com.yicloud.trans.model.mssql;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 /**
@@ -11,7 +13,7 @@ import lombok.Data;
  */
 @Data
 public class Mzyskfk implements Serializable {
-    private Integer id;
+    private Long id;
 
     private Integer zyh;
 
@@ -35,17 +37,7 @@ public class Mzyskfk implements Serializable {
 
     private String bzKg;
 
-    private String bazdh1;
 
-    private String bazdh2;
-
-    private String bazdh3;
-
-    private String bazd1;
-
-    private String bazd2;
-
-    private String bzzd3;
 
     private String sfbz;
 
@@ -67,33 +59,12 @@ public class Mzyskfk implements Serializable {
 
     private String jbm;
 
-    private String bazdh4;
-
-    private String bazd4;
-
-    private String bazdh5;
-
-    private String bazd5;
 
     private String zfysh;
 
     private String czfzqk;
 
-    private String zyzdh1;
 
-    private String zyzd1;
-
-    private String zyzdh2;
-
-    private String zyzd2;
-
-    private String zyzdh3;
-
-    private String zyzd3;
-
-    private String zyzdh4;
-
-    private String zyzd4;
 
     private String zzdbz;
 

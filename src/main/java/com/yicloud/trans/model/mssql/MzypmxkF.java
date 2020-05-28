@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class MzypmxkF implements Serializable {
     @TableId
-    private Integer id;
+    private Long id;
 
     private Integer zyh;
 
@@ -50,11 +50,11 @@ public class MzypmxkF implements Serializable {
 
     private String rbbz;
 
-    private Integer mzyskdkId;
+    private Long mzyskdkId;
 
     private BigDecimal zfje;
 
-    private Integer sfbhId;
+    private Long sfbhId;
 
     private Integer cfly;
 
@@ -80,7 +80,6 @@ public class MzypmxkF implements Serializable {
 
     private Integer rbBzxh;
 
-    private String tzgh2;
 
     private Integer bybz;
 
@@ -136,7 +135,7 @@ public class MzypmxkF implements Serializable {
 
     private String cfdyBz;
 
-    private Integer ycfid;
+    private Long ycfid;
 
     private String shBz;
 

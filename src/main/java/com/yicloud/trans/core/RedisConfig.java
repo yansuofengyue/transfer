@@ -1,4 +1,4 @@
-package com.yicloud.trans.config;
+package com.yicloud.trans.core;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

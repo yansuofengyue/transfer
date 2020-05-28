@@ -13,8 +13,11 @@ import lombok.Data;
 @Data
 public class YpCd  implements Serializable {
     private static final long serialVersionUID = -973775354796754888L;
+    @TableId
     private Integer yph;
+    @TableId
     private String ggxh;
+    @TableId
     private Integer cdId;
 
     private BigDecimal pfj;

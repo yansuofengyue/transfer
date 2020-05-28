@@ -1,17 +1,11 @@
 package com.yicloud.trans.mapper.mysql;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yicloud.trans.model.mysql.PubStaffHosptal;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-public interface PubStaffHosptalMapper {
-    int deleteByPrimaryKey(Long id);
+@Mapper
+public interface PubStaffHosptalMapper extends BaseMapper<PubStaffHosptal> {
 
-    int insert(PubStaffHosptal record);
-
-    int insertSelective(PubStaffHosptal record);
-
-    PubStaffHosptal selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(PubStaffHosptal record);
-
-    int updateByPrimaryKey(PubStaffHosptal record);
 }

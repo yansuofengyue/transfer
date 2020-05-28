@@ -15,13 +15,19 @@ import com.yicloud.trans.service.mysql.PatientsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Copyright (C).2020-2020.伊森科技
@@ -36,6 +42,8 @@ import java.util.Optional;
 public class PatientsController {
     private static final Logger LOGGER = LoggerFactory.getLogger(PatientsController.class);
 
+    @Autowired
+    private RedisTemplate<String, Serializable> redisCacheTemplate;
     @Autowired
     private JbxxkService jbxxkService;
     @Autowired
@@ -58,29 +66,40 @@ public class PatientsController {
             gfjb2Ybbr.setYblbm("自费");
         }
         //1、老系统自费病人和身份证号为空的病人 身份证号处理 身份证格式： 3301042+门诊号，自费病人信息导入老系统
-        List<Jbxxk> list1 = jbxxkService.list();
-        for (Jbxxk jbxxk:list1){
+        List<Jbxxk> list = jbxxkService.list();
+        for (Jbxxk jbxxk:list){
             if (!Optional.ofNullable(jbxxk.getSfzh()).isPresent()) {
-                jbxxk.setSfzh("");
+                jbxxk.setSfzh("3301042" + jbxxk.getZyh());
                 jbxxkService.updateById(jbxxk);
             }
         }
-        List<Jbxxk> list = jbxxkService.list(new QueryWrapper<Jbxxk>().lambda().eq(Jbxxk::getFylb, "00").or().eq(Jbxxk::getSfzh, ""));
-        for (Jbxxk jbxxk : list) {
-            jbxxk.setSfzh("3301042" + jbxxk.getZyh());
-            jbxxkService.updateById(jbxxk);
-            patientsService.save(jbxxkTopatients(jbxxk));
+        for (Jbxxk jbxxk:list){
+            if (!Optional.ofNullable(jbxxk.getMzrq()).isPresent()) {
+                jbxxk.setMzrq(YiUtil.localDateToDate(LocalDate.now().plusYears(-10)));
+                jbxxkService.updateById(jbxxk);
+            }
         }
         //2、老系统患者信息插入新系统中，在新系统中已经存在的患者 使用新系统中门诊号 如果不在则插入，老系统中同一个病人有多个门诊号 插入新系统中区最新的一个
-        list = jbxxkService.list(new QueryWrapper<Jbxxk>().lambda().ne(Jbxxk::getFylb, "00").ne(Jbxxk::getSfzh, "").orderByDesc(Jbxxk::getMzrq));
+        list = list.stream().sorted(Comparator.comparing(Jbxxk::getMzrq).reversed()).collect(Collectors.toList());
         for (Jbxxk jbxxk : list) {
             try {
-                Patients patients = patientsService.getOne(new QueryWrapper<Patients>().lambda().eq(Patients::getPatIdentityNum, jbxxk.getSfzh()));
-                if (!Optional.ofNullable(patients).isPresent()) {
-                    patientsService.save(jbxxkTopatients(jbxxk));
+                List<Patients> patientsList = patientsService.list(new QueryWrapper<Patients>().lambda().eq(Patients::getPatIdentityNum, jbxxk.getSfzh()).orderByDesc(Patients::getTimeStamp));
+                Patients patients = new Patients();
+                if (!CollectionUtils.isEmpty(patientsList)){
+                    patients = patientsList.get(0);
+                    if (!Optional.ofNullable(patients).isPresent()) {
+                        patients=jbxxkTopatients(jbxxk);
+                        patientsService.save(patients);
+                    }
+                    if (!redisCacheTemplate.opsForHash().hasKey("patients",patients.getPatIdentityNum())){
+                        redisCacheTemplate.opsForHash().put("patients",patients.getPatIdentityNum(),patients);
+                    }
+                }
+                if (!redisCacheTemplate.opsForHash().hasKey("jbxxk",jbxxk.getZyh().toString())){
+                    redisCacheTemplate.opsForHash().put("jbxxk",jbxxk.getZyh().toString(),jbxxk);
                 }
             } catch (Exception e) {
-                return jbxxk.getZyh().toString();
+                return jbxxk.getZyh().toString()+jbxxk.getXm();
             }
         }
         return "papapapap@qq.com";

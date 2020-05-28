@@ -9,7 +9,7 @@
 <body>
 <div id="app">
     <el-row class="el-search-row-d">
-        <el-button size="small" type="primary" @click="patientInformationCleaning">患者信息清洗</el-button>
+
         <template>
             <el-radio v-model="radio" label="0">在用</el-radio>
             <el-radio v-model="radio" label="1">停用</el-radio>
@@ -29,6 +29,9 @@
 
         <el-button size="small" type="success" @click="accountDownload">刷新</el-button>
         <el-button size="small" type="success" @click="match">匹配</el-button>
+        <el-button size="small" type="primary" @click="patientInformationCleaning">患者信息清洗</el-button>
+        <el-button size="small" type="primary" @click="visitedinfo">就诊记录清洗</el-button>
+        <el-button size="small" type="primary" @click="recipeInfo">处方记录清洗</el-button>
     </el-row>
     <template>
         <el-table
@@ -134,19 +137,6 @@
                     label="产地"
                     width="120">
             </el-table-column>
-            <el-table-column
-                    fixed="right"
-                    label="操作"
-                    width="120">
-                <template slot-scope="scope">
-                    <el-button
-                            @click.native.prevent="deleteRow(scope.$index, tableData)"
-                            type="text"
-                            size="small">
-                        移除
-                    </el-button>
-                </template>
-            </el-table-column>
         </el-table>
     </template>
 </div>
@@ -157,6 +147,7 @@
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <!--引入axios-->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/dayjs"></script>
 <script>
     let app = new Vue({
         el: '#app',
@@ -165,8 +156,35 @@
                 tableData: [],
                 tableDataDetail: [],
                 radio: '0',
-                pickerOptions: '',
-                datePickerArray: [],
+                pickerOptions: {
+                    shortcuts: [{
+                        text: '上月',
+                        onClick(picker) {
+                            picker.$emit('pick', [dayjs().subtract(1, 'month').startOf('month'), dayjs().subtract(1, 'month').endOf('month')]);
+                        }
+                    }, {
+                        text: '本月',
+                        onClick(picker) {
+                            picker.$emit('pick', [new Date(), new Date()]);
+                        }
+                    }, {
+                        text: '今年至今',
+                        onClick(picker) {
+                            const end = new Date();
+                            const start = new Date(new Date().getFullYear(), 0);
+                            picker.$emit('pick', [start, end]);
+                        }
+                    }, {
+                        text: '最近六个月',
+                        onClick(picker) {
+                            const end = new Date();
+                            const start = new Date();
+                            start.setMonth(start.getMonth() - 6);
+                            picker.$emit('pick', [start, end]);
+                        }
+                    }]
+                },
+                datePickerArray: [dayjs().startOf('month').format('YYYY-MM-DD'), dayjs().format('YYYY-MM-DD')],
                 currentUpRow: null,
                 currentDownRow: null
             }
@@ -198,9 +216,13 @@
                         drugRegionAlias:this.currentUpRow,
                         ypCdWrapper: this.currentDownRow
                     }).then(function (res) {
-                    console.log(res);
-                    this.currentUpRow = null;
-                    this.currentDownRow = null;
+
+                    if (res.status==500){
+                        alert(res.message)
+                    }else {
+                        this.currentUpRow = null;
+                        this.currentDownRow = null;
+                    }
                 })
                     .catch(function (err) {
                         console.log(err);
@@ -216,6 +238,34 @@
             handleCurrentDownChange(val) {
                 this.currentDownRow = val;
                 console.log(this.currentDownRow)
+            },
+            visitedinfo:function(){
+                let startDate = this.datePickerArray[0]
+                let endDate = this.datePickerArray[1]
+                let params = new URLSearchParams();
+                params.append('startDate', startDate);
+                params.append('endDate', endDate);
+                axios.post('http://127.0.0.1:8090/visitedInfo/cleaning', params).then(res => {
+                    if (res.status == 500 || res.status == '500'){
+                        alert(res.message);
+                    }
+                }).catch(function (error) {
+                    alert(error.response.data.message)
+                });
+            },
+            recipeInfo:function(){
+                let startDate = this.datePickerArray[0]
+                let endDate = this.datePickerArray[1]
+                let params = new URLSearchParams();
+                params.append('startDate', startDate);
+                params.append('endDate', endDate);
+                axios.post('http://127.0.0.1:8090/recipeInfo/cleaning', params).then(res => {
+                    if (res.status == 500 || res.status == '500'){
+                        alert(res.message);
+                    }
+                }).catch(function (error) {
+                    alert(error.response.data.message)
+                });
             },
             patientInformationCleaning: async function () {
                 axios.post('http://127.0.0.1:8090/patients/cleaning', {

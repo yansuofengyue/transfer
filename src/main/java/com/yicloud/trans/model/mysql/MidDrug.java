@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class MidDrug implements Serializable {
     private static final long serialVersionUID = -6315324963899505504L;
-    private Integer id;
+    private Long id;
 
     /**
      * 新系统药品ID
