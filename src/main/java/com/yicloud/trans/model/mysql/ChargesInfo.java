@@ -3,6 +3,9 @@ package com.yicloud.trans.model.mysql;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -10,51 +13,153 @@ import lombok.Data;
  * @author 
  */
 @Data
+@TableName("chg_charges_info")
 public class ChargesInfo implements Serializable {
-    /**
-     * 医保交易id
-     */
-    private Long id;
-
     /**
      * 收费ID
      */
-    private Long chargeId;
+    @TableId
+    private Long id;
 
     /**
-     * 患者信息主键id
+     * 收费日期
+     */
+    private Date billDate;
+
+    /**
+     * 患者ID
      */
     private Long patId;
 
     /**
-     * 医保类型
+     * 病人姓名
+     */
+    private String patName;
+
+    /**
+     * 病人性质
+     */
+    private Long natureId;
+
+    /**
+     * 性质名称
+     */
+    private String natureName;
+
+    /**
+     * 费用类别
      */
     private Long feeId;
 
     /**
-     * 险种
+     * 费用类别名称
      */
-    private String natureType;
+    private String feeName;
 
     /**
-     * 医疗机构编码
+     * 病人证号
      */
-    private String mechanismCode;
+    private String patCardNum;
 
     /**
-     * 个人编号
+     * 费用总金额
      */
-    private String personalNo;
+    private BigDecimal billTotalFee;
 
     /**
-     * 医院端交易唯一号
+     * 收现金
      */
-    private String hisSerialNo;
+    private BigDecimal billCashFee;
 
     /**
-     * 医保交易流水号
+     * 找现金
      */
-    private String medSerialNo;
+    private BigDecimal billOddFee;
+
+    /**
+     * 实收金额
+     */
+    private BigDecimal billSelfFee;
+
+    /**
+     * 优惠金额
+     */
+    private BigDecimal billFavorFee;
+
+    /**
+     * 病种代码
+     */
+    private Long disId;
+
+    /**
+     * 操作工号
+     */
+    private Long sffId;
+
+    /**
+     * 操作源姓名
+     */
+    private String sffName;
+
+    /**
+     * 日报序号
+     */
+    private Long dayId;
+
+    /**
+     * 日报日期
+     */
+    private Date dayDate;
+
+    /**
+     * 作废工号
+     */
+    private Long sffRefundId;
+
+    /**
+     * 作废操作员姓名
+     */
+    private String sffRefundName;
+
+    /**
+     * 原收费序号
+     */
+    private Long billOldId;
+
+    /**
+     * 重打判别
+     */
+    private String billThump;
+
+    /**
+     * 退费判别 0正常 1退费
+     */
+    private String billRefundSign;
+
+    /**
+     * 发票打印信息
+     */
+    private String billPrintInfo;
+
+    /**
+     * 冲销标志
+     */
+    private String billOffSign;
+
+    /**
+     * 收费类型 0挂号 1收费
+     */
+    private String billType;
+
+    /**
+     * 所属医疗机构
+     */
+    private Long hospitalId;
+
+    /**
+     * 就诊病人id
+     */
+    private Long visitId;
 
     /**
      * 就诊流水号
@@ -62,9 +167,9 @@ public class ChargesInfo implements Serializable {
     private String visitSerialNo;
 
     /**
-     * 医保结算流水号
+     * 医保交易流水号
      */
-    private String settlementNo;
+    private String centerSerialNo;
 
     /**
      * 医保业务周期号
@@ -72,161 +177,32 @@ public class ChargesInfo implements Serializable {
     private String businessCycleNumber;
 
     /**
-     * 结算时间
+     * 开单医生工号
      */
-    private Date tradeTime;
+    private Long doctorSffId;
 
     /**
-     * 结算类型（1挂号 2门诊）
+     * 支付方式 0现金 2支付宝 1微信,11微医支付,12微脉
      */
-    private String tradeType;
+    private String paymentType;
 
     /**
-     * 交易状态 -1退费  1正交易
+     * 时间戳
      */
-    private String tradeStatus;
-
-    /**
-     * 医疗人员类别(杭州市，省，市一卡通)
-     */
-    private String treatmentCategory;
-
-    /**
-     * 总金额
-     */
-    private BigDecimal total;
-
-    /**
-     * 本年账户余额
-     */
-    private BigDecimal currentYearBalance;
-
-    /**
-     * 本年账户支付
-     */
-    private BigDecimal currentYearPay;
-
-    /**
-     * 历年账户余额
-     */
-    private BigDecimal calendarYearBalance;
-
-    /**
-     * 历年账户支付
-     */
-    private BigDecimal calendarYearPay;
-
-    /**
-     * 医保基金支付(市医保) 医保列支费用(省医保)
-     */
-    private BigDecimal fundPay;
-
-    /**
-     * 本次现金支付
-     */
-    private BigDecimal cashPay;
-
-    /**
-     * 自理金额
-     */
-    private BigDecimal selfCarePay;
-
-    /**
-     * 自费金额
-     */
-    private BigDecimal selfPay;
-
-    /**
-     * 超限价自费
-     */
-    private BigDecimal overrunPay;
-
-    /**
-     * 统筹基金支出
-     */
-    private BigDecimal collectiveFundPay;
-
-    /**
-     * 重病基金支出(市医保) 大病保险基金支付(省医保)
-     */
-    private BigDecimal serDisFundPay;
-
-    /**
-     * 起付标准自付
-     */
-    private BigDecimal selStaPay;
-
-    /**
-     * 其他基金支出
-     */
-    private BigDecimal otherFundPay;
-
-    /**
-     *  自付支付
-     */
-    private BigDecimal selfConceitPay;
-
-    /**
-     * 合计支付(省医保)
-     */
-    private BigDecimal totalPayment;
-
-    /**
-     * 公务员补助（省医保）
-     */
-    private BigDecimal civilServantPay;
-
-    /**
-     * 离休基金(省医保)
-     */
-    private BigDecimal retirePay;
-
-    /**
-     * 亲属个账历年支付(省医保)
-     */
-    private BigDecimal clanYearPay;
-
-    /**
-     * 门诊统筹起付线累计(省医保)
-     */
-    private BigDecimal accumulationPay;
-
-    /**
-     * His 端必须将此信息显示到前台
-     */
-    private String notice;
-
-    /**
-     * 结算信息详情
-     */
-    private String chargeDetailInfo;
-
-    /**
-     * 结算交易完成确认标志 0 未确认 1已确认
-     */
-    private String confirmMark;
-
-    /**
-     * 冲销标志 0 正常 1 作废
-     */
-    private String offSign;
-
-    /**
-     * 规定病种(1:是   0：不是)
-     */
-    private String prescribedDisease;
-
-    /**
-     * 医院编号
-     */
-    private Long hospitalId;
-
-    /**
-     * 医疗类别
-     */
-    private String medicalCategory;
-
     private Date timeStamp;
 
-    private static final long serialVersionUID = 1L;
+    /**
+     * 数据源
+     */
+    private String dataSource;
+
+    /**
+     * 特殊病种标志(省，市)（0不是2是）
+     */
+    private String specialDiseaseSign;
+
+    /**
+     * 支付状态，现金支付默认为成功，电子支付0为初始，1为成功，2为退费
+     */
+    private String payState;
 }

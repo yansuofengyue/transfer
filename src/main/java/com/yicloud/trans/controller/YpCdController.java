@@ -75,6 +75,7 @@ public class YpCdController {
                 ypCdWrapper.setYpMc(ypMc.getYpmc());
                 ypCdWrapperList.add(ypCdWrapper);
                 redisCacheTemplate.opsForSet().add("ypCdWrapper", ypCdWrapper);
+                redisCacheTemplate.opsForValue().set("ypCdWrapper_"+ypCdWrapper.getYph()+ypCdWrapper.getGgxh()+ypCdWrapper.getCdid().toString(),ypCdWrapper);
             }
         }
         return ypCdWrapperList;

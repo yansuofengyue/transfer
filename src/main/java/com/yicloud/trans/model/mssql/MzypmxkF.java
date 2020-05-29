@@ -183,7 +183,7 @@ public class MzypmxkF implements Serializable {
 
     private BigDecimal yhje;
 
-    private String zzdbz;
+//    private String zzdbz;
 
     private static final long serialVersionUID = 1L;
 }

@@ -30,9 +30,10 @@
         <el-button size="small" type="success" @click="accountDownload">刷新</el-button>
         <el-button size="small" type="success" @click="match">匹配</el-button>
         <el-button size="small" type="primary" @click="patientInformationCleaning">患者信息清洗</el-button>
-        <el-button size="small" type="primary" @click="visitedinfo">就诊记录清洗</el-button>
-        <el-button size="small" type="primary" @click="recipeInfo">处方记录清洗</el-button>
-        <el-button size="small" type="primary" @click="recipeInfo">处方记录清洗</el-button>
+        <el-button size="small" type="success" @click="visitedinfo">就诊记录清洗</el-button>
+        <el-button size="small" type="success" @click="recipeInfo">处方记录清洗</el-button>
+        <el-button size="small" type="success" @click="chargesInfo">收费记录清洗</el-button>
+        <el-button size="small" type="success" @click="bazdk">挂号记录清洗</el-button>
     </el-row>
     <template>
         <el-table
@@ -185,7 +186,7 @@
                         }
                     }]
                 },
-                datePickerArray: [dayjs().startOf('month').format('YYYY-MM-DD'), dayjs().format('YYYY-MM-DD')],
+                datePickerArray: [dayjs().startOf('month'), dayjs()],
                 currentUpRow: null,
                 currentDownRow: null
             }
@@ -261,6 +262,34 @@
                 params.append('startDate', startDate);
                 params.append('endDate', endDate);
                 axios.post('http://127.0.0.1:8090/recipeInfo/cleaning', params).then(res => {
+                    if (res.status == 500 || res.status == '500'){
+                        alert(res.message);
+                    }
+                }).catch(function (error) {
+                    alert(error.response.data.message)
+                });
+            },
+            chargesInfo:function(){
+                let startDate = this.datePickerArray[0]
+                let endDate = this.datePickerArray[1]
+                let params = new URLSearchParams();
+                params.append('startDate', startDate);
+                params.append('endDate', endDate);
+                axios.post('http://127.0.0.1:8090/chargesInfo/cleaning', params).then(res => {
+                    if (res.status == 500 || res.status == '500'){
+                        alert(res.message);
+                    }
+                }).catch(function (error) {
+                    alert(error.response.data.message)
+                });
+            },
+            bazdk:function(){
+                let startDate = this.datePickerArray[0]
+                let endDate = this.datePickerArray[1]
+                let params = new URLSearchParams();
+                params.append('startDate', startDate);
+                params.append('endDate', endDate);
+                axios.post('http://127.0.0.1:8090/bazdk/cleaning', params).then(res => {
                     if (res.status == 500 || res.status == '500'){
                         alert(res.message);
                     }

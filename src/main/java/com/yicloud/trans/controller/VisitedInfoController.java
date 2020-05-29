@@ -93,7 +93,7 @@ public class VisitedInfoController {
                 visitedInfo.setPatSex(Integer.valueOf(patients.getPatSex()));
                 visitedInfo.setPatAddress(patients.getPatFamAddress());
                 visitedInfo.setPatContacts(patients.getPatPhone());
-                visitedInfo.setHospitalId(330000L);
+                visitedInfo.setHospitalId(330005L);
                 visitedInfo.setDepId(5L);
                 visitedInfoService.saveOrUpdate(visitedInfo);
             }catch (Exception exception){
