@@ -37,7 +37,10 @@ public class Mzyskfk implements Serializable {
 
     private String bzKg;
 
-
+    @TableField("bazdh_1")
+    private String bazdh1;
+    @TableField("zyzdh_1")
+    private String zyzdh1;
 
     private String sfbz;
 

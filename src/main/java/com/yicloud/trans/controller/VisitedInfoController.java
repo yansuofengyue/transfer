@@ -3,13 +3,12 @@ package com.yicloud.trans.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yicloud.trans.model.mssql.Jbxxk;
 import com.yicloud.trans.model.mssql.Mzyskfk;
+import com.yicloud.trans.model.mssql.zd.Jbk;
 import com.yicloud.trans.model.mysql.*;
+import com.yicloud.trans.service.mssql.JbkService;
 import com.yicloud.trans.service.mssql.JbxxkService;
 import com.yicloud.trans.service.mssql.MzyskfkService;
-import com.yicloud.trans.service.mysql.PubStaffHosptalService;
-import com.yicloud.trans.service.mysql.PubStaffInfoService;
-import com.yicloud.trans.service.mysql.RecipeInfoService;
-import com.yicloud.trans.service.mysql.VisitedInfoService;
+import com.yicloud.trans.service.mysql.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +36,10 @@ public class VisitedInfoController {
     private MzyskfkService mzyskfkService;
     @Autowired
     private PubStaffInfoService pubStaffInfoService;
+    @Autowired
+    private JbkService jbkService;
+    @Autowired
+    private CliDiagnoseInfoService cliDiagnoseInfoService;
 
     @PostMapping("/cleaning")
     @ResponseBody
@@ -59,7 +62,7 @@ public class VisitedInfoController {
             try {
                 msg="";
                 visitedInfo.setId(mzyskfk.getId());
-                if (mzyskfk.getId().equals(1736941L)) {
+                if (mzyskfk.getId().equals(800966L)) {
                     System.out.println(mzyskfk);
                 }
 
@@ -79,6 +82,22 @@ public class VisitedInfoController {
                     }
                 }
 
+                //诊断
+                Jbk jbk=null;
+                if (Optional.ofNullable(mzyskfk.getBazdh1()).isPresent()){
+                     jbk = jbkService.getOne(new QueryWrapper<Jbk>().lambda().eq(Jbk::getJbh,mzyskfk.getBazdh1()));
+                }else if (Optional.ofNullable(mzyskfk.getZyzdh1()).isPresent()){
+                     jbk = jbkService.getOne(new QueryWrapper<Jbk>().lambda().eq(Jbk::getJbh,mzyskfk.getZyzdh1()));
+                }
+                CliDiagnoseInfo cliDiagnoseInfo=null;
+                if (Optional.ofNullable(jbk).isPresent()){
+                    cliDiagnoseInfo=new CliDiagnoseInfo();
+                    cliDiagnoseInfo.setDiaName(jbk.getJbm());
+                    cliDiagnoseInfo.setDiaIcd(jbk.getIcd10());
+                    cliDiagnoseInfo.setVisId(visitedInfo.getId());
+                    cliDiagnoseInfo.setHospitalId(330005L);
+                    cliDiagnoseInfo.setMainFlag("1");
+                }
                 visitedInfo.setVisDate(mzyskfk.getMzrq());
                 Jbxxk jbxxk = (Jbxxk) redisCacheTemplate.opsForHash().get("jbxxk", mzyskfk.getZyh().toString());
                 if (!Optional.ofNullable(jbxxk).isPresent()) {
@@ -96,6 +115,9 @@ public class VisitedInfoController {
                 visitedInfo.setHospitalId(330005L);
                 visitedInfo.setDepId(5L);
                 visitedInfoService.saveOrUpdate(visitedInfo);
+                if (Optional.ofNullable(cliDiagnoseInfo).isPresent()){
+                    cliDiagnoseInfoService.saveOrUpdate(cliDiagnoseInfo);
+                }
             }catch (Exception exception){
                 throw new Exception(msg+mzyskfk.toString());
             }

@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class Jbxxk implements Serializable {
     @TableId
-    private Integer zyh;
+    private Long zyh;
 
     private String xm;
 

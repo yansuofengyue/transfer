@@ -9,22 +9,17 @@ spring:
         filters: stat
       datasource:
         master:
-          url: jdbc:mysql://192.168.1.252:3306/clinic-new-test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-          username: root
-          password: yskj123456
-          driver-class-name: com.mysql.cj.jdbc.Driver
-        transfer:
-          url: jdbc:mysql://127.0.0.1:3306/transfer?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-          username: root
+          url: jdbc:mysql://192.168.1.252:3306/clinic-test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+          username: clinic-test
           password: yskj123456
           driver-class-name: com.mysql.cj.jdbc.Driver
         slave:
-          url: jdbc:sqlserver://192.168.1.45:1433;databasename=dxtjt
+          url: jdbc:sqlserver://192.168.1.252:1433;databasename=thzymzb
           username: sa
-          password:
+          password: yskj123456
           driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   redis:
-    host: 127.0.0.1
+    host: 192.168.1.252
     # 连接超时时间（记得添加单位，Duration）
     timeout: 10000ms
     # Redis默认情况下有16个分片，这里配置具体使用的分片
@@ -42,7 +37,7 @@ spring:
     cache:
       # 一般来说是不用配置的，Spring Cache 会根据依赖的包自行装配
       type: redis
-    password:
+    password: 123456
 logging:
   level:
     com.baomidou: debug
