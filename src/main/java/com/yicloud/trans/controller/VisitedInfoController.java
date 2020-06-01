@@ -1,5 +1,6 @@
 package com.yicloud.trans.controller;
 
+import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yicloud.trans.model.mssql.Jbxxk;
 import com.yicloud.trans.model.mssql.Mzyskfk;
@@ -39,22 +40,27 @@ public class VisitedInfoController {
     @Autowired
     private JbkService jbkService;
     @Autowired
+    private PatientsService patientsService;
+    @Autowired
     private CliDiagnoseInfoService cliDiagnoseInfoService;
 
     @PostMapping("/cleaning")
     @ResponseBody
     public String cleaning(@RequestParam Date startDate, @RequestParam Date endDate) throws Exception {
         VisitedInfo visitedInfo = new VisitedInfo();
+        String strStartDate = DateUtil.format(startDate, "yyyy-MM-dd");
+        String strEndDate = DateUtil.format(endDate, "yyyy-MM-dd");
         List<Mzyskfk> mzyskfkList = new ArrayList<>(2048);
-        if (redisCacheTemplate.hasKey("Mzyskfk_" + startDate.toString() + endDate.toString())) {
-            Set<Serializable> MzyskfkList = redisCacheTemplate.opsForSet().members("Mzyskfk_" + startDate.toString() + endDate.toString());
+        String redisKey ="Mzyskfk_" + strStartDate + strEndDate;
+        if (redisCacheTemplate.hasKey(redisKey)) {
+            Set<Serializable> MzyskfkList = redisCacheTemplate.opsForSet().members(redisKey);
             for (Serializable d : MzyskfkList) {
                 mzyskfkList.add((Mzyskfk) d);
             }
         } else {
             mzyskfkList = mzyskfkService.list(new QueryWrapper<Mzyskfk>().lambda().ge(Mzyskfk::getMzrq, startDate).le(Mzyskfk::getMzrq, endDate));
             for (Mzyskfk mzyskfk : mzyskfkList) {
-                redisCacheTemplate.opsForSet().add("Mzyskfk_" + startDate.toString() + endDate.toString(), mzyskfk);
+                redisCacheTemplate.opsForSet().add(redisKey, mzyskfk);
             }
         }
         String msg=null;
@@ -62,7 +68,7 @@ public class VisitedInfoController {
             try {
                 msg="";
                 visitedInfo.setId(mzyskfk.getId());
-                if (mzyskfk.getId().equals(800966L)) {
+                if (mzyskfk.getId().equals(799372L)) {
                     System.out.println(mzyskfk);
                 }
 
@@ -100,10 +106,16 @@ public class VisitedInfoController {
                 }
                 visitedInfo.setVisDate(mzyskfk.getMzrq());
                 Jbxxk jbxxk = (Jbxxk) redisCacheTemplate.opsForHash().get("jbxxk", mzyskfk.getZyh().toString());
+                Patients patients=null;
                 if (!Optional.ofNullable(jbxxk).isPresent()) {
-                    continue;
+                    patients = patientsService.createPatients(mzyskfk.getZyh());
+                }else {
+                    patients = (Patients) redisCacheTemplate.opsForHash().get("patients", jbxxk.getSfzh());
                 }
-                Patients patients = (Patients) redisCacheTemplate.opsForHash().get("patients", jbxxk.getSfzh());
+                if (!Optional.ofNullable(patients).isPresent()) {
+                    msg="患者信息不存在！";
+                }
+
                 visitedInfo.setPatCardNum(patients.getPatCardNum());
                 visitedInfo.setPatId(patients.getId());
                 visitedInfo.setPatName(patients.getPatName());
@@ -121,7 +133,6 @@ public class VisitedInfoController {
             }catch (Exception exception){
                 throw new Exception(msg+mzyskfk.toString());
             }
-
         }
         return "papapapap@qq.com";
     }

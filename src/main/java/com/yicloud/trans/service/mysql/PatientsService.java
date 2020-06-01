@@ -3,6 +3,7 @@ package com.yicloud.trans.service.mysql;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yicloud.trans.mapper.mysql.PatientsMapper;
+import com.yicloud.trans.model.mssql.Jbxxk;
 import com.yicloud.trans.model.mysql.Patients;
 
 /**
@@ -14,5 +15,7 @@ import com.yicloud.trans.model.mysql.Patients;
  * @Description:
  */
 public interface PatientsService extends IService<Patients> {
+
+    public Patients createPatients(Long zyh) throws Exception;
 
 }

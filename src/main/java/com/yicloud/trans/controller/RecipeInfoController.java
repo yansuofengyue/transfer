@@ -51,6 +51,8 @@ public class RecipeInfoController {
     @Autowired
     private MidDrugService midDrugService;
     @Autowired
+    private PatientsService patientsService;
+    @Autowired
     private DrugRegionAliasService drugRegionAliasService;
 
     @PostMapping("/cleaning")
@@ -113,11 +115,15 @@ public class RecipeInfoController {
                     msg = "医生工号为：" + mzypmxkF.getYsh() + "信息未维护在新系统.";
                 }
                 Jbxxk jbxxk = (Jbxxk) redisCacheTemplate.opsForHash().get("jbxxk", mzypmxkF.getZyh().toString());
+                Patients patients=null;
                 if (!Optional.ofNullable(jbxxk).isPresent()) {
-                    msg = "人员信息不存在";
-                    continue;
+                    patients = patientsService.createPatients(mzypmxkF.getZyh());
+                }else {
+                    patients = (Patients) redisCacheTemplate.opsForHash().get("patients", jbxxk.getSfzh());
                 }
-                Patients patients = (Patients) redisCacheTemplate.opsForHash().get("patients", jbxxk.getSfzh());
+                if (!Optional.ofNullable(patients).isPresent()) {
+                    msg="患者信息不存在！";
+                }
                 recipeInfo.setPatCardNum(patients.getPatCardNum());
                 recipeInfo.setPatId(patients.getId());
                 recipeInfo.setPatName(patients.getPatName());

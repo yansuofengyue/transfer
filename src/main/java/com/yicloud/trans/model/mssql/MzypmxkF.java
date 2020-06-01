@@ -16,7 +16,7 @@ public class MzypmxkF implements Serializable {
     @TableId
     private Long id;
 
-    private Integer zyh;
+    private Long zyh;
 
     private Date rq;
 

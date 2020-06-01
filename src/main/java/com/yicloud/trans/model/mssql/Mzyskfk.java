@@ -15,7 +15,7 @@ import lombok.Data;
 public class Mzyskfk implements Serializable {
     private Long id;
 
-    private Integer zyh;
+    private Long zyh;
 
     private String ysh;
 

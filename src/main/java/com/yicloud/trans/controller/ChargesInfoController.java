@@ -224,7 +224,7 @@ public class ChargesInfoController {
                 }
 
             }catch (Exception exception){
-                throw new Exception(brjbk.toString());
+                throw new Exception(msg+brjbk.toString());
             }
 
         }

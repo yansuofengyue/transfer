@@ -75,11 +75,11 @@ public class PatientsController {
                 list.add((Jbxxk) d);
             }
         }else {
-            for (Integer num=1;num<30;num++){
+            for (Integer num=1;num<365;num++){
                 List<Jbxxk> listT = jbxxkService.list(new QueryWrapper<Jbxxk>().lambda().ge(Jbxxk::getMzrq,
-                        DateUtil.format(DateUtil.offset(DateUtil.date(),DateField.DAY_OF_YEAR,num - 30),
+                        DateUtil.format(DateUtil.offset(DateUtil.date(),DateField.DAY_OF_YEAR,num - 365),
                                 "yyyy-MM-dd")).lt(Jbxxk::getMzrq,
-                        DateUtil.format(DateUtil.offset(DateUtil.date(),DateField.DAY_OF_YEAR,num + 1 - 30),"yyyy" +
+                        DateUtil.format(DateUtil.offset(DateUtil.date(),DateField.DAY_OF_YEAR,num + 1 - 365),"yyyy" +
                                 "-MM" +
                                 "-dd")));
                if (!CollectionUtils.isEmpty(listT)){
@@ -107,15 +107,21 @@ public class PatientsController {
         list = list.stream().sorted(Comparator.comparing(Jbxxk::getMzrq).reversed()).collect(Collectors.toList());
         for (Jbxxk jbxxk : list) {
             try {
-                List<Patients> patientsList = patientsService.list(new QueryWrapper<Patients>().lambda().eq(Patients::getPatIdentityNum, jbxxk.getSfzh()).orderByDesc(Patients::getTimeStamp));
-                Patients patients = new Patients();
-                if (!CollectionUtils.isEmpty(patientsList)){
-                    patients = patientsList.get(0);
-                }else {
-                    patients=jbxxkTopatients(jbxxk);
-                    patientsService.save(patients);
+                if (jbxxk.getFylb().equals("R1")){
+                    continue;
                 }
-                if (!redisCacheTemplate.opsForHash().hasKey("patients",patients.getPatIdentityNum())){
+                if (jbxxk.getXm().equals("章安平")){
+                    System.out.println(jbxxk.toString());
+                }
+                if (!redisCacheTemplate.opsForHash().hasKey("patients",jbxxk.getSfzh())){
+                    List<Patients> patientsList = patientsService.list(new QueryWrapper<Patients>().lambda().eq(Patients::getPatIdentityNum, jbxxk.getSfzh()).orderByDesc(Patients::getTimeStamp));
+                    Patients patients = new Patients();
+                    if (!CollectionUtils.isEmpty(patientsList)){
+                        patients = patientsList.get(0);
+                    }else {
+                        patients=jbxxkTopatients(jbxxk);
+                        patientsService.saveOrUpdate(patients);
+                    }
                     redisCacheTemplate.opsForHash().put("patients",patients.getPatIdentityNum(),patients);
                 }
                 if (!redisCacheTemplate.opsForHash().hasKey("jbxxk",jbxxk.getZyh().toString())){
@@ -131,6 +137,7 @@ public class PatientsController {
     private Patients jbxxkTopatients(Jbxxk jbxxk) throws Exception {
         Patients patients = new Patients();
         try {
+
             patients.setId(jbxxk.getZyh());
             patients.setPatCardNum(String.format("%08d",jbxxk.getZyh()));
             patients.setPatName(jbxxk.getXm());
@@ -161,6 +168,9 @@ public class PatientsController {
             }
             Gfjb2Ybbr gfjb2Ybbr = gfjb2YbbrService.list(new LambdaQueryWrapper<Gfjb2Ybbr>().eq(Gfjb2Ybbr::getLbh, jbxxk.getFylb())).get(0);
             String natCode = Optional.ofNullable(gfjb2Ybbr).isPresent() ? gfjb2Ybbr.getYblbh() : "00";
+            if (feeId.equals(2L) && natCode.equals("99")){
+                natCode="72";
+            }
             Nature nature = natureService.getOne(new QueryWrapper<Nature>().lambda().eq(Nature::getFeeId, feeId).eq(Nature::getNatCode, natCode));
             // 读卡类型 市医保0社保卡1证历本 省医保1社保卡 省一卡通1社保卡
             String natureType = "0";
