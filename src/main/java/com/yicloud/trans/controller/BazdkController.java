@@ -9,10 +9,7 @@ import com.yicloud.trans.model.mssql.Jbxxk;
 import com.yicloud.trans.model.mssql.Yjmxk;
 import com.yicloud.trans.model.mssql.zd.Gfjb2Ybbr;
 import com.yicloud.trans.model.mysql.*;
-import com.yicloud.trans.service.mssql.BazdkService;
-import com.yicloud.trans.service.mssql.BrjbkService;
-import com.yicloud.trans.service.mssql.Gfjb2YbbrService;
-import com.yicloud.trans.service.mssql.YjmxkService;
+import com.yicloud.trans.service.mssql.*;
 import com.yicloud.trans.service.mysql.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -32,7 +29,6 @@ import java.util.*;
  * @Description: ss
  */
 @RestController
-@Transactional(rollbackFor = Exception.class)
 @RequestMapping(value = "/bazdk")
 public class BazdkController {
     @Autowired
@@ -59,6 +55,10 @@ public class BazdkController {
     private ChargesInfoService chargesInfoService;
     @Autowired
     private PubStaffInfoService pubStaffInfoService;
+    @Autowired
+    private PatientsService patientsService;
+    @Autowired
+    private JbxxkService jbxxkService;
 
 
     @PostMapping("/cleaning")
@@ -101,9 +101,18 @@ public class BazdkController {
                 chargesInfo.setId(bazdk.getId());
                 chargesInfo.setBillDate(bazdk.getMzrq());
                 Jbxxk jbxxk = (Jbxxk) redisCacheTemplate.opsForHash().get("jbxxk", bazdk.getZyh().toString());
+                Patients patients=null;
                 if (!Optional.ofNullable(jbxxk).isPresent()) {
-                    msg = "人员信息不存在";
+                    jbxxk = jbxxkService.getOne(new QueryWrapper<Jbxxk>().lambda().eq(Jbxxk::getZyh, bazdk.getZyh()));
+                    patients = patientsService.createPatients(bazdk.getZyh());
+                    patientsService.saveOrUpdate(patients);
+                }else {
+                    patients = (Patients) redisCacheTemplate.opsForHash().get("patients", jbxxk.getSfzh());
                 }
+                if (!Optional.ofNullable(patients).isPresent()) {
+                    msg="患者信息不存在！";
+                }
+
                 Long feeId = 1L;
                 if (jbxxk.getFylb().startsWith("H")) {
                     feeId = 2L;
@@ -113,13 +122,13 @@ public class BazdkController {
                     feeId = 4L;
                 } else if (jbxxk.getFylb().startsWith("0")) {
                     feeId = 1L;
+                }else {
+                    feeId = 1L;
                 }
                 Gfjb2Ybbr gfjb2Ybbr = gfjb2YbbrService.list(new LambdaQueryWrapper<Gfjb2Ybbr>().eq(Gfjb2Ybbr::getLbh, jbxxk.getFylb())).get(0);
                 String natCode = Optional.ofNullable(gfjb2Ybbr).isPresent() ? gfjb2Ybbr.getYblbh() : "00";
                 Nature nature = natureService.getOne(new QueryWrapper<Nature>().lambda().eq(Nature::getFeeId, feeId).eq(Nature::getNatCode, natCode));
                 FeeType feeType = feeTypeService.getById(feeId);
-
-                Patients patients = (Patients) redisCacheTemplate.opsForHash().get("patients", jbxxk.getSfzh());
 
                 chargesInfo.setPatId(patients.getId());
                 chargesInfo.setPatCardNum(patients.getPatCardNum());
@@ -239,6 +248,6 @@ public class BazdkController {
             }
 
         }
-        return "";
+        return "yiyiyi";
     }
 }

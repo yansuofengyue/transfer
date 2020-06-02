@@ -18,7 +18,7 @@ public class Bazdk implements Serializable {
     @TableId
     private Long id;
 
-    private Integer zyh;
+    private Long zyh;
 
     private String mzkb;
 

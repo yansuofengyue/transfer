@@ -13,6 +13,7 @@ import lombok.Data;
  */
 @Data
 public class MzypmxkF implements Serializable {
+    private static final long serialVersionUID = -2804541051475632887L;
     @TableId
     private Long id;
 
@@ -185,5 +186,4 @@ public class MzypmxkF implements Serializable {
 
 //    private String zzdbz;
 
-    private static final long serialVersionUID = 1L;
 }

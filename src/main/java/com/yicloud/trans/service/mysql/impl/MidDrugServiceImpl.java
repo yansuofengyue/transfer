@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @Description: 新老系统药品转移中间表接口实现
  */
 @Service
-@DS("transfer")
+@DS("master")
 public class MidDrugServiceImpl extends ServiceImpl<MidDrugMapper, MidDrug> implements MidDrugService {
 }

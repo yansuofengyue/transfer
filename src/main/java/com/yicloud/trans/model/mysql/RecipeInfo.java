@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ import lombok.Data;
 @Data
 @TableName("cli_recipe_info")
 public class RecipeInfo implements Serializable {
+    @TableId
     private Long id;
 
     /**

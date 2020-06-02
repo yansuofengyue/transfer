@@ -53,7 +53,7 @@ public class Yjmxk implements Serializable {
 
     private Date zxsj;
 
-    private Integer mzyskfkId;
+    private Long mzyskfkId;
 
     private Integer lsYpid;
 

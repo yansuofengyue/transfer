@@ -114,7 +114,7 @@ public class PatientsController {
                     System.out.println(jbxxk.toString());
                 }
                 if (!redisCacheTemplate.opsForHash().hasKey("patients",jbxxk.getSfzh())){
-                    List<Patients> patientsList = patientsService.list(new QueryWrapper<Patients>().lambda().eq(Patients::getPatIdentityNum, jbxxk.getSfzh()).orderByDesc(Patients::getTimeStamp));
+                    List<Patients> patientsList = patientsService.list(new QueryWrapper<Patients>().lambda().eq(Patients::getPatIdentityNum, jbxxk.getSfzh()).orderByDesc(Patients::getId));
                     Patients patients = new Patients();
                     if (!CollectionUtils.isEmpty(patientsList)){
                         patients = patientsList.get(0);

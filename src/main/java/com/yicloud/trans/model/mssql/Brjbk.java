@@ -18,13 +18,7 @@ public class Brjbk implements Serializable {
     private Long sfbhId;
 
     private Long zyh;
-
-    private Integer jzdhId;
-
     private Date sfrq;
-
-    private String fphm;
-
     private String czgh;
 
     private BigDecimal yjkje;
@@ -199,26 +193,4 @@ public class Brjbk implements Serializable {
     @TableField("jylsh_2")
     private String jylsh2;
 
-    private BigDecimal scjjzfZf;
-
-    private BigDecimal scjjzfZl;
-
-    private String cxjmddbz;
-
-    private String eaJrkJylsh;
-
-    private String eaJrkLx;
-
-    private String eaJrkNo;
-
-    private BigDecimal eaJrkJyje;
-
-
-    private String ybFjxx;
-
-    private String csbz;
-
-
-
-    private static final long serialVersionUID = 1L;
 }

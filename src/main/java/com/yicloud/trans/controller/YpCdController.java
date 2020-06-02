@@ -75,7 +75,12 @@ public class YpCdController {
                 ypCdWrapper.setYpMc(ypMc.getYpmc());
                 ypCdWrapperList.add(ypCdWrapper);
                 redisCacheTemplate.opsForSet().add("ypCdWrapper", ypCdWrapper);
-                redisCacheTemplate.opsForValue().set("ypCdWrapper_"+ypCdWrapper.getYph()+ypCdWrapper.getGgxh()+ypCdWrapper.getCdid().toString(),ypCdWrapper);
+                String redisKey = "ypCdWrapperHash";
+                String redisHas=ypCdWrapper.getYph()+ypCdWrapper.getGgxh()+ypCdWrapper.getCdid().toString();
+                if (redisCacheTemplate.opsForHash().hasKey(redisKey,redisHas)){
+                    redisCacheTemplate.opsForHash().delete(redisKey,redisHas);
+                }
+                redisCacheTemplate.opsForHash().put(redisKey,redisHas,ypCdWrapper);
             }
         }
         return ypCdWrapperList;

@@ -55,5 +55,6 @@ public class MidDrug implements Serializable {
      */
     private String ypgg;
 
+
     private static final long serialVersionUID = 1L;
 }

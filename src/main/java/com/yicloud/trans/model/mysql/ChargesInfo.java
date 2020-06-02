@@ -189,7 +189,7 @@ public class ChargesInfo implements Serializable {
     /**
      * 时间戳
      */
-    private Date timeStamp;
+//    private Date timeStamp;
 
     /**
      * 数据源

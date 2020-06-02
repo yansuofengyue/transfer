@@ -25,38 +25,4 @@ public class YpMc implements Serializable {
     private Integer lsid;
 
     private String zfbz;
-
-//    private Integer zblb1;
-
-    private String sm;
-
-    private Integer tslb;
-
-    private Integer gyfs;
-
-    private Integer jx;
-
-    private Integer sf;
-
-    private String fzbz;
-
-    private Integer zjlb;
-
-    private Integer code;
-
-    private String xysm;
-
-    private Short fylb;
-
-    private String scph;
-
-    private String lsYph;
-
-    private String qxbz;
-
-    private String kssbz;
-
-    private Integer gypl;
-
-
 }

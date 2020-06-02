@@ -15,6 +15,7 @@ import lombok.Data;
 @Data
 @TableName("pub_patients")
 public class Patients implements Serializable {
+    private static final long serialVersionUID = 867563847109895784L;
     private Long id;
     /**
      * 病人证号
@@ -187,10 +188,7 @@ public class Patients implements Serializable {
      */
     private String medCardInfo;
 
-    /**
-     * 时间戳
-     */
-    private Date timeStamp;
+
 
     /**
      * 数据来源
@@ -217,5 +215,4 @@ public class Patients implements Serializable {
      */
     private String blacklistReasons;
 
-    private static final long serialVersionUID = 1L;
 }

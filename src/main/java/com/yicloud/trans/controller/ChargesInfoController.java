@@ -12,6 +12,7 @@ import com.yicloud.trans.model.mssql.zd.Gfjb2Ybbr;
 import com.yicloud.trans.model.mysql.*;
 import com.yicloud.trans.service.mssql.BrjbkService;
 import com.yicloud.trans.service.mssql.Gfjb2YbbrService;
+import com.yicloud.trans.service.mssql.MzypmxkFService;
 import com.yicloud.trans.service.mssql.YjmxkService;
 import com.yicloud.trans.service.mysql.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,6 @@ import java.util.*;
  */
 
 @RestController
-@Transactional(rollbackFor = Exception.class)
 @RequestMapping(value = "/chargesInfo")
 public class ChargesInfoController {
     @Autowired
@@ -58,6 +58,10 @@ public class ChargesInfoController {
     private ExamineInfoService examineInfoService;
     @Autowired
     private ExamineDetailService examineDetailService;
+    @Autowired
+    private PatientsService patientsService;
+    @Autowired
+    private MzypmxkFService mzypmxkFService;
 
     @PostMapping("/cleaning")
     @ResponseBody
@@ -81,24 +85,27 @@ public class ChargesInfoController {
         }
         for (Brjbk brjbk : brjbkList){
             ChargesInfo chargesInfo = new ChargesInfo();
-            MedChargesInfo medChargesInfo = new MedChargesInfo();
+            MedChargesInfo medChargesInfo = null;
             List<ExamineDetail> examineDetailList = new ArrayList<>(24);
             ExamineInfo examineInfo = new ExamineInfo();
             try {
-                if (!redisCacheTemplate.opsForHash().hasKey("jbxxk", brjbk.getZyh().toString())){
-                    continue;
-                }
-                if (brjbk.getSfbhId().equals(3091882L)){
+                if (brjbk.getSfbhId().equals(1140395L)){
                     System.out.println(brjbk.toString());
                 }
                 chargesInfo.setId(brjbk.getSfbhId());
+
                 chargesInfo.setBillDate(brjbk.getSfrq());
                 Jbxxk jbxxk = (Jbxxk) redisCacheTemplate.opsForHash().get("jbxxk", brjbk.getZyh().toString());
+                Patients patients=null;
                 if (!Optional.ofNullable(jbxxk).isPresent()) {
-                    msg = "人员信息不存在";
+                    patients = patientsService.createPatients(brjbk.getZyh());
+                    patientsService.saveOrUpdate(patients);
+                }else {
+                    patients = (Patients) redisCacheTemplate.opsForHash().get("patients", jbxxk.getSfzh());
                 }
-                Patients patients = (Patients) redisCacheTemplate.opsForHash().get("patients", jbxxk.getSfzh());
-
+                if (!Optional.ofNullable(patients).isPresent()) {
+                    msg="患者信息不存在！";
+                }
                 chargesInfo.setPatId(patients.getId());
                 chargesInfo.setBillTotalFee(brjbk.getFyhj());
                 chargesInfo.setBillCashFee(brjbk.getBzylzfje());
@@ -117,16 +124,18 @@ public class ChargesInfoController {
                     }
                 }
                 Long feeId = 1L;
-                if (jbxxk.getFylb().startsWith("H")) {
+                if (brjbk.getLbh().startsWith("H")) {
                     feeId = 2L;
-                } else if (jbxxk.getFylb().startsWith("S")) {
+                } else if (brjbk.getLbh().startsWith("S")) {
                     feeId = 3L;
-                } else if (jbxxk.getFylb().startsWith("T")) {
+                } else if (brjbk.getLbh().startsWith("T")) {
                     feeId = 4L;
-                } else if (jbxxk.getFylb().startsWith("0")) {
+                } else if (brjbk.getLbh().startsWith("0")) {
+                    feeId = 1L;
+                }else {
                     feeId = 1L;
                 }
-                Gfjb2Ybbr gfjb2Ybbr = gfjb2YbbrService.list(new LambdaQueryWrapper<Gfjb2Ybbr>().eq(Gfjb2Ybbr::getLbh, jbxxk.getFylb())).get(0);
+                Gfjb2Ybbr gfjb2Ybbr = gfjb2YbbrService.list(new LambdaQueryWrapper<Gfjb2Ybbr>().eq(Gfjb2Ybbr::getLbh, brjbk.getLbh())).get(0);
                 String natCode = Optional.ofNullable(gfjb2Ybbr).isPresent() ? gfjb2Ybbr.getYblbh() : "00";
                 Nature nature = natureService.getOne(new QueryWrapper<Nature>().lambda().eq(Nature::getFeeId, feeId).eq(Nature::getNatCode, natCode));
                 FeeType feeType = feeTypeService.getById(feeId);
@@ -134,6 +143,9 @@ public class ChargesInfoController {
                 chargesInfo.setNatureName(nature.getNatName());
                 chargesInfo.setFeeId(feeType.getId());
                 chargesInfo.setFeeName(feeType.getFeeName());
+                chargesInfo.setCenterSerialNo(brjbk.getJylsh());
+                chargesInfo.setBusinessCycleNumber(brjbk.getYwzqh());
+
                 //项目明细
                 List<Yjmxk> yjmxkList = yjmxkService.list(new QueryWrapper<Yjmxk>().lambda().eq(Yjmxk::getSfbhId,brjbk.getSfbhId()));
                 for (Yjmxk yjmxk:yjmxkList){
@@ -146,8 +158,24 @@ public class ChargesInfoController {
                     examineDetail.setSffId(9999L);
                     examineDetail.setDepId(5L);
                     examineDetailList.add(examineDetail);
+                    if (Optional.ofNullable(yjmxk.getMzyskfkId()).isPresent()){
+                        chargesInfo.setVisitId(yjmxk.getMzyskfkId());
+                    }
                 }
-
+                if (!Optional.ofNullable(chargesInfo.getVisitId()).isPresent()){
+                    if (redisCacheTemplate.opsForHash().hasKey("brjbkMzypmxk", brjbk.getSfbhId().toString())){
+                        MzypmxkF mzypmxkF= (MzypmxkF) redisCacheTemplate.opsForHash().get("brjbkMzypmxk", brjbk.getSfbhId().toString());
+                        if (Optional.ofNullable(mzypmxkF).isPresent()){
+                            if (Optional.ofNullable(mzypmxkF.getMzyskdkId()).isPresent()){
+                                chargesInfo.setVisitId(mzypmxkF.getMzyskdkId());
+                            }else {
+                                chargesInfo.setVisitId(1L);
+                            }
+                        }
+                    }else {
+                        chargesInfo.setVisitId(1L);
+                    }
+                }
                 //项目费用
                 if (!CollectionUtils.isEmpty(yjmxkList)){
                     examineInfo.setId(brjbk.getSfbhId());
@@ -178,11 +206,13 @@ public class ChargesInfoController {
                 }
                 //医保结算
                 if (!feeId.equals(1L)){
+                    medChargesInfo = new MedChargesInfo();
+                    medChargesInfo.setChargeId(chargesInfo.getId());
                     medChargesInfo.setId(brjbk.getSfbhId());
                     medChargesInfo.setPatId(patients.getId());
                     medChargesInfo.setFeeId(chargesInfo.getFeeId());
                     medChargesInfo.setHospitalId(330005L);
-                    medChargesInfo.setPersonalNo(jbxxk.getBxh());
+                    medChargesInfo.setPersonalNo(patients.getPersonalNo());
                     medChargesInfo.setMedSerialNo(brjbk.getJylsh());
                     medChargesInfo.setSettlementNo(brjbk.getJylsh2());
                     medChargesInfo.setBusinessCycleNumber(brjbk.getYwzqh());

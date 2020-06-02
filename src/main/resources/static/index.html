@@ -114,6 +114,10 @@
         </el-table>
         <el-table
                 :data="tableDataDetail"
+                v-loading="loading"
+                element-loading-text="拼命加载中"
+                element-loading-spinner="el-icon-loading"
+                element-loading-background="rgba(0, 0, 0, 0.8)"
                 style="width: 100%"
                 highlight-current-row
                 @current-change="handleCurrentDownChange"
@@ -156,6 +160,7 @@
         data() {
             return {
                 tableData: [],
+                loading: false,
                 tableDataDetail: [],
                 radio: '0',
                 pickerOptions: {
@@ -192,8 +197,10 @@
             }
         },
         methods: {
+
             init: function () {
                 let that = this
+                that.loading=false
                 axios.get('http://127.0.0.1:8090/drugRegionAlias/list', {
                     params: {drgState: that.radio, drgType: that.drgTypeList}
                 }).then(res => {
@@ -242,6 +249,12 @@
                 console.log(this.currentDownRow)
             },
             visitedinfo:function(){
+                let loading = this.$loading({
+                    lock: true,
+                    text: '数据处理中',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
                 let startDate = this.datePickerArray[0]
                 let endDate = this.datePickerArray[1]
                 let params = new URLSearchParams();
@@ -251,11 +264,19 @@
                     if (res.status == 500 || res.status == '500'){
                         alert(res.message);
                     }
+                    loading.close();
                 }).catch(function (error) {
+                    loading.close();
                     alert(error.response.data.message)
                 });
             },
             recipeInfo:function(){
+                let loading = this.$loading({
+                    lock: true,
+                    text: '数据处理中',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
                 let startDate = this.datePickerArray[0]
                 let endDate = this.datePickerArray[1]
                 let params = new URLSearchParams();
@@ -265,11 +286,19 @@
                     if (res.status == 500 || res.status == '500'){
                         alert(res.message);
                     }
+                    loading.close();
                 }).catch(function (error) {
+                    loading.close();
                     alert(error.response.data.message)
                 });
             },
             chargesInfo:function(){
+                let loading = this.$loading({
+                    lock: true,
+                    text: '数据处理中',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
                 let startDate = this.datePickerArray[0]
                 let endDate = this.datePickerArray[1]
                 let params = new URLSearchParams();
@@ -279,11 +308,19 @@
                     if (res.status == 500 || res.status == '500'){
                         alert(res.message);
                     }
+                    loading.close();
                 }).catch(function (error) {
+                    loading.close();
                     alert(error.response.data.message)
                 });
             },
             bazdk:function(){
+                let loading = this.$loading({
+                    lock: true,
+                    text: '数据处理中',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
                 let startDate = this.datePickerArray[0]
                 let endDate = this.datePickerArray[1]
                 let params = new URLSearchParams();
@@ -293,15 +330,24 @@
                     if (res.status == 500 || res.status == '500'){
                         alert(res.message);
                     }
+                    loading.close();
                 }).catch(function (error) {
+                    loading.close();
                     alert(error.response.data.message)
                 });
             },
             patientInformationCleaning: async function () {
+                let loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
                 axios.post('http://127.0.0.1:8090/patients/cleaning', {
                     params: {}
                 }).then(res => {
                     alert(res.data);
+                    loading.close();
                 }).catch((e) => {
                     alert('获取数据失败');
                 });
@@ -316,7 +362,7 @@
         //     }
         // },
         created() {
-            this.init()
+            // this.init()
         },
         mounted() {
         }

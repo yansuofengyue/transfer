@@ -28,7 +28,7 @@ class PatientsServiceImplTest {
     private PatientsService patientsService;
     @Test
     void createPatients() throws Exception {
-       Patients patients =  patientsService.createPatients(127347L);
+       Patients patients =  patientsService.createPatients(213573L);
         System.out.println(patients.toString());
     }
 }

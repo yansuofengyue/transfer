@@ -98,6 +98,7 @@ public class VisitedInfoController {
                 CliDiagnoseInfo cliDiagnoseInfo=null;
                 if (Optional.ofNullable(jbk).isPresent()){
                     cliDiagnoseInfo=new CliDiagnoseInfo();
+                    cliDiagnoseInfo.setId(mzyskfk.getId());
                     cliDiagnoseInfo.setDiaName(jbk.getJbm());
                     cliDiagnoseInfo.setDiaIcd(jbk.getIcd10());
                     cliDiagnoseInfo.setVisId(visitedInfo.getId());
@@ -109,6 +110,7 @@ public class VisitedInfoController {
                 Patients patients=null;
                 if (!Optional.ofNullable(jbxxk).isPresent()) {
                     patients = patientsService.createPatients(mzyskfk.getZyh());
+                    patientsService.saveOrUpdate(patients);
                 }else {
                     patients = (Patients) redisCacheTemplate.opsForHash().get("patients", jbxxk.getSfzh());
                 }
@@ -124,6 +126,8 @@ public class VisitedInfoController {
                 visitedInfo.setPatSex(Integer.valueOf(patients.getPatSex()));
                 visitedInfo.setPatAddress(patients.getPatFamAddress());
                 visitedInfo.setPatContacts(patients.getPatPhone());
+                visitedInfo.setVisSymptom(mzyskfk.getBlZs());
+                visitedInfo.setVisPresentHis(mzyskfk.getBlXbs());
                 visitedInfo.setHospitalId(330005L);
                 visitedInfo.setDepId(5L);
                 visitedInfoService.saveOrUpdate(visitedInfo);

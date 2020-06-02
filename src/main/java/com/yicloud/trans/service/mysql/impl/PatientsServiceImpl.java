@@ -65,13 +65,11 @@ public class PatientsServiceImpl extends ServiceImpl<PatientsMapper, Patients> i
             }
             redisCacheTemplate.opsForSet().add("jbxxkSet", jbxxk);
             if (!redisCacheTemplate.opsForHash().hasKey("patients", jbxxk.getSfzh())) {
-                List<Patients> patientsList = patientsMapper.selectList(new QueryWrapper<Patients>().lambda().eq(Patients::getPatIdentityNum, jbxxk.getSfzh()).orderByDesc(Patients::getTimeStamp));
+                List<Patients> patientsList = patientsMapper.selectList(new QueryWrapper<Patients>().lambda().eq(Patients::getPatIdentityNum, jbxxk.getSfzh()).orderByDesc(Patients::getId));
                 if (!CollectionUtils.isEmpty(patientsList)) {
                     patients = patientsList.get(0);
                 } else {
                     patients = jbxxkTopatients(jbxxk);
-
-                    patientsMapper.insert(patients);
                 }
                 redisCacheTemplate.opsForHash().put("patients", patients.getPatIdentityNum(), patients);
             }else {
